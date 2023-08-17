@@ -14,6 +14,5 @@ class AppError extends Error {
       this.errorMessage = message
       Error.captureStackTrace(this, this.constructor);
     }
-  }
-  
+}
 export default AppError;
