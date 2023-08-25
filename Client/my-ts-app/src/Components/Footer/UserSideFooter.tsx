@@ -7,7 +7,7 @@ export default function UserSideFooter() {
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
           <Typography variant="h5" className="mb-6 text-white">
-            Talent Hive
+           
           </Typography>
           </div>
         <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
@@ -15,7 +15,7 @@ export default function UserSideFooter() {
             variant="small"
             className="mb-4 text-center font-normal md:mb-0 text-white"
           >
-            &copy; {currentYear} Talent Hive. All
+            &copy; {currentYear} . All
             Rights Reserved.
           </Typography>
           <div className="flex gap-4 sm:justify-center  text-white">

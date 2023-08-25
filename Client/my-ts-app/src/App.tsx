@@ -9,11 +9,6 @@ function App() {
         <Routes>
           <Route path="/*" element={<HomeRouter />} />
           <Route path="/user/*" element={<UserRouter />} />
-          {/* <Route path="/employer/*" element={<EmployerRouter />} /> */}
-          {/* <Route path="/job/*" element={<JobRouter />} />
-          <Route path="/application/*" element={<ApplicationRouter />} />
-          <Route path="/messenger/*" element={<MessengerRouter />} />
-          <Route path="/*" element={<NotFound />} /> */}
         </Routes>
       </Router>
     </div>
