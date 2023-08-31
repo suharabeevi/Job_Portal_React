@@ -1,15 +1,18 @@
 import axios, { AxiosRequestConfig } from "axios";
-
 import { LoginPayload, SignupPayload, } from "../../../../types/PayloadInterface";
 import apiConfig from "../../../../utils/apiConfig";
+import setupAxiosInterceptors from "../../intercepters/axiosInterceptor";
+
+const api = setupAxiosInterceptors()
 export const registerUser = async (payload: SignupPayload): Promise<any> => {
+  console.log(payload)
     try {
       const config: AxiosRequestConfig = {
-        url: `${apiConfig.userRegister}`,
+        url: apiConfig.userRegister,
         method: "post",
         data: payload,
       };
-      const response = await axios(config);
+      const response = await api(config);
       return response.data;
     } catch (error: any) {
       if (error.message === "Request failed with status code 409") {

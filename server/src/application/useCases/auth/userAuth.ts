@@ -5,7 +5,7 @@ import { AuthServiceInterface } from "../../services/authServiceInterface";
 import { GoogleAuthServiceInterface } from "../../services/googleAuthServiceInterface";
 import AppError from "../../../utils/appError";
 import { UserEntity } from "../../../entities/UserEntity";
-
+// register user
 export const registerUser = async (
     user: CreateUserInterface,
     userRepository: ReturnType<UserDbInterface>,
@@ -46,6 +46,8 @@ export const registerUser = async (
     const token = authService.generateToken(payload, 'user');
     return token;
   };
+  console.log(userLogin,"userlogin");
+  
 
   export const signInWithGoogle = async (
     credential: string,

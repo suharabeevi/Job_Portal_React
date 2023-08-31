@@ -25,6 +25,8 @@ const authController = (
     const userRegister = expressAsyncHandler(
       async (req: Request, res: Response) => {
         const user: CreateUserInterface = req?.body;
+        console.log(user,"yes get user");
+        
         await registerUser(user, dbRepositoryUser, authService);
         res.json({
           status: "success",
@@ -32,15 +34,17 @@ const authController = (
         });
       }
     );
-  
     const loginUser = expressAsyncHandler(async (req: Request, res: Response) => {
       const { email, password }: { email: string; password: string } = req.body;
+      console.log(req.body,"data");
       const token = await userLogin(
         email,
         password,
         dbRepositoryUser,
         authService
       );
+     console.log(token,"token");
+      
       res.json({
         status: "success",
         message: "user verified",

@@ -23,7 +23,7 @@ const userAuthRouter = () => {
   console.log(controller,"yyyyyyyy");
   
 
-  route.post("/register", controller.userRegister);
+  route.post("/register",controller.userRegister);
   route.post("/login", controller.loginUser);
    route.post("/sign-in-with-google", controller.signWithGoogle);
 

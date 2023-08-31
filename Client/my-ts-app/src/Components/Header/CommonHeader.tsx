@@ -57,8 +57,8 @@ const navigation = [
                         href={item.href}
                         className={classNames(
                           item.current
-                            ? "bg-purple-600 text-white"
-                            : "text-black hover:bg-purple-500 hover:text-white",
+                            ? "bg-brown-600 text-white"
+                            : "text-black hover:bg-brown-500 hover:text-white",
                           "rounded-md px-3 py-2 text-sm font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}

@@ -8,22 +8,15 @@ import {Employer} from "../../database/mongoDb/models/employerModel";
 
 const employerAuthRouter = () => {
     const route = express.Router();
-  
     const controller = employerAuthController(
       authServiceInterface,
       authService,
       employerDbRepository,
       EmployerRepositoryMongoDB,
-      Employer,
-    //   emailServiceInterface,
-    //   sendEmailService
+      Employer
     );
-  
     route.post("/register", controller.employerRegister);
     route.post("/login", controller.loginEmployer);
-    // route.get("/email-verify/:emailId", controller.emailVerification);
-    // route.get("/email-OTP/:OTP", controller.OTPVerification);
-  
     return route;
   };
   
