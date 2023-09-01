@@ -31,7 +31,6 @@ function EmployerLogin() {
       ? toast.error(msg, { position: toast.POSITION.TOP_RIGHT })
       : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
   };
-
   useEffect(() => {
     if(employerToken) {
       dispatch(employerLoginSuccess());

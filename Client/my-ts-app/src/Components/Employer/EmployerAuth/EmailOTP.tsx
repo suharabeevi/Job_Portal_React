@@ -88,7 +88,7 @@ function EmailOTP() {
                   <input
                     key={index}
                     ref={(ref) => (inputRefs.current[index] = ref)}
-                    className="m-2 border border-purple-700 h-10 w-10 text-center form-control rounded"
+                    className="m-2 border border-brown-700 h-10 w-10 text-center form-control rounded"
                     type="number"
                     value={digit}
                     maxLength={1}
@@ -108,7 +108,7 @@ function EmailOTP() {
                     </p>
                     {!submitted ? (
                       <button
-                        className=" btn p-1 w-3/4 mt-2 text-sm items-center text-white cursor-pointer bg-purple-600 rounded-lg"
+                        className=" btn p-1 w-3/4 mt-2 text-sm items-center text-white cursor-pointer bg-brown-600 rounded-lg"
                         onClick={handleOtpSubmit}
                       >
                         Submit

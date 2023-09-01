@@ -1,7 +1,7 @@
 import express, { NextFunction } from 'express';
 import http from 'http';
 import cors from 'cors'
-
+import bodyParser from 'body-parser';
 import connectDB from './framework/database/mongoDb/connection';
 import errorHandlingMiddleware from './framework/webserver/middleware/errorHandlingMiddleware';
 import routes from './framework/webserver/routes/routes';
@@ -14,6 +14,7 @@ const app: express.Application = express();
 const server = http.createServer(app);
 
 app.use(cors())
+app.use(bodyParser.json());
 
 connectDB();
 

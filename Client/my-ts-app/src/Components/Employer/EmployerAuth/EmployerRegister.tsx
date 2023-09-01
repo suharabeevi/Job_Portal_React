@@ -46,7 +46,7 @@ function EmployerRegister() {
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
                   className="mx-auto h-10 w-auto"
-                  src="https://res.cloudinary.com/dgjwhf8i3/image/upload/v1689059504/talentHive_cjcdcg.jpg"
+                  src=""
                   alt="Your Company"
               />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -69,7 +69,7 @@ function EmployerRegister() {
                     type="text"
                     placeholder="company Name"
                     {...register("companyName")}
-                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
                   />
                   {errors.companyName && (
                     <p className="text-red-500 text-sm">
@@ -91,7 +91,7 @@ function EmployerRegister() {
                     type="text"
                     placeholder="Industry Name"
                     {...register("industry")}
-                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
                   />
                   {errors.industry && (
                     <p className="text-red-500 text-sm">
@@ -121,7 +121,7 @@ function EmployerRegister() {
                     type="text"
                     placeholder="Location"
                     {...register("location")}
-                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
                   />
                   {errors.location && (
                     <p className="text-red-500 text-sm">
@@ -154,7 +154,7 @@ function EmployerRegister() {
                     type="password"
                     placeholder="Password"
                     {...register("password")}
-                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
                   />
                   {errors.password && (
                     <p className="text-red-500 text-sm">
@@ -178,7 +178,7 @@ function EmployerRegister() {
                     type="password"
                     placeholder="Confirm password"
                     {...register("confirmPassword")}
-                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
                   />
                   {errors.confirmPassword && (
                     <p className="text-red-500 text-sm">
@@ -191,7 +191,7 @@ function EmployerRegister() {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-purple-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600"
+                  className="flex w-full justify-center rounded-md bg-brown-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-brown-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brown-600"
                 >
                   Sign Up
                 </button>
@@ -201,7 +201,7 @@ function EmployerRegister() {
             <p className="mt-10 text-center text-sm text-gray-500">
               Already have an account ?{" "}
               <Link to={"/employer/login"}>
-                <span className="font-semibold leading-6 text-purple-600 hover:text-purple-500">
+                <span className="font-semibold leading-6 text-brown-600 hover:text-brown-500">
                   Sign In
                 </span>
               </Link>

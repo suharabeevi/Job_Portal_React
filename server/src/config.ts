@@ -6,5 +6,7 @@ const configKeys = {
     DB_NAME: process.env.DB_NAME as string,
     PORT: process.env.PORT,
     GOOGLE_CLIENT_ID:process.env.GOOGLE_CLIENT_ID as string,
+    NODE_MAIL_USER: process.env.NODE_MAIL_USER_EMAIL as string,
+    NODE_MAIL_PASS: process.env.EMAIL_PASS as string,
 };
 export default configKeys;

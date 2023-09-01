@@ -9,6 +9,8 @@ const UserRouter = () => {
           <Route path="/home" element={<UserHomePage />} />
           <Route path="/login" element={<UserLoginPage />} />
           <Route path="/register" element={<UserSignupPage />} />
+          {/* <Route path="/profile" element={<UserProfilePage/>} /> */}
+
           
         </Routes>
       </div>

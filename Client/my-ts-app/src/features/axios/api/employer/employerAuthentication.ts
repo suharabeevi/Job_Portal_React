@@ -4,7 +4,7 @@ import apiConfig from "../../../../utils/apiConfig";
 export const employerLogin = async (payload: LoginPayload): Promise<any> => {
     try {
       const config: AxiosRequestConfig = {
-        // url: `${apiConfig.employerLogin}`,
+        url: `${apiConfig.employerLogin}`,
         method: "post",
         data: payload,
       };
@@ -22,7 +22,7 @@ export const employerLogin = async (payload: LoginPayload): Promise<any> => {
   export const registerEmployer = async (payload: EmployerRegisterPayload) => {
     try {
       const config: AxiosRequestConfig = {
-        // url: `${apiConfig.employerRegister}`,
+        url: `${apiConfig.employerRegister}`,
         method: "post",
         data: payload,
       };
@@ -40,7 +40,7 @@ export const employerLogin = async (payload: LoginPayload): Promise<any> => {
   export const emailVerify = async (email: string) => {
     try {
       const config: AxiosRequestConfig = {
-        // url: `${apiConfig.emailVerify}/${email}`,
+         url: `${apiConfig.emailVerify}/${email}`,
         method: "get",
       };
       const response = await axios(config);
@@ -57,7 +57,7 @@ export const employerLogin = async (payload: LoginPayload): Promise<any> => {
   export const OTPVerify = async (OTP: string) => {
     try {
       const config: AxiosRequestConfig = {
-        // url: `${apiConfig.OTPVerify}/${OTP}`,
+         url: `${apiConfig.OTPVerify}/${OTP}`,
         method: "get",
       };
       const response = await axios(config);
