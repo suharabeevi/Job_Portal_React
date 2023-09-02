@@ -5,6 +5,7 @@ import { UserRepositoryMongoDB } from '../../database/mongoDb/repositories/userR
 import { User } from '../../database/mongoDb/models/userModel';
 import authenticationMiddleware from '../middleware/AuthenticationMiddleware';
 import roleMiddleware from '../middleware/roleMiddleware';
+
 const userMiddleware = roleMiddleware('user');
 
 const userRouter = ()=> {

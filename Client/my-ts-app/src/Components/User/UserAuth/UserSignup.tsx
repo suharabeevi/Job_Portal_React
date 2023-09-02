@@ -6,22 +6,8 @@ import { registerUser } from "../../../features/axios/api/User/userAuthenticatio
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom"
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-
-
-
 
 export default function UserSignup() {
-
-  const [showPassword, setShowPassword] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-
     const navigate = useNavigate();
     const {
       register,
@@ -64,7 +50,7 @@ export default function UserSignup() {
                   type="text"
                   placeholder="Name"
                   {...register("name")}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
                 />
                 {errors.name && (
                   <p className="text-red-500 text-sm">{errors.name.message}</p>
@@ -79,7 +65,7 @@ export default function UserSignup() {
                   type="text"
                   placeholder="Email"
                   {...register("email")}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm">{errors.email.message}</p>
@@ -93,13 +79,13 @@ export default function UserSignup() {
                   type="phone"
                   placeholder="Phone"
                   {...register("phone")}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-sm">{errors.phone.message}</p>
                 )}
               </div>
-              {/* <div>
+              <div>
                 <label className="text-sm" htmlFor="email">
                   Password
                 </label>
@@ -107,70 +93,15 @@ export default function UserSignup() {
                   type="password"
                   placeholder="Password"
                   {...register("password")}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
                 />
                 {errors.password && (
                   <p className="text-red-500 text-sm">
                     {errors.password.message}
                   </p>
                 )}
-              </div> */}
-
-<div className="mb-4">
-        <label className="text-sm" htmlFor="password">
-          Password
-        </label>
-        <div className="relative">
-          <input
-            type={showPassword ? 'text' : 'password'}
-            placeholder="Password"
-            {...register("password")}
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
-          />
-          <button
-            type="button"
-            onClick={togglePasswordVisibility}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
-          >
-            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-          </button>
-        </div>
-        {errors.password && (
-          <p className="text-red-500 text-sm">
-            {errors.password.message}
-          </p>
-        )}
-      </div>
-      <div>
-        <label className="text-sm" htmlFor="confirmPassword">
-          Confirm password
-        </label>
-        <div className="relative">
-          <input
-            type={showPassword ? 'text' : 'password'}
-            placeholder="Confirm Password"
-            {...register("confirmPassword")}
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
-          />
-          <button
-            type="button"
-            onClick={togglePasswordVisibility}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
-          >
-            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-          </button>
-        </div>
-        {errors.confirmPassword && (
-          <p className="text-red-500 text-sm">
-            {errors.confirmPassword.message}
-          </p>
-        )}
-      </div>
-
-
-
-              
-              {/* <div>
+              </div>
+              <div>
                 <label className="text-sm" htmlFor="email">
                   Confirm password
                 </label>
@@ -178,17 +109,17 @@ export default function UserSignup() {
                   type="password"
                   placeholder="Confirm Password"
                   {...register("confirmPassword")}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
                 />
                 {errors.confirmPassword && (
                   <p className="text-red-500 text-sm">
                     {errors.confirmPassword.message}
                   </p>
                 )}
-              </div> */}
+              </div>
               <button
                 type="submit"
-                className="w-full px-3 py-2 text-sm bg-red-600 text-white rounded hover:bg-brown-700 flex justify-center items-center"
+                className="w-full px-3 py-2 text-sm bg-red-600 text-white rounded hover:bg-purple-700 flex justify-center items-center"
               >
                 Sign up
               </button>

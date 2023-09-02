@@ -32,3 +32,4 @@ export const findUserDataById = async (
     throw new Error("failed to get the user data");
   }
 };
+

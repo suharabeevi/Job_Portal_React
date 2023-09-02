@@ -41,7 +41,7 @@ export const uploadResume = async (file: File): Promise<any> => {
     payload.append("image", file);
 
     const config: AxiosRequestConfig = {
-    //   url: apiConfig.uploadResume,
+       url: apiConfig.uploadResume,
       method: "put",
       data: payload,
       headers: {

@@ -5,6 +5,7 @@ const apiConfig = {
     userLogin: `${configKeys.API_URL}user-auth/login`,
     googleSignIN: `${configKeys.API_URL}user-auth/sign-in-with-google`,
     userData: `${configKeys.API_URL}user/user-data`,
+    uploadResume: `${configKeys.API_URL}user/update-resume`,
 
     employerRegister: `${configKeys.API_URL}employer-auth/register`,
     employerLogin: `${configKeys.API_URL}employer-auth/login`,

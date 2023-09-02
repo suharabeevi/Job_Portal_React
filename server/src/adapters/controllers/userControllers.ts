@@ -42,6 +42,7 @@ const userController = (
         res.json(userData);
       }
     );
+    
   
     return {
         getUserByEmail,

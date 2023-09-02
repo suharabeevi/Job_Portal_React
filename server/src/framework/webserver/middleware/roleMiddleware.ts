@@ -9,8 +9,6 @@ const roleMiddleware = (role: string) => {
 
     // Check if the role matches the required role
     if (customReq.role !== role) {
-        console.log(customReq.role,role,"yesssssssss");
-        
       throw new AppError("Unauthorized user", HttpStatus.UNAUTHORIZED);
     }
 
