@@ -8,7 +8,7 @@ const api = setupAxiosInterceptorsEmployer();
 export const employerData = async (): Promise<any> => {
     try {
         const config : AxiosRequestConfig = {
-            // url: apiConfig.employerData,
+            url: apiConfig.employerData,
             method: 'get'
         }
         const response = await api(config);

@@ -35,7 +35,6 @@ export default function UserSignup() {
           notify(error.message, "error");
         });
     };
-  
     return (
       <div className="bg-slate-100 flex justify-center items-center h-screen ">
         <div className="flex justify-center items-center ">
