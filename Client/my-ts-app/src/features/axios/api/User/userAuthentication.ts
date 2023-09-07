@@ -41,4 +41,16 @@ export const registerUser = async (payload: SignupPayload): Promise<any> => {
       }
     }
   };
-  
+  export const googleLogin = async (payload: string): Promise<any> => {
+  try {
+    const config: AxiosRequestConfig = {
+      url: `${apiConfig.googleSignIN}`,
+      method: "post",
+      data: {credential: payload},
+    };
+    const response = await axios(config);
+    return response.data;
+  } catch (error: any) {
+    throw new Error('Login failed, try again');
+  }
+};

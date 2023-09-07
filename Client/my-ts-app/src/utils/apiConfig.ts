@@ -7,13 +7,14 @@ const apiConfig = {
     googleSignIN: `${configKeys.API_URL}user-auth/sign-in-with-google`,
     userData: `${configKeys.API_URL}user/user-data`,
     uploadResume: `${configKeys.API_URL}user/update-resume`,
+
    //employer
     employerRegister: `${configKeys.API_URL}employer-auth/register`,
     employerLogin: `${configKeys.API_URL}employer-auth/login`,
     emailVerify: `${configKeys.API_URL}employer-auth/email-verify`,
     OTPVerify: `${configKeys.API_URL}employer-auth/email-OTP`,
      employerData: `${configKeys.API_URL}employer/employer-data`,
-    // updateEmployer: `${configKeys.API_URL}employer/update-employer`,
+  
      //job
     employerJObs: `${configKeys.API_URL}job/employer-jobs`,
     createNewJob: `${configKeys.API_URL}job/create-job`,

@@ -2,8 +2,8 @@ import { Menu, Transition } from "@headlessui/react";
 import { JobsInterface } from "../../../types/JobInterface";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import ConfirmDelete from "../Jobs/ConfirmDelete";
-// import deleteJob from "../../../features/axios/api/employer/deleteJob";
+import ConfirmDelete from "../job/ConfirmDelete";
+import deleteJob from "../../../features/axios/api/employer/deleteJob";
 import { useDispatch } from "react-redux";
 import { setEmployerJobId } from "../../../features/axios/redux/slices/employer/employerJobDetailsSlice";
 import { ToastContainer } from "react-toastify";
@@ -113,7 +113,7 @@ const JobsByEmployer: React.FC<AllJobsProps> = ({ jobs }) => {
             <span className="sm:ml-3">
               <button
                 type="button"
-                className="inline-flex items-center rounded-md bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="inline-flex items-center rounded-md bg-brown-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 onClick={() => handleDeleteButtonClick(jobs._id)}
               >
                 <TrashIcon
@@ -174,13 +174,13 @@ const JobsByEmployer: React.FC<AllJobsProps> = ({ jobs }) => {
           </div>
         </div>
 
-        {/* {showDeleteConfirmation && (
+        {showDeleteConfirmation && (
           <ConfirmDelete
             isOpen={showDeleteConfirmation}
             onClose={() => setShowDeleteConfirmation(false)}
             onConfirm={() => deleteJob(selectedJobId)}
           />
-        )} */}
+        )}
         <ToastContainer />
       </div>
   );

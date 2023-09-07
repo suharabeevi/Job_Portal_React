@@ -67,11 +67,12 @@ import { fetchEmployer } from "../../features/axios/redux/slices/employer/employ
             className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
           >
             <Avatar
+              
               variant="circular"
               size="sm"
               alt="candice wu"
               className="border border-blue-500 p-0.5"
-              src={employer?.employerData?.image ?? "../user.jpg"}
+              src={employer?.employerData?.image ?? "https://www.shutterstock.com/image-vector/simple-profile-icon-isolated-circle-250nw-534481072.jpg"}
             />
             <ChevronDownIcon
               strokeWidth={2.5}

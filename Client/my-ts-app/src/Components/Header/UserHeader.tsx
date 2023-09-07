@@ -97,7 +97,7 @@ function UserHeader() {
                         <span className="sr-only">Open user menu</span>
                         <img
                           className="h-8 w-8 rounded-full"
-                          src={user?.image ?? '../user.jpg'}
+                          src={user?.image ?? 'https://as2.ftcdn.net/v2/jpg/01/05/35/09/1000_F_105350969_ITawsV8NBGdNo3SwSvfh3iwdxdHJ8OjG.jpg'}
                           alt="user"
                         />
                       </Menu.Button>

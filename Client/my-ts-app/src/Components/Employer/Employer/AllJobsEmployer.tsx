@@ -90,7 +90,7 @@ function AllJobsEmployer() {
               <Link to={"/job/create-job"}>
                 <button
                   type="button"
-                  className="inline-flex items-center rounded-md bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="inline-flex items-center rounded-md bg-brown-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brown-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   <PlusIcon
                     className="-ml-0.5 mr-1.5 h-5 w-5"
@@ -103,7 +103,7 @@ function AllJobsEmployer() {
             <div className="w-full md:w-72">
               <Input
                 label="Search"
-                color="purple"
+                color="brown"
                 icon={<MagnifyingGlassIcon className="h-5 w-5" />}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)} crossOrigin={undefined}              />
@@ -128,7 +128,7 @@ function AllJobsEmployer() {
         <div className="flex gap-2">
           <Button
             variant="outlined"
-            color="purple"
+            color="brown"
             size="sm"
             onClick={() => changePage(currentPage - 1)}
             disabled={currentPage === 1}
@@ -137,7 +137,7 @@ function AllJobsEmployer() {
           </Button>
           <Button
             variant="outlined"
-            color="purple"
+            color="brown"
             size="sm"
             onClick={() => changePage(currentPage + 1)}
             disabled={

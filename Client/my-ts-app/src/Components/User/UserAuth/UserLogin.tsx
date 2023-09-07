@@ -11,6 +11,10 @@ import { RootState } from "../../../features/axios/redux/reducers/Reducer";
 import { loginSuccess } from "../../../features/axios/redux/slices/user/userLoginAuthSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+// import GoogleAuthComponent from "./GoogleAuthComponent";
 
 
 export default function UserLogin() {
@@ -56,6 +60,11 @@ export default function UserLogin() {
           notify(error.message, "error");
         });
     };
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+      setShowPassword(!showPassword);
+    };
     return (
       <div className="flex justify-end h-screen bg-slate-100">
         <div className="ml-32 flex justify-center items-center">
@@ -85,20 +94,31 @@ export default function UserLogin() {
                 )}
               </div>
               <div>
-                <label className="text-sm" htmlFor="email">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  {...register("password")}
-                  className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-purple-500"
-                />
-                {errors.password && (
-                  <p className="text-red-500 text-sm">
-                    {errors.password.message}
-                  </p>
-                )}
+              <label className="text-sm" htmlFor="password">
+        Password
+      </label>
+      <div className="relative">
+        <input
+          type={showPassword ? 'text' : 'password'}
+          placeholder="Password"
+          {...register("password")}
+          className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-brown-500"
+        />
+        <button
+          type="button"
+          onClick={togglePasswordVisibility}
+          className="absolute inset-y-0 right-0 mr-2 flex items-center justify-center h-full"
+        >
+          <FontAwesomeIcon
+            icon={showPassword ? faEye : faEyeSlash}
+          />
+        </button>
+      </div>
+      {errors.password && (
+        <p className="text-red-500 text-sm">
+          {errors.password.message}
+        </p>
+      )}
               </div>
               <button
                 type="submit"
@@ -109,6 +129,7 @@ export default function UserLogin() {
             </form>
             <span className="mr-2 flex justify-center">or</span>
             <div className="flex items-center justify-center mt-2">
+               {/* <GoogleAuthComponent/> */}
             </div>
   
             <div className="mt-4 text-center">

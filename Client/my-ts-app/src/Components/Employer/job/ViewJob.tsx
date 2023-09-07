@@ -66,7 +66,7 @@ function EmployerViewJob() {
       <div className="max-w-md mx-auto">
         <div className="p-4 rounded-lg">
           <div className="flex items-center mb-2">
-            <BriefcaseIcon className="w-6 h-6 mr-2 text-purple-500" />
+            <BriefcaseIcon className="w-6 h-6 mr-2 text-brown-500" />
             <div className="text-lg font-semibold text-gray-900">
               {jobDetails?.title}
             </div>
@@ -77,7 +77,7 @@ function EmployerViewJob() {
               <span>{jobDetails?.location}</span>
             </div>
             <div className="flex items-center">
-              <CalendarIcon className="w-4 h-4 mr-1 text-purple-600" />
+              <CalendarIcon className="w-4 h-4 mr-1 text-brown-600" />
               <span>
                 Posted on{" "}
                 {new Date(jobDetails?.createdAt ?? "")?.toLocaleDateString()}
@@ -142,7 +142,7 @@ function EmployerViewJob() {
                 </dt>
                 <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                   <div className="flex items-center">
-                    <CurrencyRupeeIcon className="w-4 h-4 mr-1 text-purple-600" />
+                    <CurrencyRupeeIcon className="w-4 h-4 mr-1 text-brown-600" />
                     <span>{jobDetails?.salary}</span>
                   </div>
                 </dd>

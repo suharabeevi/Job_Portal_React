@@ -54,6 +54,8 @@ const authController = (
   
     const signWithGoogle = expressAsyncHandler(async (req: Request, res: Response) => {
       const {credential} : {credential: string} = req.body;
+      console.log(req.body,"credentail");
+      
       const token = await signInWithGoogle(credential, googleAuthService, dbRepositoryUser, authService);
       res.json({
         status: "success",
