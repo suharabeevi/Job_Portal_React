@@ -27,10 +27,10 @@ import { fetchEmployer } from "../../features/axios/redux/slices/employer/employ
   }
   
   const profileMenuItems: ProfileMenuItem[] = [
-    {
-      label: "My Profile",
-      icon: UserCircleIcon,
-    },
+    // {
+    //   label: "My Profile",
+    //   icon: UserCircleIcon,
+    // },
     {
       label: "Inbox",
       icon: InboxArrowDownIcon,

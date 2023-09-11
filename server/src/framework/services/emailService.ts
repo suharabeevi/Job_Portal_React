@@ -47,11 +47,9 @@ export const sendEmailService = () => {
     }
   };
 
-  
   return {
     sendEmail,
     verifyOTP,
   };
 };
-
 export type SendEmailService = typeof sendEmailService;

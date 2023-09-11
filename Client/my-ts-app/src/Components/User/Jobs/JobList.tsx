@@ -1,80 +1,73 @@
+import React, { Dispatch, SetStateAction } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { JobsInterface } from "../../../types/JobInterface";
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import ConfirmDelete from "../job/ConfirmDelete";
-import deleteJob from "../../../features/axios/api/employer/deleteJob";
-import { useDispatch } from "react-redux";
-import { setEmployerJobId } from "../../../features/axios/redux/slices/employer/employerJobDetailsSlice";
-import { ToastContainer } from "react-toastify";
+import { useDispatch} from "react-redux";
+import { setJobId } from "../../../features/axios/redux/slices/user/jobDetailsSlice";
 import {
   BriefcaseIcon,
   CalendarIcon,
   ChevronDownIcon,
-  CurrencyDollarIcon,
+  CurrencyRupeeIcon,
   LinkIcon,
   MapPinIcon,
-  PencilIcon,
-  TrashIcon,
 } from "@heroicons/react/20/solid";
 
 interface AllJobsProps {
   jobs: JobsInterface;
+  selected: string;
+  setSelected: Dispatch<SetStateAction<string>>;
 }
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-const JobsByEmployer: React.FC<AllJobsProps> = ({ jobs }) => {
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-  const [selectedJobId, setSelectedJobId] = useState("");
+const JobList: React.FC<AllJobsProps> = ({ jobs, selected, setSelected }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleDeleteButtonClick = (jobId: string) => {
-    setSelectedJobId(jobId);
-    setShowDeleteConfirmation(true);
-  };
 
   const handleViewJob = (jobId: string) => {
-    dispatch(setEmployerJobId(jobId));
-    navigate("/job/view-job");
+    dispatch(setJobId(jobId));
+    setSelected(jobId);
   };
 
   return (
-      <div className="border border-gray-300 rounded-md p-4 mb-4  bg-white">
-        <div className="lg:flex lg:items-center lg:justify-between">
+    <>
+      <div
+        className={`border border-gray-300 rounded-md p-4 mb-4 bg-white ${
+          selected === jobs._id ? "ring-2 ring-brown-500 transition-all duration-500" : ""
+        }`}
+      >
+        <div className=" lg:flex lg:items-center lg:justify-between">
           <div className="min-w-0 flex-1">
-            <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-xl sm:tracking-tight">
+            <h2 className="text-xl font-bold leading-7 text-gray-900 sm:truncate sm:text-xl sm:tracking-tight">
               {jobs.title}
             </h2>
             <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
               {/* Render job details */}
               <div className="mt-2 flex items-center text-sm text-gray-500">
                 <BriefcaseIcon
-                  className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                  className="mr-1.5 h-5 w-5 flex-shrink-0 text-brown-600"
                   aria-hidden="true"
                 />
                 {jobs.employmentType}
               </div>
               <div className="mt-2 flex items-center text-sm text-gray-500">
                 <MapPinIcon
-                  className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                  className="mr-1.5 h-5 w-5 flex-shrink-0 text-brown-400"
                   aria-hidden="true"
                 />
                 {jobs.location}
               </div>
               <div className="mt-2 flex items-center text-sm text-gray-500">
-                <CurrencyDollarIcon
-                  className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                <CurrencyRupeeIcon
+                  className="mr-1.5 h-5 w-5 flex-shrink-0 text-brown-400"
                   aria-hidden="true"
                 />
                 {jobs.salary}
               </div>
               <div className="mt-2 flex items-center text-sm text-gray-500">
                 <CalendarIcon
-                  className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                  className="mr-1.5 h-5 w-5 flex-shrink-0 text-brown-400"
                   aria-hidden="true"
                 />
                 Created on {new Date(jobs.createdAt).toLocaleDateString()}
@@ -83,20 +76,6 @@ const JobsByEmployer: React.FC<AllJobsProps> = ({ jobs }) => {
           </div>
           <div className="mt-5 flex lg:ml-4 lg:mt-0">
             {/* Render action buttons */}
-            <span className="hidden sm:block">
-              <Link to={`/job/edit-job/${jobs._id}`}>
-                <button
-                  type="button"
-                  className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                >
-                  <PencilIcon
-                    className="-ml-0.5 mr-1.5 h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
-                  Edit
-                </button>
-              </Link>
-            </span>
             <span className="ml-3 hidden sm:block">
               <button
                 type="button"
@@ -104,23 +83,10 @@ const JobsByEmployer: React.FC<AllJobsProps> = ({ jobs }) => {
                 onClick={() => handleViewJob(jobs._id)}
               >
                 <LinkIcon
-                  className="-ml-0.5 mr-1.5 h-5 w-5 text-gray-400 rounded-md bg-brown-600 inline-flex items-center"
+                  className="-ml-0.5 mr-1.5 h-5 w-5 text-gray-400"
                   aria-hidden="true"
                 />
                 View
-              </button>
-            </span>
-            <span className="sm:ml-3">
-              <button
-                type="button"
-                className="inline-flex items-center rounded-md bg-brown-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                onClick={() => handleDeleteButtonClick(jobs._id)}
-              >
-                <TrashIcon
-                  className="-ml-0.5 mr-1.5 h-5 w-5"
-                  aria-hidden="true"
-                />
-                Delete
               </button>
             </span>
             {/* Dropdown */}
@@ -128,7 +94,7 @@ const JobsByEmployer: React.FC<AllJobsProps> = ({ jobs }) => {
               <Menu.Button className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400">
                 More
                 <ChevronDownIcon
-                  className="-mr-1 ml-1.5 h-5 w-5 text-gray-400"
+                  className="-mr-1 ml-1.5 h-5 w-5 text-brown-400"
                   aria-hidden="true"
                 />
               </Menu.Button>
@@ -148,7 +114,7 @@ const JobsByEmployer: React.FC<AllJobsProps> = ({ jobs }) => {
                         href="l"
                         className={classNames(
                           active ? "bg-gray-100" : "",
-                          "block px-4 py-2 text-sm text-gray-700"
+                          "block px-4 py-2 text-sm text-black"
                         )}
                       >
                         Edit
@@ -161,7 +127,7 @@ const JobsByEmployer: React.FC<AllJobsProps> = ({ jobs }) => {
                         href="l"
                         className={classNames(
                           active ? "bg-gray-100" : "",
-                          "block px-4 py-2 text-sm text-gray-700"
+                          "block px-4 py-2 text-sm text-black"
                         )}
                       >
                         View
@@ -173,17 +139,9 @@ const JobsByEmployer: React.FC<AllJobsProps> = ({ jobs }) => {
             </Menu>
           </div>
         </div>
-
-        {showDeleteConfirmation && (
-          <ConfirmDelete
-            isOpen={showDeleteConfirmation}
-            onClose={() => setShowDeleteConfirmation(false)}
-            onConfirm={() => deleteJob(selectedJobId)}
-          />
-        )}
-        <ToastContainer />
       </div>
+    </>
   );
 };
 
-export default JobsByEmployer;
+export default JobList;

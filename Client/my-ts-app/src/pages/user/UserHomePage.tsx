@@ -11,5 +11,4 @@ function UserHomePage() {
       </div>
     );
   }
-  
   export default UserHomePage;

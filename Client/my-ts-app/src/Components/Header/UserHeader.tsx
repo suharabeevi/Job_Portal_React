@@ -76,8 +76,8 @@ function UserHeader() {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? "bg-white text-purple-700"
-                              : "text-black hover:bg-purple-500 hover:text-white",
+                              ? "bg-white text-brown-700"
+                              : "text-black hover:bg-brown-500 hover:text-white",
                             "rounded-md px-3 py-2 text-sm font-medium"
                           )}
                           aria-current={item.current ? "page" : undefined}
@@ -116,7 +116,7 @@ function UserHeader() {
                           <Link to={"/user/profile"}>
                             <button
                               className={classNames(
-                                "block px-4 py-2 text-sm text-purple-700"
+                                "block px-4 py-2 text-sm text-brown-700"
                               )}
                             >
                               Profile
@@ -127,7 +127,7 @@ function UserHeader() {
                           <Link to={"/messenger/user"}>
                             <button
                               className={classNames(
-                                "block px-4 py-2 text-sm text-purple-700"
+                                "block px-4 py-2 text-sm text-brown-700"
                               )}
                             >
                               Chat
@@ -138,7 +138,7 @@ function UserHeader() {
                           <Link to={"/job/all-jobs"}>
                             <button
                               className={classNames(
-                                "block px-4 py-2 text-sm text-purple-700"
+                                "block px-4 py-2 text-sm text-brown-700"
                               )}
                             >
                               Jobs
@@ -149,7 +149,7 @@ function UserHeader() {
                           <Link to={"/user/all-applications"}>
                             <button
                               className={classNames(
-                                "block px-4 py-2 text-sm text-purple-700"
+                                "block px-4 py-2 text-sm text-brown-700"
                               )}
                             >
                               Applied Jobs
@@ -160,7 +160,7 @@ function UserHeader() {
                           <Link to={"/employer/login"}>
                             <button
                               className={classNames(
-                                "block px-4 py-2 text-sm text-purple-700"
+                                "block px-4 py-2 text-sm text-brown-700"
                               )}
                             >
                               Employer login
@@ -170,7 +170,7 @@ function UserHeader() {
                         <Menu.Item>
                           <button
                             className={classNames(
-                              "block px-4 py-2 text-sm text-purple-700"
+                              "block px-4 py-2 text-sm text-brown-700"
                             )}
                             onClick={() => {
                               handleLogout();

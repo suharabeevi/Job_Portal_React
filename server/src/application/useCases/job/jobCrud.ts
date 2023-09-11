@@ -74,29 +74,3 @@ export const findJobById = async (
     throw new Error('failed to get the job data')
   }
 }
-
-// export const distinctTitleLocationSalary = async (
-//   title: string,
-//   jobRepository: ReturnType<JobDbInterface>
-// ) => {
-//   try {
-//     const distinct = await jobRepository.titleLocationSalary(title);
-//     return distinct;
-//   } catch (error) {
-//     throw new AppError('could not find any values', HttpStatus.SERVICE_UNAVAILABLE);
-//   }
-// }
-
-// export const filterTheJobs = async (
-//   role: string,
-//   location: string,
-//   salary: any,
-//   jobRepository: ReturnType<JobDbInterface>
-// ) => {
-//   try {
-//     const jobs = await jobRepository.filterJob(role, location, salary);
-//     return jobs;
-//   } catch (error) {
-//     throw new AppError('could not find any results', HttpStatus.NOT_FOUND);
-//   }
-// }

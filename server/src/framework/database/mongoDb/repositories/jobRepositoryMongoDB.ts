@@ -34,15 +34,6 @@ export const JobRepositoryMongoDB = (model: JobModel) => {
         return jobData;
     }
 
-    // const titlePlaceSalary = async (title: string) => {
-    //     const distinct = await jobEntity.titleLocationSalary(title);
-    //     return distinct;
-    // }
-
-    // const filterJobs = async (role: string, location: string, salary: any) => {
-    //     const jobs = await jobEntity.filterJob(role, location, salary);
-    //     return jobs;
-    // }
 
     return {
         createJob,
@@ -51,8 +42,6 @@ export const JobRepositoryMongoDB = (model: JobModel) => {
         findJobByEmployer,
         findAllJobs,
         findJobById,
-        // titlePlaceSalary,
-        // filterJobs
     }
 }
 

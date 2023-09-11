@@ -22,7 +22,6 @@ export const employerData = async (): Promise<any> => {
 export const updateEmployer = async (payload: EmployerRegisterPayload): Promise<any> => {
     try {
       const config: AxiosRequestConfig = {
-        // url: apiConfig.updateEmployer,
         method: "put",
         data: payload,
         headers: {
