@@ -9,7 +9,6 @@ import roleMiddleware from "../middleware/roleMiddleware";
 const adminRoleCheckMiddleware = roleMiddleware('admin');
 
 const adminRouter =()=>{
-    console.log("uuuuuuu");
     const route = express.Router();
     const controller = adminController(
       authServiceInterface,
@@ -20,7 +19,10 @@ const adminRouter =()=>{
     console.log(controller,"admincontroller");
     route.post("/login", controller.adminLogin);
     route.get( "/get-all-users",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminGetAllUsers);
-    
+    route.get("/get-all-employers",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminGetAllEmployers);
+    route.post("/block-user/:id",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminBlockUser);
+    route.post("/block-employer/:id",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminBlockEmployer);
     return route;
 }
+
 export default adminRouter;

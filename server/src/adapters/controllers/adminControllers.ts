@@ -6,7 +6,7 @@ import { CustomRequest } from "../../types/expressRequest";
 import { AuthService } from "../../framework/services/authService";
 import { AdminDbInterface } from "../../application/repositories/adminDbRepository";
 import { AdminRepossitoryMongoDB } from "../../framework/database/mongoDb/repositories/adminRepoMongoDB";
-import { adminLoginUseCase,adminGetAllUsersUseCase } from "../../application/useCases/adminAuth";
+import { adminLoginUseCase,adminGetAllUsersUseCase,adminGetAllEmployerUseCase,adminBlockUserUseCase,adminBlockEmployerUseCase } from "../../application/useCases/adminAuth";
 
 const adminController = (
     authServiceInterface: AuthServiceInterface,
@@ -35,11 +35,39 @@ const adminController = (
             userData
         })
     })
-
+    const adminGetAllEmployers = expressAsyncHandler(async (req: Request,res:Response)=>{
+        const EmployerData = await adminGetAllEmployerUseCase(dbRepositoryAdmin)
+        res.json({
+            status: 'success',
+            EmployerData
+        })
+    })
+    const adminBlockUser = expressAsyncHandler(async(req: Request,res: Response)=>{
+        const userId = req.params.id
+        console.log(userId,"getuserid");
+        const result = await adminBlockUserUseCase(dbRepositoryAdmin, userId)
+        res.json({
+            status: 'success',
+            result
+        })
+    })
+    const adminBlockEmployer = expressAsyncHandler(async (req: Request, res: Response)=>{
+        const EmployerId = req.params.id
+        const result = await adminBlockEmployerUseCase(dbRepositoryAdmin,EmployerId)
+        console.log(result,"current result");
+        
+        res.json({
+            status: 'success',
+            result
+        })
+    })
 
     return{
    adminLogin,
-   adminGetAllUsers
+   adminGetAllUsers,
+   adminGetAllEmployers,
+   adminBlockUser,
+   adminBlockEmployer
     }
 }
 export default adminController

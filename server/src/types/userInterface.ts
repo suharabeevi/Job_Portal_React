@@ -17,7 +17,6 @@ export interface UserInterface {
     location?: string,
     experience?: object
 }
-
 export interface CreateUserInterface {
     name: string,
     email: string,

@@ -4,7 +4,7 @@ import AppError from "../../utils/appError";
 import { AuthServiceInterface } from "../services/authServiceInterface";
 import { AdminDbInterface,adminDbRepository } from "../repositories/adminDbRepository";
 import { ObjectId, Types } from "mongoose";
-import { log } from "console";
+
 
 export const adminLoginUseCase = async (
     email: string,
@@ -45,3 +45,35 @@ export const adminLoginUseCase = async (
     }
     return userData;
   };
+
+  export const adminGetAllEmployerUseCase = async (
+    adminDbRepository: ReturnType<AdminDbInterface>
+  ) => {
+    const EmployerData = await adminDbRepository.getAllEmployers();
+    if (!EmployerData) {
+      throw new AppError("No agents found", HttpStatus.NOT_FOUND);
+    }
+    return EmployerData;
+  };
+
+  export const adminBlockUserUseCase = async (
+    adminDbRepository: ReturnType<AdminDbInterface>,
+    ojbId: string
+  ) => {
+    const adminBlockUser = await adminDbRepository.blockUser(ojbId);
+    if (!adminBlockUser) {
+      throw new AppError("Operation failed", HttpStatus.NOT_MODIFIED);
+    }
+    return adminBlockUser;
+  };
+  export const adminBlockEmployerUseCase = async (
+    adminDbRepository: ReturnType<AdminDbInterface>,
+    ojbId: string
+  ) => {
+    const adminBlockEmployer = await adminDbRepository.blockEmployer(ojbId);
+    if (!adminBlockEmployer) {
+      throw new AppError("Operation failed", HttpStatus.NOT_MODIFIED);
+    }
+    return adminBlockEmployer;
+  };
+  

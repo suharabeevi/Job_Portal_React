@@ -8,7 +8,6 @@ import roleMiddleware from '../middleware/roleMiddleware';
 
 const employerMiddleware = roleMiddleware('employer');
 
-
 const employerRouter = () => {
     const route = express.Router();
 
