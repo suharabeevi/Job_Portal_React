@@ -18,7 +18,7 @@ const userController = (
   
     const getUserByEmail = expressAsyncHandler(
       async (req: Request, res: Response) => {
-        // console.log(req.body)
+         console.log(req.body)
         const { email } = req.body;
         const user = await findByEmail(email, dbRepositoryUser);
         res.json(user);

@@ -25,9 +25,6 @@ serverConfig(server).startServer();
 
 // routes
 routes(app);
-
-
-
 app.use(errorHandlingMiddleware) 
 
 app.all('*', (req,res,next:NextFunction) => {

@@ -19,7 +19,6 @@ const employerRouter = () => {
     );
 
     route.get('/employer-data',authenticationMiddleware, employerMiddleware, controller.getEmployerById);
-    // route.put('/update-employer',authenticationMiddleware, employerMiddleware, upload, controller.updateEmployer);
     route.get('/employer-data/:empId', controller.getEmployerByIdParam);
 
     return route;

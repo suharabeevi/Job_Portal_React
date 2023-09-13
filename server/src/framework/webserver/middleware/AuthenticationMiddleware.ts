@@ -11,8 +11,9 @@ const authenticationMiddleware = (
 ) => {
   const customReq = req as CustomRequest
   let token: string | null = "";
+  
   if ( customReq.headers.authorization && customReq.headers.authorization.startsWith("Bearer")) {
-    token = customReq.headers.authorization.split(" ")[1];
+    token = customReq.headers.authorization.split(" ")[1]; 
   }
   if (!token) {
     throw new AppError('Token not found', HttpStatus.UNAUTHORIZED);

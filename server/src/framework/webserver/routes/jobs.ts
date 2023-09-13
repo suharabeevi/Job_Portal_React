@@ -9,6 +9,7 @@ const userMiddleware = roleMiddleware('user');
 const employerMiddleware = roleMiddleware('employer');
 
 
+
 const jobRouter = () => {
     const route = express.Router();
 

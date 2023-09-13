@@ -23,6 +23,7 @@ const apiConfig = {
     jobData: `${configKeys.API_URL}job/job-data`,
     allJobs: `${configKeys.API_URL}job/all-jobs`,
 
-
+   //admin
+   ADMIN_LOGIN:`${configKeys.API_URL}admin/login`,
 }
 export default apiConfig;
