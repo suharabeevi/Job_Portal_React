@@ -8,7 +8,6 @@ export class EmployerEntity {
     constructor(model: EmployerModel) {
       this.model = model; 
     }
-  
     public async getEmployerByEmail(email: string): Promise<EmployerInterface | null> {
       const employer = await this.model.findOne({ email }).exec();
       return employer;

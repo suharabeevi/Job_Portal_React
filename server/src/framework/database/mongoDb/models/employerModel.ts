@@ -29,6 +29,10 @@ const employerSchema = new Schema({
     type: String,
     required: false,
   },
+  isVerified: {
+    type: Boolean,
+    default: false
+},
   type: {
     type: String,
     default: "employer"
@@ -39,7 +43,11 @@ const employerSchema = new Schema({
   },
   image: {
     type: String
-  }
+  },
+  idProof_img: {
+    type: String,
+    required: true
+}
 });
 
 export const Employer = model("Employer", employerSchema, "employers")

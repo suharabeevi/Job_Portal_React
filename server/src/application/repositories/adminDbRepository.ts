@@ -8,12 +8,14 @@ export const adminDbRepository = (
     const getAllEmployers = async () => await repository.getAllEmployers();
     const blockUser = async (ojbId: string) => await repository.blockUser(ojbId);
     const blockEmployer = async (ojbId: string) =>await repository.blockEmployer(ojbId);
+    const verifyEmployer = async (objId: string) =>await repository.verifyEmployer(objId);
     return {
         getAdminByEmail,
         getAllUsers,
         getAllEmployers,
         blockUser,
-        blockEmployer
+        blockEmployer,
+        verifyEmployer
     }
   }
   export type AdminDbInterface = typeof adminDbRepository;

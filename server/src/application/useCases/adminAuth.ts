@@ -76,4 +76,13 @@ export const adminLoginUseCase = async (
     }
     return adminBlockEmployer;
   };
-  
+  export const adminVerifyEmployerUseCase = async (
+    adminDbRepository: ReturnType<AdminDbInterface>,
+    objId: string
+  ) => {
+    const adminVerifyEmployer = await adminDbRepository.verifyEmployer(objId);
+    if (!adminVerifyEmployer) {
+      throw new AppError("Operation failed", HttpStatus.NOT_MODIFIED);
+    }
+    return adminVerifyEmployer;
+  };

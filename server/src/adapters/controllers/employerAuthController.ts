@@ -28,8 +28,13 @@ const employerAuthController = (
 
   const employerRegister = expressAsyncHandler(
     async (req: Request, res: Response) => {
+      console.log(req.body,"yes got it");
       const employer: EmployerInterface = req.body;
-      await registerEmployer(employer, dbRepositoryEmployer, authService);
+      console.log(req.file,"yesssss");
+      if (req.file) {
+        employer.idProof_img = req.file.path;
+      }
+      await registerEmployer(employer,dbRepositoryEmployer, authService);
       res.json({
         status: "success",
         message: "employer registered successfully",

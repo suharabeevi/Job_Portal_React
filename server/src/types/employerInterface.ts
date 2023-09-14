@@ -7,9 +7,11 @@ export interface CreateEmployerInterface {
     location?: string,
     password?: string,
     isActive?: boolean,
+    isVerified?:boolean,
     type?: string,
     createdAt?: Date,
-    image?: string
+    image?: string,
+    idProof_img?:any
 }
 
 export interface EmployerInterface extends CreateEmployerInterface {

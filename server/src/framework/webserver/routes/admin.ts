@@ -22,6 +22,7 @@ const adminRouter =()=>{
     route.get("/get-all-employers",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminGetAllEmployers);
     route.post("/block-user/:id",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminBlockUser);
     route.post("/block-employer/:id",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminBlockEmployer);
+    route.post("/Employer-verification/:id",authenticationMiddleware,adminRoleCheckMiddleware,controller.verifyEmployer);
     return route;
 }
 

@@ -29,7 +29,6 @@ export const adminRepositoryMongoDB = () => {
         );
         return result;
       };
-
       const blockEmployer = async (objId: string) => {
         const id = new Types.ObjectId(objId);
         const employer = await Employer.findById(id);
@@ -38,21 +37,32 @@ export const adminRepositoryMongoDB = () => {
         console.log(status,"status");
         const result = await Employer.findOneAndUpdate(
           { _id: id },
-          { $set: { isActive: status } }
+          { $set: { isActive: status } },
         );
         console.log(result,"updatedusr");
         return result;
       };
-  
+      const verifyEmployer = async (objId: string) => {
+        const id = new Types.ObjectId(objId);
+        const result = await Employer.findOneAndUpdate(
+          {
+            _id: id,
+          },
+          {
+            $set: { isVerified: true },
+          }
+        );
+    console.log(result,"updated employee verify");
     
+        return result;
+      };
     return{
         getAdminByEmail,
         getAllusers,
         getAllEmployers,
         blockUser,
-        blockEmployer
+        blockEmployer,
+        verifyEmployer
     }
 }
-
-
 export type AdminRepossitoryMongoDB = typeof adminRepositoryMongoDB;
