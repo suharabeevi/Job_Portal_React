@@ -86,3 +86,13 @@ export const adminLoginUseCase = async (
     }
     return adminVerifyEmployer;
   };
+  export const adminGetUnverifiedEmployersUseCase = async (
+    adminDbRepository: ReturnType<AdminDbInterface>
+  ) => {
+    const getAllUnverifiedEmployers = await adminDbRepository.getUnverifiedEmployers();
+    if (!getAllUnverifiedEmployers) {
+      throw new AppError("Operation failed", HttpStatus.NOT_FOUND);
+    }
+  
+    return getAllUnverifiedEmployers
+  };
