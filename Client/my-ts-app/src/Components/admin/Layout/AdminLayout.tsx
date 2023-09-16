@@ -1,17 +1,23 @@
-
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function AdminDashBoard() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const  logouAdmin = async()=>{
-    window.localStorage.removeItem('adminToken');
-    navigate('/admin/login')
-  }
+  const logouAdmin = async () => {
+    window.localStorage.removeItem("adminToken");
+    navigate("/admin/login");
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   return (
     <>
-      <nav className="fixed top-0 z-50 w-full bg-white mb-1 mx-1 rounded hover:shadow-sm shadow-xl dark:bg-gray-800 dark:border-gray-700">
-        <div className="px-3 py-3 lg:px-5 lg:pl-3">
+      <nav className="fixed top-0 z-50 w-full bg-white mb-1 mx-2 rounded hover:shadow-sm shadow-xl dark:bg-gray-800 dark:border-gray-700 py-1">
+        <div className="px-3 py-3 lg:px-5 lg:pl-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start">
               <button
@@ -37,88 +43,81 @@ export default function AdminDashBoard() {
                 </svg>
               </button>
               <Link to="/admin" className="flex ml-2 md:mr-24">
-                
-                <img src="" className="h-8 mr-3" alt="voyago logo" />
+                <img src="" className="h-8 mr-3" alt="logo" />
                 <span className="self-center text-xl font-serif sm:text-2xl whitespace-nowrap dark:text-white">
-                 
+                  {/* voya<span className="text-sky-600">go</span> */}
                 </span>
               </Link>
             </div>
-            <div className="flex items-center">
-              <div className="flex items-center ml-3">
-                <div>
-                  <button
-                    type="button"
-                    className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                    aria-expanded="false"
-                    data-dropdown-toggle="dropdown-user"
-                  >
-                    <span className="sr-only">Open user menu</span>
-                    <img
-                      className="w-8 h-8 rounded-full object-cover"
-                      src="https://res.cloudinary.com/dk4darniv/image/upload/v1690396460/png-transparent-circle-silhouett_pfuxe9.webp"
-                      alt="user photo"
-                    />
-                  </button>
-                </div>
+            <div className="relative ml-3">
+              <button
+                type="button"
+                className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                aria-expanded={isDropdownOpen}
+                onClick={toggleDropdown}
+              >
+                <span className="sr-only">Open user menu</span>
+                <img
+                  className="w-8 h-8 rounded-full object-cover"
+                  src="https://img.freepik.com/premium-psd/3d-rendering-profile-user-interface_453897-269.jpg"
+                  alt="user photo"
+                />
+              </button>
+
+              {/* Dropdown content */}
+              {isDropdownOpen && (
                 <div
-                  className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
-                  id="dropdown-user"
+                  className="absolute right-0 mt-2 w-48 bg-white divide-y divide-gray-100 rounded shadow-lg dark:bg-gray-700 dark:divide-gray-600"
+                  role="menu"
                 >
-                  <div className="px-4 py-3" role="none">
-                    <p
-                      className="text-sm text-gray-900 dark:text-white"
-                      role="none"
-                    >
+                  <div className="px-4 py-3">
+                    <p className="text-sm text-gray-900 dark:text-white">
                       Admin
                     </p>
-                    <p
-                      className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
-                      role="none"
-                    >
+                    <p className="text-sm font-medium text-gray-900 truncate dark:text-gray-300">
                       admin@gmail.com
                     </p>
                   </div>
-                  <ul className="py-1" role="none">
+                  <ul className="py-1">
                     <li>
-                      <a  
-                        href="#"
+                      <Link
+                        to=""
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                       >
                         Dashboard
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="#"
+                      <Link
+                        to=""
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                       >
                         Settings
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="#"
+                      <Link
+                        to=""
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                       >
                         Earnings
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                       onClick={logouAdmin}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                      <button
+                        onClick={logouAdmin}
+                        className="block w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                       >
                         Sign out
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -149,6 +148,7 @@ export default function AdminDashBoard() {
                 <span className="ml-3">Dashboard</span>
               </Link>
             </li>
+
             <li>
               <Link
                 to="/admin/users"
@@ -170,9 +170,57 @@ export default function AdminDashBoard() {
                 <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
               </Link>
             </li>
+
+            <li>
+              <Link
+                to="admin/employers"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:shadow-xl dark:hover:bg-gray-700"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+                <span className="flex-1 ml-3 whitespace-nowrap">Employers</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to=""
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:shadow-xl dark:hover:bg-gray-700"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+                <span className="flex-1 ml-3 whitespace-nowrap">
+                  Employer Verification
+                </span>
+              </Link>
+            </li>
           </ul>
         </div>
       </aside>
+      <div>
+        <Outlet/>
+      </div>
     </>
   );
 }

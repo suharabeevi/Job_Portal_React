@@ -16,7 +16,7 @@ const adminRouter =()=>{
       adminDbRepository,
       adminRepositoryMongoDB
     );
-    console.log(controller,"admincontroller");
+  
     route.post("/login", controller.adminLogin);
     route.get( "/get-all-users",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminGetAllUsers);
     route.get("/get-all-employers",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminGetAllEmployers);

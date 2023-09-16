@@ -16,6 +16,8 @@ export interface LoginPayload {
     location: string;
     image: string;
     about: string;
+    isVerified: boolean;
+    idProof_img?: File | null;
   }
   
   export interface UserDataPayload {

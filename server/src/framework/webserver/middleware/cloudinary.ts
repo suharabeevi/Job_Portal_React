@@ -26,7 +26,7 @@ const storageOptions: CloudinaryStorageOptions = {
   params: {
     resource_type: 'auto',
     folder: 'job_portal',
-    allowed_formats: ['jpg', 'jpeg', 'png','webp'],
+    allowed_formats: ['jpg', 'jpeg', 'png','webp','svg'],
     public_id: (req: Request, file: Express.Multer.File): string => {
       const fileName = file.originalname.split('.').slice(0, -1).join('.');
       return fileName;

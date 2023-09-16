@@ -12,17 +12,20 @@ function EmailOTP() {
   const inputRefs = useRef<any>([]);
   const navigate = useNavigate();
 
+  console.log("otpDigits",otpDigits);
+  console.log("inputRef", inputRefs)
+
   useEffect(() => {
     // Start the timer
-    const interval = setInterval(() => {
-      setTimer((prevTimer) => prevTimer - 1);
-    }, 1000);
-    // Clear the interval when the timer reaches 0
-    if (timer === 0) {
-      clearInterval(interval);
-    }
-    // Clean up the interval on component unmount
-    return () => clearInterval(interval);
+    // const interval = setInterval(() => {
+    //   setTimer((prevTimer) => prevTimer - 1);
+    // }, 1000);
+    // // Clear the interval when the timer reaches 0
+    // if (timer === 0) {
+    //   clearInterval(interval);
+    // }
+    // // Clean up the interval on component unmount
+    // return () => clearInterval(interval);
   }, [timer]);
 
   const notify = (msg: string, type: string) => {
@@ -84,12 +87,13 @@ function EmailOTP() {
                 id="otp"
                 className="flex flex-row justify-center text-center px-2 mt-5"
               >
+                
                 {otpDigits.map((digit, index) => (
                   <input
                     key={index}
                     ref={(ref) => (inputRefs.current[index] = ref)}
                     className="m-2 border border-brown-700 h-10 w-10 text-center form-control rounded"
-                    type="number"
+                    type="text"
                     value={digit}
                     maxLength={1}
                     onChange={(e) => handleOtpChange(index, e.target.value)}

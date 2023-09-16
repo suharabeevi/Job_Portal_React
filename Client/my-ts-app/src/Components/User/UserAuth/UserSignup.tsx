@@ -48,9 +48,18 @@ export default function UserSignup() {
  
 
   return (
-    <div className="bg-slate-100 flex justify-center items-center h-screen ">
-      <div className="flex justify-center items-center ">
-        <div className="p-6 bg-white border border-gray-300 rounded shadow-lg mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    
+<div className="flex justify-end h-screen bg-slate-100">
+        <div className="ml-32 w-[40%] flex justify-center items-center">
+          <img
+            src="https://res.cloudinary.com/dpgbodkae/image/upload/v1694684476/job_portal/mobile-login-animate_oloeqe.svg"
+            alt="Img"
+            className="w-full"
+          />
+        </div>
+        <div className="flex justify-center items-center w-1/2 mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="w-96 p-6 bg-white border border-gray-300 rounded shadow-lg">
+      
           <h2 className="text-2xl font-bold mb-4">Sign up</h2>
           <form onSubmit={handleSubmit(submitHandler)} className="space-y-4">
             <div>
@@ -162,7 +171,7 @@ export default function UserSignup() {
             </Link>
           </div>
         </div>
-      </div>
+     </div>
       <ToastContainer />
     </div>
   );

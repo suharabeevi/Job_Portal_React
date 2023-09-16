@@ -67,11 +67,11 @@ export default function UserLogin() {
     };
     return (
       <div className="flex justify-end h-screen bg-slate-100">
-        <div className="ml-32 flex justify-center items-center">
+        <div className="ml-32 w-[40%] flex justify-center items-center">
           <img
-            src="https://img.freepik.com/free-vector/businesspeople-meeting_24877-55982.jpg?w=740&t=st=1692967256~exp=1692967856~hmac=218cc69de60e790340a07d40c53d3e6a279b96c1d2d9be0857f38a2869a8e0db"
+            src="https://res.cloudinary.com/dpgbodkae/image/upload/v1694678850/job_portal/computer-login-animate_wcjzqs.svg"
             alt="Img"
-            className="w-80"
+            className="w-full"
           />
         </div>
         <div className="flex justify-center items-center w-1/2 mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

@@ -61,7 +61,8 @@ export const employerLogin = async (payload: LoginPayload): Promise<any> => {
         method: "get",
       };
       const response = await axios(config);
-      console.log(response)
+     console.log(response,"otp");
+     
       return response.data;
     } catch (error: any) {
       if (error.message === "Request failed with status code 400") {
