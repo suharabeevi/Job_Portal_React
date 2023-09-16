@@ -37,13 +37,13 @@ export const userRegisterValidationSchema = yup.object().shape({
     location: yup.string().required("Location is required"),
     idProof_img: yup.mixed()
   .required('Image is required') // Check if the field is required
-  .test('fileType', 'Only JPEG and PNG images are allowed', (value) => {
+  .test('fileType', 'Only JPEG and PNG images are allowed', (value: any) => {
     if (!value) return true; // Skip validation if no file is selected
     return (
       value && (value.type === 'image/jpeg' || value.type === 'image/png')
     );
   })
-  .test('fileSize', 'Image size exceeds the maximum allowed (5MB)', (value) => {
+  .test('fileSize', 'Image size exceeds the maximum allowed (5MB)', (value: any) => {
     if (!value) return true; // Skip validation if no file is selected
     return value && value.size <= 5 * 1024 * 1024; // 5MB
   }),

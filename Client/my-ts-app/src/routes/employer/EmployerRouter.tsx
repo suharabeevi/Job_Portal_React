@@ -16,6 +16,7 @@ const EmployerRouter = () => {
                 <Route path="/login" element={<EmployerLoginPage/>}/>
                 <Route path="/register" element={<EmailVerifyPage/>}/>
                 <Route path="/register/form" element={employerEmail ? <EmployerRegisterPage/> : <EmailVerifyPage/>}/>
+                {/* <Route path="/register/form" element={<EmployerRegisterPage/>}/> */}
                 <Route path="/register/OTP" element={employerEmail ? <EmailOTPPage/> : <EmailVerifyPage/>}/>
             </Routes>
         </div>

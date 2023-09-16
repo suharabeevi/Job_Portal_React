@@ -41,7 +41,6 @@ const employerAuthController = (
       });
     }
   );
-
   const loginEmployer = expressAsyncHandler(
     async (req: Request, res: Response) => {
       const { email, password }: { email: string; password: string } = req.body;
@@ -58,8 +57,6 @@ const employerAuthController = (
       });
     }
   )
-
-  
   const emailVerification = expressAsyncHandler(
     async (req: Request, res: Response) => {
       const email = req.params.emailId;

@@ -25,6 +25,9 @@ export const employerLogin = async (payload: LoginPayload): Promise<any> => {
         url: `${apiConfig.employerRegister}`,
         method: "post",
         data: payload,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       };
       const response = await axios(config);
       return response.data;

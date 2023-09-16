@@ -9,7 +9,6 @@ export interface LoginPayload {
     confirmPassword: string;
   }
   export interface EmployerRegisterPayload extends LoginPayload {
-    _id: string;
     companyName: string;
     industry: string;
     confirmPassword: string;
@@ -17,7 +16,7 @@ export interface LoginPayload {
     image: string;
     about: string;
     isVerified: boolean;
-    idProof_img?: File | null;
+    idProof_img: File | null;
   }
   
   export interface UserDataPayload {

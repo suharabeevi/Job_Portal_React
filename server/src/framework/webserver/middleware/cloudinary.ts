@@ -13,6 +13,7 @@ interface CloudinaryStorageOptions {
   };
 }
 
+
 // Cloudinary configuration
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
