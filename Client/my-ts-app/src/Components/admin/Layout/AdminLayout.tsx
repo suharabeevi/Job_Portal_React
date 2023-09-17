@@ -194,7 +194,7 @@ export default function AdminDashBoard() {
             </li>
             <li>
               <Link
-                to=""
+                to="admin/admin-verification"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:shadow-xl dark:hover:bg-gray-700"
               >
                 <svg

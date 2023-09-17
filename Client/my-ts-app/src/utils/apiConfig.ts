@@ -30,5 +30,7 @@ const apiConfig = {
    ADMIN_GET_ALL_EMPLOYERS: `admin/get-all-employers`,
    ADMIN_BLOCK_EMPLOYER: `admin/block-employer/`,
    ADMIN_VERIFY_EMPLOYER: `admin/Employer-verification/`,
+   ADMIN_GET_ALL_UNVERIFIED_EMPLOYERS: `admin/get-all-unverified-Employers`,
+    
 }
 export default apiConfig;
