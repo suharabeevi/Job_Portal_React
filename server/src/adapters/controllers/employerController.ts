@@ -6,7 +6,7 @@ import expressAsyncHandler from "express-async-handler";
 import { EmployerInterface } from "../../types/employerInterface";
 import AppError from "../../utils/appError";
 import { HttpStatus } from "../../types/httpStatus";
-import { findEmployerById } from "../../application/useCases/employer/employer";
+import { findEmployerById,checkEmployerVerificationUseCase } from "../../application/useCases/employer/employer";
 import { EmployerModel } from "../../framework/database/mongoDb/models/employerModel";
 
 const employerController = (
@@ -38,6 +38,17 @@ const employerController = (
         res.json(employerData);
       }
     );
+
+    const checkEmployerVerified = expressAsyncHandler(async(req: CustomRequest,res:Response)=>{
+      const customReq = req as CustomRequest;
+      const EmployerId = customReq.payload ?? "";
+      const result = await checkEmployerVerificationUseCase(EmployerId,dbRepositoryEmployer)
+      res.json({
+        status: true,
+        message: 'successfully checked agent verified or not',
+        result
+      })
+    })
   
     // const updateEmployer = expressAsyncHandler(
     //   async (req: Request, res: Response) => {
@@ -70,6 +81,7 @@ const employerController = (
       getEmployerById,
     //   updateEmployer,
       getEmployerByIdParam,
+      checkEmployerVerified
     };
   };
   

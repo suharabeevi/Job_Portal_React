@@ -55,10 +55,10 @@ const UnverifiedEmployerTable: React.FC = () => {
     <div className="mb-8 flex items-center justify-between gap-8">
       <div>
         <Typography variant="h5" color="blue-gray">
-          Agent Verificatoin List
+          Employer Verificatoin List
         </Typography>
         <Typography color="gray" className="mt-1 font-normal">
-          See information about all unverified Agent
+          See information about all unverified Employer
         </Typography>
       </div>
     </div>
@@ -153,7 +153,7 @@ const UnverifiedEmployerTable: React.FC = () => {
       </Button>
     </div>
   </CardFooter>
-    </> : <div className="ms-5 text-xl text-green-600">NO! Verification Pending,All agents are Verified!</div>
+    </> : <div className="ms-5 text-xl text-green-600">NO! Verification Pending,All Employers are Verified!</div>
     }
 
 

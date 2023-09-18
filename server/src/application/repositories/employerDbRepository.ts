@@ -16,10 +16,14 @@ export const employerDbRepository = (
         const employer = await repository.getEmployerById(id);
         return employer;
     }
+
+    
+    const checkEmployerVerified = async(EmployerId: string)=> await repository.checkEmployerVerified(EmployerId)
     return {
         getEmployerByEmail,
         createEmployer,
         findEmployerById,
+        checkEmployerVerified
         // updateEmployer
     }
  }

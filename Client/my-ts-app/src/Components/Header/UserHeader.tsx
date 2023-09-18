@@ -55,13 +55,14 @@ function UserHeader() {
                   <div className="flex flex-shrink-0 items-center">
                     <img
                       className="block h-8 w-auto lg:hidden"
-                    //   src="https://res.cloudinary.com/dgjwhf8i3/image/upload/v1685793152/Screenshot_2023-06-03_172145_pfhklc.jpg"
+                      src="https://res.cloudinary.com/dpgbodkae/image/upload/v1695012129/found_it-logos_black_wgrai8.png"
                       alt="Your Company"
                     />
                     <Link to={"/user/home"}>
                       <img
-                        className="hidden h-8 w-auto lg:block"
-                        // src="https://res.cloudinary.com/dgjwhf8i3/image/upload/v1685793152/Screenshot_2023-06-03_172145_pfhklc.jpg"
+                        className="hidden h-10 w-10 lg:block"
+                        src="https://res.cloudinary.com/dpgbodkae/image/upload/v1695012129/found_it-logos_black_wgrai8.png"
+                        
                         alt="Your Company"
                       />
                     </Link>

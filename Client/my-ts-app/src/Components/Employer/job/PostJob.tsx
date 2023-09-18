@@ -24,6 +24,9 @@ function PostJob() {
         ? toast.error(msg, { position: toast.POSITION.TOP_RIGHT })
         : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
     };
+
+
+    
   
     const submitHandler = async (formData: JobCreationPayload) => {
       createNewJob(formData)

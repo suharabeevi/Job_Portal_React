@@ -43,9 +43,9 @@ export default function AdminDashBoard() {
                 </svg>
               </button>
               <Link to="/admin" className="flex ml-2 md:mr-24">
-                <img src="" className="h-8 mr-3" alt="logo" />
+              <img src="https://res.cloudinary.com/dpgbodkae/image/upload/v1695012129/found_it-logos_black_wgrai8.png" className="h-8 mr-3" alt="voyago logo" />
                 <span className="self-center text-xl font-serif sm:text-2xl whitespace-nowrap dark:text-white">
-                  {/* voya<span className="text-sky-600">go</span> */}
+                  Found<span className="text-sky-600">it</span>
                 </span>
               </Link>
             </div>

@@ -17,6 +17,13 @@ export const findEmployerById = (
           throw new Error(error);
       }
   };
+  export const checkEmployerVerificationUseCase = async(
+    EmployerId: string,
+    dbRepositoryEmployer: ReturnType<EmployerDbInterface>
+  ) => {
+    const result = await dbRepositoryEmployer.checkEmployerVerified(EmployerId)
+    return result
+  }
   
 //   export const updatedEmployer = (
 //       employerId: string,

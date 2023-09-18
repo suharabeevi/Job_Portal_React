@@ -22,4 +22,7 @@ export class EmployerEntity {
       const employer = await this.model.findById(id);
       return employer;
     }
-}
+    // public async getEmployerverified(id:string) : Promise <EmployerInterface |null>{
+    //   const employer = await this.model.findById({ _id: id, isVerified: true });
+    //   return employer ? true : false;
+    }

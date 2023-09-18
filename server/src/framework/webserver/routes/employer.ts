@@ -19,6 +19,7 @@ const employerRouter = () => {
 
     route.get('/employer-data',authenticationMiddleware, employerMiddleware, controller.getEmployerById);
     route.get('/employer-data/:empId', controller.getEmployerByIdParam);
+    route.get('/isverified',authenticationMiddleware, employerMiddleware,controller.checkEmployerVerified)
 
     return route;
 }

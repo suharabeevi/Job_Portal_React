@@ -35,13 +35,19 @@ const navigation = [
                   <div className="flex flex-shrink-0 items-center">
                     <img
                       className="block h-8 w-auto lg:hidden"
-                      src="https://res.cloudinary.com/dpgbodkae/image/upload/v1694859436/job_portal/Untitled_design_2_1_c7apsj.png"
+                      src="https://res.cloudinary.com/dpgbodkae/image/upload/v1695012129/found_it-logos_black_wgrai8.png"
+                      
                       alt="Your Company"
+                      
+
+
+
+
                     />
                     <Link to={"/"}>
                       <img
-                        className="hidden h-8 w-auto lg:block"
-                        src="https://res.cloudinary.com/dpgbodkae/image/upload/v1694859436/job_portal/Untitled_design_2_1_c7apsj.png"
+                        className="hidden h-12 w-13 lg:block"
+                        src="https://res.cloudinary.com/dpgbodkae/image/upload/v1695012129/found_it-logos_black_wgrai8.png"
                         alt="Your Company"
                       />
                     </Link>

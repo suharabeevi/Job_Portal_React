@@ -69,7 +69,7 @@ export default function UserLogin() {
       <div className="flex justify-end h-screen bg-slate-100">
         <div className="ml-32 w-[40%] flex justify-center items-center">
           <img
-            src="https://res.cloudinary.com/dpgbodkae/image/upload/v1694678850/job_portal/computer-login-animate_wcjzqs.svg"
+            src="https://res.cloudinary.com/dpgbodkae/image/upload/v1695018661/computer-login-animate_1_kg6oxn.svg"
             alt="Img"
             className="w-full"
           />
