@@ -8,6 +8,7 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 import { RootState } from "../../../features/axios/redux/reducers/Reducer";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { EmployerVerificationCheck } from "../../../features/axios/api/employer/EmployerVerificationcheck";
 import {
   Card,
   CardHeader,
@@ -81,13 +82,29 @@ function AllJobsEmployer() {
     setCurrentPage(pageNumber);
   };
 
+  const [isVerified, setIsVerified] = useState<boolean | null >(null);
+  useEffect(()=>{
+    const checkVerified = async()=>{
+    const result = await EmployerVerificationCheck()
+    console.log(result,"result");
+    if(result?.result){
+      setIsVerified(true)
+    }else{
+      setIsVerified(false)
+    }
+    }
+   checkVerified()
+  },[])
+
+
+
   return (
     <Card className="h-full w-full">
       <div className="">
         <CardHeader floated={false} shadow={false} className="rounded-none">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="mb-4">
-              <Link to={"/job/create-job"}>
+            {isVerified ?(<Link to={"/job/create-job"}>
                 <button
                   type="button"
                   className="inline-flex items-center rounded-md bg-brown-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brown-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -98,7 +115,27 @@ function AllJobsEmployer() {
                   />
                   Post Job
                 </button>
-              </Link>
+              </Link>): (
+          <div
+            className="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+            role="alert"
+          >
+            <svg
+              className="flex-shrink-0 inline w-4 h-4 mr-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+            </svg>
+            <span className="sr-only">Info</span>
+            <div>
+              <span className="font-medium">Not Verified!</span> Your
+              verification is under process.
+            </div>
+          </div>
+        )}
             </div>
             <div className="w-full md:w-72">
               <Input

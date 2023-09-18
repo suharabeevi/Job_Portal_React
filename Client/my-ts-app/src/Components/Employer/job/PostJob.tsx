@@ -8,6 +8,9 @@ import { JobCreationPayload } from "../../../types/PayloadInterface";
 import { useNavigate } from "react-router-dom";
 import { Breadcrumbs } from "@material-tailwind/react";
 import createNewJob from "../../../features/axios/api/employer/createJob";
+import { useState,useEffect } from "react";
+import { EmployerVerificationCheck } from "../../../features/axios/api/employer/EmployerVerificationcheck";
+import { log } from "console";
 
 function PostJob() {
     const navigate = useNavigate();
@@ -24,10 +27,25 @@ function PostJob() {
         ? toast.error(msg, { position: toast.POSITION.TOP_RIGHT })
         : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
     };
-
-
     
+    const [isVerified, setIsVerified] = useState<boolean | null >(null);
+
+    useEffect(()=>{
+      const checkVerified = async()=>{
+      const result = await EmployerVerificationCheck()
+      console.log(result,"result");
+      
+      if(result?.result){
+        setIsVerified(true)
+      }else{
+        setIsVerified(false)
+      }
+      }
+    checkVerified()
+    },[])
   
+console.log(isVerified,"yessssssssssss");
+
     const submitHandler = async (formData: JobCreationPayload) => {
       createNewJob(formData)
         .then((response) => {
@@ -43,6 +61,7 @@ function PostJob() {
   
     return (
       <>
+       
         <div className="pl-40 pt-2">
           <Breadcrumbs className="bg-foundItBg">
             <a href="#" className="opacity-60">
@@ -225,6 +244,7 @@ function PostJob() {
                 Submit
               </button>
             </form>
+            
           </div>
           <ToastContainer />
         </div>

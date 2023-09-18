@@ -7,12 +7,12 @@ import { JobsInterface } from "../../../types/JobInterface";
 import { Navbar, Button, Input } from "@material-tailwind/react";
  import JobDetails from "./JobDetails";
  import JobList from "./JobList";
-// import UserSideJobListingShimmer from "../../shimmer/UserSideJobListingShimmer";
+import UserSideJobListingShimmer from "../../Shimmer/UserSideJobListingShimmer";
 // import { isApplied } from "../../../features/axios/api/user/applyForJob";
-import {
-  distinctTitleLocationSalary,
-  filterJobs,
-} from "../../../features/axios/api/User/jobDetails";
+// import {
+//   distinctTitleLocationSalary,
+//   filterJobs,
+// } from "../../../features/axios/api/User/jobDetails";
 
 function DisplayJobs(this: any) {
   const dispatch = useDispatch();
@@ -59,11 +59,11 @@ function DisplayJobs(this: any) {
     dispatch(fetchAllJobs());
   }, [dispatch]);
 
-  useEffect(() => {
-    distinctTitleLocationSalary("location", setLocations);
-    distinctTitleLocationSalary("title", setTitles);
-    distinctTitleLocationSalary("salary", setSalaries);
-  }, []);
+  // useEffect(() => {
+  //   distinctTitleLocationSalary("location", setLocations);
+  //   distinctTitleLocationSalary("title", setTitles);
+  //   distinctTitleLocationSalary("salary", setSalaries);
+  // }, []);
 
   useEffect(() => {
     let filterJob = jobs?.filter(
@@ -75,58 +75,28 @@ function DisplayJobs(this: any) {
     setJobsList(filterJob);
   }, [jobs, searchQuery]);
 
-  const handleFilter = async () => {
-    const filteredJobs = await filterJobs(
-      selectedTitle,
-      selectedLocation,
-      selectedSalary
+  // const handleFilter = async () => {
+  //   const filteredJobs = await filterJobs(
+  //     selectedTitle,
+  //     selectedLocation,
+  //     selectedSalary
+  //   );
+  //   setFiltered(filteredJobs);
+  //   setIsFiltered(true);
+  // };
+
+ 
+  if (status === "loading") {
+    return (
+      <div className="p-20">
+        <UserSideJobListingShimmer />
+      </div>
     );
-    setFiltered(filteredJobs);
-    setIsFiltered(true);
-  };
+  }
 
-  // for filtering out the applied jobs
-//   useEffect(() => {
-//     const fetchFilteredJobs = async () => {
-//       let filteredJobs = [];
-//       if (isFiltered) {
-//         filteredJobs = await Promise.all(
-//           (filtered ?? [])?.map(async (job: JobsInterface) => {
-//             const jobStatus = await isApplied(job?._id, user?._id);
-//             if (jobStatus?.status !== "Applied") {
-//               return job;
-//             }
-//             return null;
-//           })
-//         );
-//       } else {
-//         filteredJobs = await Promise.all(
-//           (jobsList ?? [])?.map(async (job: JobsInterface) => {
-//             const jobStatus = await isApplied(job?._id, user?._id);
-//             if (jobStatus?.status !== "Applied") {
-//               return job;
-//             }
-//             return null;
-//           })
-//         );
-//       }
-//       setFiltered(filteredJobs?.filter(Boolean));
-//     };
-
-//     fetchFilteredJobs();
-//   }, [jobs]);
-
-//   if (status === "loading") {
-//     return (
-//       <div className="p-20">
-//         <UserSideJobListingShimmer />
-//       </div>
-//     );
-//   }
-
-//   if (status === "failed") {
-//     return <div>Error: {error}</div>;
-//   }
+  if (status === "failed") {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <>
@@ -195,7 +165,7 @@ function DisplayJobs(this: any) {
               size="sm"
               className="!absolute right-1 rounded"
               color="brown"
-              onClick={() => handleFilter()}
+              // onClick={() => handleFilter()}
             >
               Filter
             </Button>

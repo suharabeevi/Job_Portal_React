@@ -13,7 +13,8 @@ const apiConfig = {
     employerLogin: `${configKeys.API_URL}employer-auth/login`,
     emailVerify: `${configKeys.API_URL}employer-auth/email-verify`,
     OTPVerify: `${configKeys.API_URL}employer-auth/email-OTP`,
-     employerData: `${configKeys.API_URL}employer/employer-data`,
+    employerData: `${configKeys.API_URL}employer/employer-data`,
+    Employer_Verification_check:`${configKeys.API_URL}employer/isVerified`,
   
      //job
     employerJObs: `${configKeys.API_URL}job/employer-jobs`,

@@ -118,6 +118,28 @@ function EmployerProfile() {
                   </li>
                   <hr className="my-1 border-blue-gray-50" />
                   <li className="flex items-center gap-4">
+  <Typography
+    variant="small"
+    color="blue-gray"
+    className="font-semibold capitalize"
+  >
+    status:
+  </Typography>
+
+  <Typography
+    variant="small"
+    className={`font-normal ${
+      employerDetails?.isVerified === false ? "text-red-500" : "text-green-500"
+    }`}
+  >
+    {employerDetails?.isVerified === false
+      ? "NOT verified! Your verification is under process!"
+      : "Active"}
+  </Typography>
+</li>
+
+                  <hr className="my-1 border-blue-gray-50" />
+                  <li className="flex items-center gap-4">
                     <Typography
                       variant="small"
                       color="blue-gray"

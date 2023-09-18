@@ -53,7 +53,7 @@ import {
             <img
               src={idImg}
               alt="image"
-              className="w-70 h-60 object-cover mt-4 mx-auto"
+              className="w-90 h-69 object-cover mt-4 mx-auto"
             />
             <div className="pt-2 mt-2 pb-3 flex justify-center">
               <a href="#" className="inline-block">

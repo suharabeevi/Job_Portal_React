@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../features/axios/redux/reducers/Reducer";
 import { userData } from "../../../features/axios/api/User/userDetails";
 import { UserDataPayload } from "../../../types/PayloadInterface";
+import ShimmerJobDetails from "../../Shimmer/ShimmerJobDetails";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { fetchJobDetails,clearJObDetails,clearJObId } from "../../../features/axios/redux/slices/user/jobDetailsSlice";
@@ -198,7 +199,7 @@ function JobDetails() {
             </div>
           </div>
         </div>
-      ) : " "}
+      ) :  <ShimmerJobDetails />}
       <ToastContainer />
     </div>
   );
