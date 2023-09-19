@@ -1,5 +1,6 @@
 import { JobInterface } from "../types/jobInterface";
 import { JobModel } from "../framework/database/mongoDb/models/jobModel";
+import * as crypto from 'crypto';
 
 export class JobEntity {
     private model: JobModel;
@@ -10,7 +11,13 @@ export class JobEntity {
   
     public async createJob(job: JobInterface): Promise<JobInterface> {
       const newJob = await this.model.create(job);
-      return newJob;
+      const hash = crypto.createHash('sha256');
+      hash.update(newJob._id.toString()); // Convert ObjectId to string
+      const hashedId = hash.digest('hex').slice(0, 6);
+      newJob.hashedId=hashedId;
+      console.log(newJob,"creacted newwwwwwwwwwwww job");
+      await newJob.save();
+      return newJob
     }
   
     public async updateJob(

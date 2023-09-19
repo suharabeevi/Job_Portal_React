@@ -173,7 +173,7 @@ export default function AdminDashBoard() {
 
             <li>
               <Link
-                to="admin/employers"
+                to="/admin/employers"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:shadow-xl dark:hover:bg-gray-700"
               >
                 <svg
@@ -194,7 +194,7 @@ export default function AdminDashBoard() {
             </li>
             <li>
               <Link
-                to="admin/admin-verification"
+                to="/admin/admin-verification"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:shadow-xl dark:hover:bg-gray-700"
               >
                 <svg

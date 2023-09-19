@@ -5,8 +5,10 @@ import { UserDataApiResponse } from "../../../../types/getAllUser";
 import { ToastContainer, toast } from "react-toastify";
 import { getUsers } from "../../../../features/axios/api/admin/adminGetAllUsers";
 import { BlockUser } from "../../../../features/axios/api/admin/adminBlockUser";
+import ShimmerAdminFech from "../../../Shimmer/ShimmerAdminFetch";
 
 const UserTable: React.FC = () => {
+  
   const [userData, SetUserData] = useState<UserDataApiResponse[] | null>(null);
   const [status, setStatus] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -54,6 +56,11 @@ const UserTable: React.FC = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
   
+  
+
+
+
+
   return (
     <>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

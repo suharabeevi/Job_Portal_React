@@ -46,12 +46,15 @@ export function Sidenav({ routes }: NavbarProps) {
     >
       <div className={`relative border-b ${"border-blue-gray-50"}`}>
         <Link to="/" className="flex items-center gap-4 py-6 px-8">
-          <Avatar
+          {/* <Avatar
             src=""
             size="sm"
-          />
+          /> */}
           <Typography variant="h6" color="black">
-          name 
+           <img src="https://res.cloudinary.com/dpgbodkae/image/upload/v1695012129/found_it-logos_black_wgrai8.png" className="h-8 mr-3" alt="voyago logo" />
+                <span className="self-center text-xl font-serif sm:text-2xl whitespace-nowrap dark:text-white">
+                  Found<span className="text-sky-600">it</span>
+                </span>
           </Typography>
         </Link>
         <IconButton
@@ -112,7 +115,7 @@ export function Sidenav({ routes }: NavbarProps) {
 }
 
 Sidenav.defaultProps = {
-  brandImg: "/img/logo-ct.png",
+  brandImg: "",
   brandName: "Material Tailwind React",
 };
 

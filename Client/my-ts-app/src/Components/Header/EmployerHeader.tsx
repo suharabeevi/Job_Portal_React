@@ -113,11 +113,10 @@ function EmployerHeader() {
       <div className="relative mx-auto flex items-center text-blue-gray-900">
         <nav className="flex items-center justify-between bg-foundItBg text-black p-4">
           <div className="flex items-center">
-            <img
-              src=""
-              alt="company"
-              className="w-auto h-6 mr-2"
-            />
+          <img src="https://res.cloudinary.com/dpgbodkae/image/upload/v1695012129/found_it-logos_black_wgrai8.png" className="h-8 mr-3" alt="voyago logo" />
+                <span className="self-center text-xl font-serif sm:text-2xl whitespace-nowrap dark:text-white">
+                  Found<span className="text-sky-600">it</span>
+                </span>
           </div>
         </nav>
         <ProfileMenu />

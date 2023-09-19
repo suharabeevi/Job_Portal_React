@@ -10,5 +10,6 @@ export interface JobsInterface {
     openings: number;
     employer: any;
     createdAt: Date;
+    hashedId:string;
     appliedUsers?: Array<string>;
   }

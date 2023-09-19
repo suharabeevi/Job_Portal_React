@@ -7,6 +7,7 @@ import { JobRepositoryMongoDB } from "../../framework/database/mongoDb/repositor
 import { Types } from "mongoose";
 import { HttpStatus } from "../../types/httpStatus";
 import expressAsyncHandler from "express-async-handler";
+import * as crypto from 'crypto';
 import AppError from "../../utils/appError";
 import {
     createJob,

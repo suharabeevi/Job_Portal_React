@@ -11,5 +11,6 @@ export interface JobInterface {
   openings?: number;
   employer?: Types.ObjectId;
   createdAt?: Date;
+  hashedId?:string;
   appliedUsers?: Array<string>
 }

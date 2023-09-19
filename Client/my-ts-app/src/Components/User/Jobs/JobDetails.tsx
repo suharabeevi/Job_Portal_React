@@ -94,6 +94,13 @@ function JobDetails() {
                   Posted on{" "}
                   {new Date(jobDetails?.createdAt).toLocaleDateString()}
                 </span>
+                <span>
+                  
+                <dt className="w-4 h-4 mr-1 text-brown-600">
+                    JobId
+                  </dt>
+                  <span>{jobDetails?.hashedId}</span>
+                </span>
               </div>
             </div>
             <div className="border-t border-gray-200 pt-4">

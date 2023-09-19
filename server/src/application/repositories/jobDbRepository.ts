@@ -6,6 +6,8 @@ export const jobDbRepository = (
 )=> {
     const createJob = async (job: JobInterface) => {
         const newJob = await repository.createJob(job);
+      
+        
         return newJob;
     }
 

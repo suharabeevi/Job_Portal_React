@@ -41,6 +41,9 @@ const jobSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now()
+    },
+    hashedId:{
+        type:String
     }
 });
 
