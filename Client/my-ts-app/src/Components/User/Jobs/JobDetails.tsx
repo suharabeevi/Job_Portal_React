@@ -84,25 +84,25 @@ function JobDetails() {
               </div>
             </div>
             <div className="flex items-center mb-2 text-sm text-gray-600">
-              <div className="flex items-center mr-4">
-                <MapPinIcon className="w-4 h-4 mr-1 text-gray-600" />
-                <span>{jobDetails?.location}</span>
-              </div>
-              <div className="flex items-center">
-                <CalendarIcon className="w-4 h-4 mr-1 text-brown-600" />
-                <span>
-                  Posted on{" "}
-                  {new Date(jobDetails?.createdAt).toLocaleDateString()}
-                </span>
-                <span>
-                  
-                <dt className="w-4 h-4 mr-1 text-brown-600">
-                    JobId
-                  </dt>
-                  <span>{jobDetails?.hashedId}</span>
-                </span>
-              </div>
-            </div>
+  <div className="flex items-center mr-4">
+    <MapPinIcon className="w-4 h-4 mr-1 text-gray-600" />
+    <span>{jobDetails?.location}</span>
+  </div>
+  <div className="flex items-center">
+    <CalendarIcon className="w-4 h-4 mr-1 text-brown-600" />
+    <span>
+      Posted on{" "}
+      {new Date(jobDetails?.createdAt).toLocaleDateString()}
+    </span>
+  </div>
+</div>
+<div className="mb-2 text-sm text-gray-600"> {/* Add margin-bottom here */}
+  <dt className="w-4 h-4 mr-1 text-brown-600">JobID:</dt>
+  <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+    {jobDetails?.hashedId}
+  </dd>
+</div>
+
             <div className="border-t border-gray-200 pt-4">
               <dl className="divide-y divide-gray-200">
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

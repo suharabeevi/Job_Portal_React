@@ -70,9 +70,9 @@ import { fetchEmployer } from "../../features/axios/redux/slices/employer/employ
               
               variant="circular"
               size="sm"
-              alt="candice wu"
+              alt=""
               className="border border-blue-500 p-0.5"
-              src={employer?.employerData?.image ?? "https://www.shutterstock.com/image-vector/simple-profile-icon-isolated-circle-250nw-534481072.jpg"}
+              src={"https://www.shutterstock.com/image-vector/simple-profile-icon-isolated-circle-250nw-534481072.jpg"}
             />
             <ChevronDownIcon
               strokeWidth={2.5}

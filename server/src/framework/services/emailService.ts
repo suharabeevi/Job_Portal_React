@@ -46,7 +46,7 @@ export const sendEmailService = () => {
       return { message: "OTP is invalid" };
     }
   };
-
+  
   return {
     sendEmail,
     verifyOTP,

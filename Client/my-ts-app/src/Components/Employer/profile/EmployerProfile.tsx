@@ -33,7 +33,7 @@ function EmployerProfile() {
           <div className="mb-10 flex items-center justify-between gap-6">
             <div className="flex items-center gap-6">
               <Avatar
-                src={employerDetails?.image ?? "https://as1.ftcdn.net/v2/jpg/02/59/39/46/1000_F_259394679_GGA8JJAEkukYJL9XXFH2JoC3nMguBPNH.jpg"}
+                src={"https://as1.ftcdn.net/v2/jpg/02/59/39/46/1000_F_259394679_GGA8JJAEkukYJL9XXFH2JoC3nMguBPNH.jpg"}
                 alt="img"
                 size="xl"
                 className="rounded-lg shadow-lg shadow-blue-gray-500/40"
@@ -137,7 +137,6 @@ function EmployerProfile() {
       : "Active"}
   </Typography>
 </li>
-
                   <hr className="my-1 border-blue-gray-50" />
                   <li className="flex items-center gap-4">
                     <Typography
@@ -147,7 +146,6 @@ function EmployerProfile() {
                     >
                       About:
                     </Typography>
-
                     <Typography
                       variant="small"
                       className="font-normal text-blue-gray-500"
@@ -165,5 +163,4 @@ function EmployerProfile() {
     </div>
   );
 }
-
 export default EmployerProfile;
