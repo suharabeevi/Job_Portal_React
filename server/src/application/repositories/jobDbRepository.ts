@@ -35,15 +35,15 @@ export const jobDbRepository = (
         return jobData;
     }
 
-    // const titleLocationSalary = async (title: string) => {
-    //     const distinct = await repository.titlePlaceSalary(title);
-    //     return distinct;
-    // }
+    const titleLocationSalary = async (title: string) => {
+        const distinct = await repository.titlePlaceSalary(title);
+        return distinct;
+    }
 
-    // const filterJob = async (role: string, location: string, salary: any) => {
-    //     const jobs = await repository.filterJobs(role, location, salary);
-    //     return jobs;
-    // }
+    const filterJob = async (role: string, location: string, salary: any) => {
+        const jobs = await repository.filterJobs(role, location, salary);
+        return jobs;
+    }
 
     return {
         createJob,
@@ -52,8 +52,8 @@ export const jobDbRepository = (
         findJobByEmployer,
         findAllJobs,
         getJobById,
-        // titleLocationSalary,
-        // filterJob
+         titleLocationSalary,
+         filterJob
     }
 }
 
