@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { fetchAllJobs } from "../../../features/redux/slices/user/getAllJobsSlice";
 import { fetchAllJobs } from "../../../features/axios/redux/slices/user/getAllJobsSlice";
 import { RootState } from "../../../features/axios/redux/reducers/Reducer";
 import { JobsInterface } from "../../../types/JobInterface";
@@ -11,10 +10,10 @@ import { userData } from "../../../features/axios/api/User/userDetails";
  import JobList from "./JobList";
 import UserSideJobListingShimmer from "../../Shimmer/UserSideJobListingShimmer";
 // import { isApplied } from "../../../features/axios/api/user/applyForJob";
-// import {
-//   distinctTitleLocationSalary,
-//   filterJobs,
-// } from "../../../features/axios/api/User/jobDetails";
+import {
+  distinctTitleLocationSalary,
+  filterJobs,
+} from "../../../features/axios/api/User/jobDetails";
 
 function DisplayJobs(this: any) {
   const dispatch = useDispatch();
@@ -63,11 +62,11 @@ function DisplayJobs(this: any) {
     dispatch(fetchAllJobs());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   distinctTitleLocationSalary("location", setLocations);
-  //   distinctTitleLocationSalary("title", setTitles);
-  //   distinctTitleLocationSalary("salary", setSalaries);
-  // }, []);
+  useEffect(() => {
+    distinctTitleLocationSalary("location", setLocations);
+    distinctTitleLocationSalary("title", setTitles);
+    distinctTitleLocationSalary("salary", setSalaries);
+  }, []);
 
   useEffect(() => {
     let filterJob = jobs?.filter(
@@ -79,17 +78,15 @@ function DisplayJobs(this: any) {
     setJobsList(filterJob);
   }, [jobs, searchQuery]);
 
-  // const handleFilter = async () => {
-  //   const filteredJobs = await filterJobs(
-  //     selectedTitle,
-  //     selectedLocation,
-  //     selectedSalary
-  //   );
-  //   setFiltered(filteredJobs);
-  //   setIsFiltered(true);
-  // };
-
-
+  const handleFilter = async () => {
+    const filteredJobs = await filterJobs(
+      selectedTitle,
+      selectedLocation,
+      selectedSalary
+    );
+    setFiltered(filteredJobs);
+    setIsFiltered(true);
+  };
   const [isVerified, setIsVerified] = useState<boolean | null >(null);
   useEffect(()=>{
     const checkVerified = async()=>{
@@ -184,9 +181,14 @@ function DisplayJobs(this: any) {
                     ))}
                   </select>
                 </div>
-                <Button size="sm" className="!absolute right-1 rounded" color="brown">
-                  Filter
-                </Button>
+                <Button
+              size="sm"
+              className="!absolute right-1 rounded"
+              color="brown"
+              onClick={() => handleFilter()}
+            >
+              Filter
+            </Button>
                 <div className="w-20"></div>
               </div>
             </Navbar>

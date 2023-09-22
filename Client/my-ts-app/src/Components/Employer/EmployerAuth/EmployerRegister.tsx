@@ -70,19 +70,6 @@ function EmployerRegister() {
       : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
   };
 
-  // const submitHandler = async (formData: EmployerRegisterPayload) => {
-  //   registerEmployer(formData)
-  //     .then((response) => {
-  //       notify("Registration success", "success");
-  //       setTimeout(() => {
-  //         navigate("/employer/login");
-  //       }, 2000);
-  //     })
-  //     .catch((error: any) => {
-  //       notify(error.message, "error");
-  //     });
-  // };
-
   return (
     <>
       <div className="flex min-h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8">

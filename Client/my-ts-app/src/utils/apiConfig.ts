@@ -23,6 +23,9 @@ const apiConfig = {
     deleteJob: `${configKeys.API_URL}job/delete-job`,
     jobData: `${configKeys.API_URL}job/job-data`,
     allJobs: `${configKeys.API_URL}job/all-jobs`,
+    filterJobs: `${configKeys.API_URL}job/filter-jobs`,
+    titleLocationSalary: `${configKeys.API_URL}job/distinct`,
+
 
    //admin
    ADMIN_LOGIN:`${configKeys.API_URL}admin/login`,
