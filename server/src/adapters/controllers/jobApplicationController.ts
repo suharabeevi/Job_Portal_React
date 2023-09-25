@@ -60,7 +60,6 @@ const jobApplicationController = (
             : req.query.jobId;
           const userId = new Types.ObjectId(customReq.payload);
           const jobID = new Types.ObjectId(String(jobId));
-    
           const alreadyApplied = await existingApplication(
             jobID,
             userId,
@@ -85,5 +84,5 @@ const jobApplicationController = (
         
       };
     };
-    
     export default jobApplicationController
+    

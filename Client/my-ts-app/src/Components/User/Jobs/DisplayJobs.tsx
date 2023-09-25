@@ -108,11 +108,9 @@ function DisplayJobs(this: any) {
       </div>
     );
   }
-
   if (status === "failed") {
     return <div>Error: {error}</div>;
   }
-
   return (
     <>
       {isVerified ? (

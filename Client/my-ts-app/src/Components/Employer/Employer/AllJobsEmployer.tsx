@@ -95,9 +95,7 @@ function AllJobsEmployer() {
     }
    checkVerified()
   },[])
-
-
-
+  
   return (
     <Card className="h-full w-full">
       <div className="">

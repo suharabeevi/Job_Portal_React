@@ -15,7 +15,7 @@ const jobApplicationRouter = () => {
         JobApplicationRepositoryMongoDB,
         JobApplication
     );
-
+    
     route.post('/create-application',userMiddleware, controller.applyNewJob);
     route.get('/is-applied', controller.existingApplicant);
     return route

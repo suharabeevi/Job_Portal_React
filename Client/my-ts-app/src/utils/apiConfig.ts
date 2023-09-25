@@ -26,6 +26,9 @@ const apiConfig = {
     filterJobs: `${configKeys.API_URL}job/filter-jobs`,
     titleLocationSalary: `${configKeys.API_URL}job/distinct`,
 
+    applyJob: `${configKeys.API_URL}job-application/create-application`,
+    isApplied: `${configKeys.API_URL}job-application/is-applied`,
+
 
    //admin
    ADMIN_LOGIN:`${configKeys.API_URL}admin/login`,

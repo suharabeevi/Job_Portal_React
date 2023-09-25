@@ -4,6 +4,8 @@ import { RootState } from "../../../features/axios/redux/reducers/Reducer";
 import { userData } from "../../../features/axios/api/User/userDetails";
 import { UserDataPayload } from "../../../types/PayloadInterface";
 import ShimmerJobDetails from "../../Shimmer/ShimmerJobDetails";
+import { applyForJob } from "../../../features/axios/api/User/applyForJob";
+import { isApplied } from "../../../features/axios/api/User/applyForJob";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { fetchJobDetails,clearJObDetails,clearJObId } from "../../../features/axios/redux/slices/user/jobDetailsSlice";
@@ -43,34 +45,31 @@ function JobDetails() {
     userInfo();
   }, []);
 
-  function jobApplyHandler(_id: any, _id1: any): void {
-    throw new Error("Function not implemented.");
-  }
+ 
+  useEffect(() => {
+    async function applied() {
+      const status = await isApplied(jobDetails?._id, user?._id);
+      setApplied(status?.status);
+    }
+    applied();
+  }, [jobDetails?._id, user?._id]);
 
-  // useEffect(() => {
-  //   async function applied() {
-  //     const status = await isApplied(jobDetails?._id, user?._id);
-  //     setApplied(status?.status);
-  //   }
-  //   applied();
-  // }, [jobDetails?._id, user?._id]);
+  const notify = (msg: string, type: string) => {
+    type === "error"
+      ? toast.error(msg, { position: toast.POSITION.TOP_RIGHT })
+      : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
+  };
 
-  // const notify = (msg: string, type: string) => {
-  //   type === "error"
-  //     ? toast.error(msg, { position: toast.POSITION.TOP_RIGHT })
-  //     : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
-  // };
-
-  // const jobApplyHandler = async (jobID: string, empID: string) => {
-  //   await applyForJob(jobID, empID)
-  //     .then((application) => {
-  //       notify("Job applied successfully", "success");
-  //       setApplied('Applied')
-  //     })
-  //     .catch((error: any) => {
-  //       notify(error.message, "error");
-  //     });
-  // };
+  const jobApplyHandler = async (jobID: string, empID: string) => {
+    await applyForJob(jobID, empID)
+      .then((application) => {
+        notify("Job applied successfully", "success");
+        setApplied('Applied')
+      })
+      .catch((error: any) => {
+        notify(error.message, "error");
+      });
+  };
 
   return (
     <div className={`max-w-md mx-auto transition-opacity duration-500`}>
