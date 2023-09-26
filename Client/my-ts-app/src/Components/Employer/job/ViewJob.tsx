@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../features/axios/redux/reducers/Reducer";
-// import ShimmerJobDetails from "../../shimmer/ShimmerJobDetails";
+import ShimmerJobDetails from "../../Shimmer/ShimmerJobDetails";
 import { fetchEmployerJobDetails,clearEmployerJobDetails,clearEmployerJobId } from "../../../features/axios/redux/slices/employer/employerJobDetailsSlice";
 import {
   BriefcaseIcon,
@@ -35,9 +35,9 @@ function EmployerViewJob() {
     };
   }, [dispatch, jobId]);
 
-//   if (status === "loading") {
-//     return <ShimmerJobDetails />;
-//   }
+  if (status === "loading") {
+    return <ShimmerJobDetails />;
+  }
 
   if (status === "failed") {
     return <div>Error: {error}</div>;

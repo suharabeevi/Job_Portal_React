@@ -16,16 +16,15 @@ function EmailOTP() {
   console.log("inputRef", inputRefs)
 
   useEffect(() => {
-    // Start the timer
-    // const interval = setInterval(() => {
-    //   setTimer((prevTimer) => prevTimer - 1);
-    // }, 1000);
-    // // Clear the interval when the timer reaches 0
-    // if (timer === 0) {
-    //   clearInterval(interval);
-    // }
-    // // Clean up the interval on component unmount
-    // return () => clearInterval(interval);
+    const interval = setInterval(() => {
+      setTimer((prevTimer) => prevTimer - 1);
+    }, 1000);
+    // Clear the interval when the timer reaches 0
+    if (timer === 0) {
+      clearInterval(interval);
+    }
+    // Clean up the interval on component unmount
+    return () => clearInterval(interval);
   }, [timer]);
 
   const notify = (msg: string, type: string) => {

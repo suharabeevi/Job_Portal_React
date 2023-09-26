@@ -19,11 +19,16 @@ export const userDbRepository = (
       const userData = await repository.getUserDataById(id);
       return userData;
     }
+    const updateUser = async (userId: string, updates: Partial<UserInterface>)=> {
+      const updatedUser = await repository.updateUser(userId, updates);
+      return updatedUser;
+    }
     
   return {
     getUserByEmail,
     createUser,
-    getUserDataById
+    getUserDataById,
+    updateUser
   };
 };
 

@@ -227,7 +227,6 @@ function DisplayJobs(this: any) {
           </div>
         </>
       ) : (
-        
         <div>noy Verified</div>
       )}
     </>

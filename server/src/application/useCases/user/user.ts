@@ -33,3 +33,34 @@ export const findUserDataById = async (
   }
 };
 
+export const updateUser = async (
+  userId: string,
+  updates: Partial<UserInterface>,
+  dbRepositoryUser: ReturnType<UserDbInterface>
+) => {
+  try {
+    const updatedUser = await dbRepositoryUser.updateUser(userId, updates);
+    if(!updatedUser) {
+      throw new AppError('not found', HttpStatus.BAD_GATEWAY);
+    }
+    return updatedUser;
+  } catch (error) {
+    console.log(error)
+    throw new Error("failed to update the user");
+  }
+};
+export const updateResume = async (
+  userId: string,
+  updates: Partial<UserDbInterface>,
+  dbRepositoryUser: ReturnType<UserDbInterface> 
+) => {
+  try {
+    const updateResume = await dbRepositoryUser.updateUser(userId, updates);
+    if(!updateResume) {
+      throw new AppError('not found', HttpStatus.BAD_GATEWAY);
+    }
+    return updateResume;
+  } catch (error) {
+    throw new Error("failed to update resume");
+  }
+}

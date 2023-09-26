@@ -22,4 +22,22 @@ export class UserEntity {
       const userData: any = await this.model.findById(id);
       return userData;
     }
+    public async updateUser(
+      id: string,
+      updates: Partial<UserInterface>
+    ): Promise<UserInterface | null> {
+      const currentDetails = await this.model.findById(id);
+  
+      if (currentDetails) {
+        if (updates.skills) {
+          currentDetails.skills = updates.skills;
+        }
+  
+        Object.assign(currentDetails, updates);
+        const updatedUser = await currentDetails.save();
+        return updatedUser;
+      }
+  
+      return null; 
+    }
 }  

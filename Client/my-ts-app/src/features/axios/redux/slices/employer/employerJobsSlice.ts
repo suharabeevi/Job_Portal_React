@@ -27,5 +27,5 @@ const employerJobsSlice = createSlice({
   },
 });
 
-export const { setEmployerJobs, clearEmployerJobs, deleted } = employerJobsSlice.actions;
+export const { setEmployerJobs, clearEmployerJobs,deleted } = employerJobsSlice.actions;
 export default employerJobsSlice.reducer;

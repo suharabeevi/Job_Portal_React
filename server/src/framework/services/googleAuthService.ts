@@ -4,6 +4,8 @@ const client = new OAuth2Client(configKeys.GOOGLE_CLIENT_ID);
 
 export const googleAuthService = () => {
     const verify = async (token: string) => {
+      console.log(verify,"googleauth");
+      
       const user = {
         name: "",
         email: "",

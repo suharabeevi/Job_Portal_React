@@ -5,6 +5,7 @@ import { UserRepositoryMongoDB } from '../../database/mongoDb/repositories/userR
 import { User } from '../../database/mongoDb/models/userModel';
 import authenticationMiddleware from '../middleware/AuthenticationMiddleware';
 import roleMiddleware from '../middleware/roleMiddleware';
+import { upload } from '../middleware/cloudinary';
 
 const userMiddleware = roleMiddleware('user');
 
@@ -17,6 +18,8 @@ const userRouter = ()=> {
         User
     );
     route.get('/user-data',authenticationMiddleware, userMiddleware, controller.getUserDataById);
+    route.put('/update-user',authenticationMiddleware, userMiddleware, upload, controller.updateTheUser);
+     route.put('/update-resume',authenticationMiddleware, userMiddleware, upload, controller.updateTheResume);
     route.get('/user-data/:userId', controller.getUserDataByIdParam);
 
     return route;
