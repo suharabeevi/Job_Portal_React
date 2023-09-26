@@ -3,6 +3,7 @@ import UserSignupPage from "../../pages/user/UserSignupPage";
 import UserHomePage from "../../pages/user/UserHomePage"; 
 import UserLoginPage from "../../pages/user/UserLoginPage";
 import UserProfilePage from "../../pages/user/UserProfilePage";
+import EditUserProfilePage from "../../pages/user/EditUserProfilePage";
 const UserRouter = () => {
     return (
       <div>
@@ -11,8 +12,7 @@ const UserRouter = () => {
           <Route path="/login" element={<UserLoginPage />} />
           <Route path="/register" element={<UserSignupPage />} />
           <Route path="/profile" element={<UserProfilePage/>} />
-
-          
+          <Route path="/edit-profile" element={<EditUserProfilePage/>}/>
         </Routes>
       </div>
     );
