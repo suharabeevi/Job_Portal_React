@@ -27,7 +27,7 @@ const storageOptions: CloudinaryStorageOptions = {
   params: {
     resource_type: 'auto',
     folder: 'job_portal',
-    allowed_formats: ['jpg', 'jpeg', 'png','webp','svg'],
+    allowed_formats: ['jpg', 'jpeg', 'png','webp','svg','pdf'],
     public_id: (req: Request, file: Express.Multer.File): string => {
       const fileName = file.originalname.split('.').slice(0, -1).join('.');
       return fileName;
@@ -35,6 +35,7 @@ const storageOptions: CloudinaryStorageOptions = {
   }
 };
 const storage = new CloudinaryStorage(storageOptions);
-const upload: RequestHandler = multer({ storage: storage }).single('idProof_img');
-export { upload };
+const upload: RequestHandler = multer({ storage: storage }).single('image');
+const uploads: RequestHandler = multer({ storage: storage }).single('idProof_img');
+export { upload,uploads };
 

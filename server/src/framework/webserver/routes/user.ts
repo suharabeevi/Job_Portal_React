@@ -17,9 +17,9 @@ const userRouter = ()=> {
         UserRepositoryMongoDB,
         User
     );
-    route.get('/user-data',authenticationMiddleware, userMiddleware, controller.getUserDataById);
-    route.put('/update-user',authenticationMiddleware, userMiddleware, upload, controller.updateTheUser);
-     route.put('/update-resume',authenticationMiddleware, userMiddleware, upload, controller.updateTheResume);
+    route.get('/user-data',authenticationMiddleware, userMiddleware,controller.getUserDataById);
+    route.put('/update-user',authenticationMiddleware, userMiddleware,upload, controller.updateTheUser);
+     route.put('/update-resume',authenticationMiddleware, userMiddleware,upload, controller.updateTheResume);
     route.get('/user-data/:userId', controller.getUserDataByIdParam);
 
     return route;

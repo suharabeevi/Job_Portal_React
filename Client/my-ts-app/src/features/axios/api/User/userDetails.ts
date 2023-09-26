@@ -21,7 +21,7 @@ export const userData = async (): Promise<any> => {
 export const updateUser = async (payload: UserInterface): Promise<any> => {
   try {
     const config: AxiosRequestConfig = {
-    //   url: apiConfig.updateUser,
+      url: apiConfig.updateUser,
       method: "put",
       data: payload,
       headers: {
@@ -39,7 +39,6 @@ export const uploadResume = async (file: File): Promise<any> => {
   try {
     const payload = new FormData();
     payload.append("image", file);
-
     const config: AxiosRequestConfig = {
        url: apiConfig.uploadResume,
       method: "put",
@@ -59,7 +58,7 @@ export const uploadResume = async (file: File): Promise<any> => {
 export const deleteResume = async (): Promise<any> => {
   try {
     const config: AxiosRequestConfig = {
-    //   url: apiConfig.deleteResume,
+      // url: apiConfig.deleteResume,
       method: "delete",
     };
     await api(config);
