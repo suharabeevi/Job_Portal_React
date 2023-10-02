@@ -99,15 +99,15 @@ function ViewApplicant() {
           <div className="flex justify-end mb-4">
             <Menu>
               <div className="flex gap-5">
-                <Tooltip content="Start conversation">
-                  <button className="flex justify-center items-center bg-purple-500 text-white rounded-full w-12"
+                {/* <Tooltip content="Start conversation">
+                  <button className="flex justify-center items-center bg-brown-500 text-white rounded-full w-12"
                   // onClick={() => startConversation(employerId, applicationData?.userId?._id)}
                   >
                     <FaFacebookMessenger />
                   </button>
-                </Tooltip>
+                </Tooltip> */}
                 <MenuHandler>
-                  <button className="bg-purple-500 rounded-full w-11/12 text-white font-normal">
+                  <button className="bg-brown-500 rounded-full w-11/12 text-white font-normal">
                     Change Status
                   </button>
                 </MenuHandler>

@@ -40,7 +40,7 @@ function ApplicationStatus() {
         <div className="max-w-md mx-auto ">
           <div className="p-4 rounded-lg">
             <div className="flex items-center mb-2">
-              <BriefcaseIcon className="w-6 h-6 mr-2 text-purple-500" />
+              <BriefcaseIcon className="w-6 h-6 mr-2 text-brown-500" />
               <div className="text-lg font-semibold text-gray-900">
                 {applicationDetails?.jobId?.title}
               </div>
@@ -51,7 +51,7 @@ function ApplicationStatus() {
                 <span>{applicationDetails?.jobId?.location}</span>
               </div>
               <div className="flex items-center">
-                <CalendarIcon className="w-4 h-4 mr-1 text-purple-600" />
+                <CalendarIcon className="w-4 h-4 mr-1 text-brown-600" />
                 <span>
                   Applied on{" "}
                   {new Date(applicationDetails?.createdAt).toLocaleDateString()}
@@ -60,7 +60,7 @@ function ApplicationStatus() {
             </div>
             <div className="flex items-center">
               <div className="flex items-center mr-2">
-                <BriefcaseIcon className="w-4 h-4 mr-1 text-purple-600" />
+                <BriefcaseIcon className="w-4 h-4 mr-1 text-brown-600" />
                 <span>{applicationDetails?.employerId?.companyName}</span>
               </div>
             </div>

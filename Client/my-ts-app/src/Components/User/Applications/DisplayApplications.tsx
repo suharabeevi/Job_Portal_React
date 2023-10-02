@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from "react-redux";
-// import { fetchAllUserApplications } from "../../../features/redux/slices/user/allApplicationSlice";
 import { fetchAllUserApplications } from "../../../features/axios/redux/slices/user/allApplicationSlice";
 import ApplicationList from "./ApplicationList";
 import { RootState } from "../../../features/axios/redux/reducers/Reducer";

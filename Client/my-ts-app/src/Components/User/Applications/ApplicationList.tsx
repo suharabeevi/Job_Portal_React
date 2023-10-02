@@ -33,7 +33,7 @@ const ApplicationList: React.FC<AllJobsProps> = ({ applications, selected, setSe
     <>
       <div
         className={`border border-gray-300 rounded-md p-4 mb-4 bg-white ${
-          selected === applications._id ? "ring-2 ring-purple-500 transition-all duration-500" : ""
+          selected === applications._id ? "ring-2 ring-brown-500 transition-all duration-500" : ""
         }`}
       >
         <div className=" lg:flex lg:items-center lg:justify-between">
@@ -45,21 +45,21 @@ const ApplicationList: React.FC<AllJobsProps> = ({ applications, selected, setSe
               {/* Render job details */}
               <div className="mt-2 flex items-center text-sm text-gray-500">
                 <BriefcaseIcon
-                  className="mr-1.5 h-5 w-5 flex-shrink-0 text-purple-600"
+                  className="mr-1.5 h-5 w-5 flex-shrink-0 text-brown-600"
                   aria-hidden="true"
                 />
                 {applications?.employerId?.companyName}
               </div>
               <div className="mt-2 flex items-center text-sm text-gray-500">
                 <MapPinIcon
-                  className="mr-1.5 h-5 w-5 flex-shrink-0 text-purple-400"
+                  className="mr-1.5 h-5 w-5 flex-shrink-0 text-brown-400"
                   aria-hidden="true"
                 />
                 {applications?.jobId?.location}
               </div>
               <div className="mt-2 flex items-center text-sm text-gray-500">
                 <CalendarIcon
-                  className="mr-1.5 h-5 w-5 flex-shrink-0 text-purple-400"
+                  className="mr-1.5 h-5 w-5 flex-shrink-0 text-brown-400"
                   aria-hidden="true"
                 />
                 Applied on {new Date(applications.createdAt).toLocaleDateString()}
@@ -86,7 +86,7 @@ const ApplicationList: React.FC<AllJobsProps> = ({ applications, selected, setSe
               <Menu.Button className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400">
                 More
                 <ChevronDownIcon
-                  className="-mr-1 ml-1.5 h-5 w-5 text-purple-400"
+                  className="-mr-1 ml-1.5 h-5 w-5 text-brown-400"
                   aria-hidden="true"
                 />
               </Menu.Button>
