@@ -18,11 +18,11 @@ export const NavRoutes = [
         name: "Jobs",
         path: "/employer/all-jobs",
       },
-      // {
-      //   icon: <FaEnvelope {...icon} />,
-      //   name: "Applications",
-      //   path: "/employer/applications",
-      // },
+      {
+        icon: <FaEnvelope {...icon} />,
+        name: "Applications",
+        path: "/employer/applications",
+      },
       // {
       //   icon: <FaFacebookMessenger {...icon} />,
       //   name: "Chats",

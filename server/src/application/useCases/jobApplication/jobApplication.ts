@@ -29,4 +29,50 @@ export const existingApplication = (
       throw new Error(`failed to get details ${error.message}`);
     }
   };
-  
+  export const allApplications = (
+    employerId: string,
+    jobApplicationDbRepository: ReturnType<JobApplicationDbInterface>
+  ) => {
+    try {
+      const applications =
+        jobApplicationDbRepository.jobApplicationsForEmployer(employerId);
+      return applications;
+    } catch (error: any) {
+      throw new Error(`failed to get applications ${error.message}`);
+    }
+  };
+  export const getApplicationDetails = (
+    jobId: Types.ObjectId,
+    jobApplicationDbRepository: ReturnType<JobApplicationDbInterface>
+  ) => {
+    try {
+      const details = jobApplicationDbRepository.jobApplicationDetails(jobId);
+      return details;
+    } catch (error: any) {
+      throw new Error(`failed to get application details ${error.message}`);
+    }
+  };  
+  export const changeApplicationStatus = (
+    jobId: Types.ObjectId,
+    status: string,
+    jobApplicationDbRepository: ReturnType<JobApplicationDbInterface>
+  ) => {
+    try {
+      const updatedApplication =
+        jobApplicationDbRepository.changeApplicationStatus(jobId, status);
+      return updatedApplication;
+    } catch (error: any) {
+      throw new Error(`failed to change the application status ${error.message}`);
+    }
+  };
+  export const userJobApplications = (
+    userId: Types.ObjectId,
+    jobApplicationDbRepository: ReturnType<JobApplicationDbInterface>
+  ) => {
+    try {
+      const userApplications =jobApplicationDbRepository.userApplications(userId);
+      return userApplications;
+    } catch (error: any) {
+      throw new Error(`failed to get the user applications ${error.message}`);
+    }
+  };  

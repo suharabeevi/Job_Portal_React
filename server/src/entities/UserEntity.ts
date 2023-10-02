@@ -40,4 +40,8 @@ export class UserEntity {
   
       return null; 
     }
+    public async resumeDelete(id: string): Promise<any> {
+      await this.model.updateOne({ _id: id }, { $unset: { resume: "" } });
+    }
+  
 }  

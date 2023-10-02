@@ -8,7 +8,7 @@ import { CustomRequest } from "../../types/expressRequest";
 import { Types } from "mongoose";
 import AppError from "../../utils/appError";
 import expressAsyncHandler from "express-async-handler";
-import { applyForJob,existingApplication } from "../../application/useCases/jobApplication/jobApplication";
+import { applyForJob,existingApplication,allApplications,changeApplicationStatus,getApplicationDetails,userJobApplications } from "../../application/useCases/jobApplication/jobApplication";
 const jobApplicationController = (
     jobApplicationDbRepository: JobApplicationDbInterface,
     jobApplicationDbRepositoryImpl: JobApplicationRepositoryMongoDB,
@@ -78,9 +78,86 @@ const jobApplicationController = (
           }
         }
       );
+      const jobApplicationForEmployer = expressAsyncHandler(
+        async (req: Request, res: Response) => {
+          const customReq = req as CustomRequest;
+          const employerId = customReq.payload;
+          const jobApplications = await allApplications(
+            employerId ?? "",
+            dbRepositoryJobApplication
+          );
+          res.json({
+            status: "success",
+            applications: jobApplications,
+          });
+        }
+      );
+      
+  const jobApplicationDetails = expressAsyncHandler(
+    async (req: Request, res: Response) => {
+      const applicationId = new Types.ObjectId(req.params.id);
+      const applicationDetails = await getApplicationDetails(
+        applicationId ?? "",
+        dbRepositoryJobApplication
+      );
+
+      if (!applicationDetails) {
+        throw new AppError(
+          "application details not found",
+          HttpStatus.INTERNAL_SERVER_ERROR
+        );
+      }
+      res.json({
+        status: "success",
+        applicationData: applicationDetails,
+      });
+    }
+  );
+  const changeTheApplicationStatus = expressAsyncHandler(
+    async (req: Request, res: Response) => {
+      const applicationId = new Types.ObjectId(req.params.id);
+      const status = req.body.status ?? "";
+      const updatedApplication = await changeApplicationStatus(
+        applicationId,
+        status,
+        dbRepositoryJobApplication
+      );
+
+      if(!updatedApplication) {
+        throw new AppError('error while updating the status', HttpStatus.INTERNAL_SERVER_ERROR);
+      }
+
+      res.json({
+        status: 'success',
+        updatedData: updatedApplication
+      })
+    }
+  );
+  const userApplications = expressAsyncHandler(
+    async (req: Request, res: Response) => {
+      const customReq = req as CustomRequest;
+      const userId = new Types.ObjectId(customReq.payload);
+      const jobApplications = await userJobApplications(userId, dbRepositoryJobApplication);
+
+      if (!jobApplications) {
+        throw new Error('user job applications not found');
+      }
+
+      res.json({
+        status: 'success',
+        jobApplications
+      })
+
+    }
+  )
+
     return {
         applyNewJob,
-        existingApplicant
+        existingApplicant,
+        jobApplicationForEmployer,
+        jobApplicationDetails,
+        changeTheApplicationStatus,
+        userApplications 
         
       };
     };

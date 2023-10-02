@@ -10,8 +10,6 @@ import { Breadcrumbs } from "@material-tailwind/react";
 import createNewJob from "../../../features/axios/api/employer/createJob";
 import { useState,useEffect } from "react";
 import { EmployerVerificationCheck } from "../../../features/axios/api/employer/EmployerVerificationcheck";
-import { log } from "console";
-
 function PostJob() {
     const navigate = useNavigate();
     const {
@@ -21,7 +19,6 @@ function PostJob() {
     } = useForm<JobCreationPayload>({
       resolver: yupResolver(jobCreationValidationSchema as any),
     });
-  
     const notify = (msg: string, type: string) => {
       type === "error"
         ? toast.error(msg, { position: toast.POSITION.TOP_RIGHT })
@@ -29,13 +26,13 @@ function PostJob() {
     };
     
     const [isVerified, setIsVerified] = useState<boolean | null >(null);
-
+    const [isLoading, setIsLoading] = useState(false);
     useEffect(()=>{
       const checkVerified = async()=>{
       const result = await EmployerVerificationCheck()
       console.log(result,"result");
       
-      if(result?.result){
+      if(result?.result){ 
         setIsVerified(true)
       }else{
         setIsVerified(false)
@@ -47,10 +44,12 @@ function PostJob() {
 console.log(isVerified,"yessssssssssss");
 
     const submitHandler = async (formData: JobCreationPayload) => {
+      setIsLoading(true);
       createNewJob(formData)
         .then((response) => {
           notify("Job created successfully", "success");
           setTimeout(() => {
+            setIsLoading(false);  
             navigate("/employer/all-jobs");
           }, 2000);
         })
@@ -61,7 +60,6 @@ console.log(isVerified,"yessssssssssss");
   
     return (
       <>
-       
         <div className="pl-40 pt-2">
           <Breadcrumbs className="bg-foundItBg">
             <a href="#" className="opacity-60">
@@ -96,7 +94,7 @@ console.log(isVerified,"yessssssssssss");
                     type="text"
                     id="title"
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brown-600"
-                    required
+                    
                     placeholder="Job Title"
                     {...register("title")}
                   />
@@ -114,7 +112,7 @@ console.log(isVerified,"yessssssssssss");
                   <select
                     id="employmentType"
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brown-600"
-                    required
+                    
                     placeholder="Employment Type"
                     {...register("employmentType")}
                   >
@@ -131,7 +129,6 @@ console.log(isVerified,"yessssssssssss");
                   </select>
                 </div>
               </div>
-  
               <div className="mb-4">
                 <label
                   htmlFor="description"
@@ -142,10 +139,15 @@ console.log(isVerified,"yessssssssssss");
                 <textarea
                   id="description"
                   className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brown-600"
-                  required
+                 
                   placeholder="Job Description"
                   {...register("description")}
-                ></textarea>
+                >
+                  {errors.description && (
+                    <p className="text-red-500 text-sm">{errors.description.message}</p>
+                  )}
+
+                </textarea>
               </div>
   
               <div className="mb-4">
@@ -159,10 +161,13 @@ console.log(isVerified,"yessssssssssss");
                   type="text"
                   id="location"
                   className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brown-600"
-                  required
+                 
                   placeholder="Location"
                   {...register("location")}
                 />
+                {errors.location && (
+                    <p className="text-red-500 text-sm">{errors.location.message}</p>
+                  )}
               </div>
   
               <div className="mb-4">
@@ -175,10 +180,10 @@ console.log(isVerified,"yessssssssssss");
                 <textarea
                   id="requirements"
                   className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brown-600"
-                  required
+                required
                   placeholder="Requirements"
                   {...register("requirements")}
-                ></textarea>
+                />
                 {errors.requirements && (
                   <p className="text-red-500 text-sm">
                     {errors.requirements.message}
@@ -196,7 +201,7 @@ console.log(isVerified,"yessssssssssss");
                 <textarea
                   id="responsibilities"
                   className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brown-600"
-                  required
+                 
                   placeholder="Responsibilities"
                   {...register("responsibilities")}
                 ></textarea>
@@ -214,7 +219,7 @@ console.log(isVerified,"yessssssssssss");
                     type="number"
                     id="salary"
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brown-600"
-                    required
+                 
                     placeholder="salary"
                     {...register("salary")}
                   />
@@ -230,7 +235,7 @@ console.log(isVerified,"yessssssssssss");
                     type="number"
                     id="openings"
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brown-600"
-                    required
+                   
                     placeholder="Openings"
                     {...register("openings")}
                   />
@@ -241,7 +246,7 @@ console.log(isVerified,"yessssssssssss");
                 type="submit"
                 className="px-4 py-2 font-medium text-white bg-brown-600 rounded hover:bg-brown-500 focus:outline-none"
               >
-                Submit
+                 {isLoading ? "Submitting" : "submit"}
               </button>
             </form>
             

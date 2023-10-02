@@ -64,3 +64,13 @@ export const updateResume = async (
     throw new Error("failed to update resume");
   }
 }
+export const deleteResume = async(
+  userId: string,
+  dbRepositoryUser: ReturnType<UserDbInterface>
+) => {
+  try {
+    await dbRepositoryUser.deleteResume(userId);
+  } catch (error) {
+    throw new Error('failed to delete the resume');
+  }
+}

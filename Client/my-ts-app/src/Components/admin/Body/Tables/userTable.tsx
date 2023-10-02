@@ -36,7 +36,7 @@ const UserTable: React.FC = () => {
     
     return data;
   };
-
+  
   const changeStatus = async (userId: string) => {
     await BlockUser(userId)
       .then((response) => {

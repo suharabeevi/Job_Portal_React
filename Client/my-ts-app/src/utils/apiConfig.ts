@@ -8,7 +8,7 @@ const apiConfig = {
     userData: `${configKeys.API_URL}user/user-data`,
     updateUser:`${configKeys.API_URL}user/update-user`,
     uploadResume: `${configKeys.API_URL}user/update-resume`,
-
+    deleteResume: `${configKeys.API_URL}user/delete-resume`,
 
    //employer
     employerRegister: `${configKeys.API_URL}employer-auth/register`,
@@ -16,6 +16,7 @@ const apiConfig = {
     emailVerify: `${configKeys.API_URL}employer-auth/email-verify`,
     OTPVerify: `${configKeys.API_URL}employer-auth/email-OTP`,
     employerData: `${configKeys.API_URL}employer/employer-data`,
+    updateEmployer: `${configKeys.API_URL}employer/update-employer`,
     Employer_Verification_check:`${configKeys.API_URL}employer/isVerified`,
   
      //job
@@ -28,8 +29,13 @@ const apiConfig = {
     filterJobs: `${configKeys.API_URL}job/filter-jobs`,
     titleLocationSalary: `${configKeys.API_URL}job/distinct`,
 
+
     applyJob: `${configKeys.API_URL}job-application/create-application`,
     isApplied: `${configKeys.API_URL}job-application/is-applied`,
+    allApplication: `${configKeys.API_URL}job-application/all-applications`,
+    applicationDetails: `${configKeys.API_URL}job-application/applicant-details`,
+    changeStatus: `${configKeys.API_URL}job-application/change-status`,
+    allUserApplications: `${configKeys.API_URL}job-application/user-applications`,
 
 
    //admin

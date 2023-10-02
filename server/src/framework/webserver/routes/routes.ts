@@ -17,7 +17,6 @@ const routes = (app: Application) => {
     app.use('/api/job-application',authenticationMiddleware,jobApplicationRouter());
     app.use('/api/job', authenticationMiddleware, jobRouter());
    
-
 }
 
 export default routes;

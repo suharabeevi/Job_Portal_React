@@ -58,7 +58,7 @@ export const uploadResume = async (file: File): Promise<any> => {
 export const deleteResume = async (): Promise<any> => {
   try {
     const config: AxiosRequestConfig = {
-      // url: apiConfig.deleteResume,
+       url: apiConfig.deleteResume,
       method: "delete",
     };
     await api(config);

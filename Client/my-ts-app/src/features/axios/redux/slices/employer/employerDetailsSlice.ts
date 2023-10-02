@@ -13,6 +13,7 @@ interface EmployerDetailsState {
   employerEmail: string | null;
   employerDetails: any;
   error: string | null;
+  isActive:boolean;
   status: string;
   isLoggedIn: boolean;
 }
@@ -20,6 +21,7 @@ interface EmployerDetailsState {
 const initialState: EmployerDetailsState = {
   employerEmail: null,
   employerDetails: null,
+  isActive:false,
   error: null,
   status: "idle",
   isLoggedIn: false,
@@ -46,7 +48,14 @@ const employerDetailsSlice = createSlice({
     },
     clearEmployerEmail: (state) => {
       state.employerEmail = null;
-    }
+    },
+    blockEmployer: (state) => {
+      state.isActive = false;
+    },
+    // Add a new action to unblock the employer
+    unblockEmployer: (state) => {
+      state.isActive =true;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -70,7 +79,9 @@ export const {
   employerLoginSuccess,
   employerLogout,
   employerEmail,
-  clearEmployerEmail
+  clearEmployerEmail,
+  blockEmployer,
+  unblockEmployer,
 } = employerDetailsSlice.actions;
 
 export default employerDetailsSlice.reducer;

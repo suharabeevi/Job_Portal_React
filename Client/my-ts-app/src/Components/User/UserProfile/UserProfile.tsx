@@ -4,7 +4,9 @@ import { UserInterface } from "../../../types/UserInterface";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import AddResume from "./AddResumeModal";
-
+import AddKeySkillsModal from "./AddKeySkills";
+import { deleteResume } from "../../../features/axios/api/User/userDetails";
+import ConfirmResumeDelete from "./ConfirmResumeDelete";
 import {
     Card,
     CardBody,
@@ -346,14 +348,14 @@ import {
           </CardBody>
         </Card>
   
-        {/* {showDeleteConfirmation && (
-        //   <ConfirmResumeDelete
-        //     isOpen={showDeleteConfirmation}
-        //     onClose={() => setShowDeleteConfirmation(false)}
-        //     onConfirm={() => deleteResume()}
-        //     isDeleted={() => setResumeDeleted(!resumeDeleted)}
-        //   />
-        )} */}
+        {showDeleteConfirmation && (
+          <ConfirmResumeDelete
+            isOpen={showDeleteConfirmation}
+            onClose={() => setShowDeleteConfirmation(false)}
+            onConfirm={() => deleteResume()}
+            isDeleted={() => setResumeDeleted(!resumeDeleted)}
+          />
+        )}
         <div className="z-10">
           {showResumeUpload && (
             <AddResume
@@ -365,11 +367,11 @@ import {
         </div>
   
         <div>
-          {/* <AddKeySkillsModal
+          <AddKeySkillsModal
             isOpen={showKeySkillUpload}
             onClose={() => setShowSkillUpload(false)}
             setIsUploaded={() => setIsUploaded(!isUploaded)}
-          /> */}
+          />
         </div>
         <ToastContainer className="z-50" />
       </div>

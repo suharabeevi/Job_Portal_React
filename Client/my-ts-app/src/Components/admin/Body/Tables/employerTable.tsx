@@ -4,7 +4,7 @@ import { Tooltip, Button } from "@material-tailwind/react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { EmployerDataApiResponse } from "../../../../types/getAllEmployer";
-
+import ConfirmDelete from "./ConformBlockUnblock";
 
 import { getEmployers } from "../../../../features/axios/api/admin/adminGetAllEmployer";
 import { BlockEmployer } from "../../../../features/axios/api/admin/adminBlockEmployer";
@@ -12,6 +12,13 @@ const EmployerTable: React.FC = () => {
   const [EmployerData, SetEmployerData] = useState<EmployerDataApiResponse[] | null>(
     null
   );
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [selectedEmployerID, setEmployerID] = useState("");
+
+  const handleDeleteButtonClick = (EmployerId: string) => {
+    setEmployerID(EmployerId);
+    setShowDeleteConfirmation(true);
+  };
   const [status, setStatus] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(4);
@@ -35,17 +42,16 @@ const EmployerTable: React.FC = () => {
     });
     return data;
   };
-
-  const changeStatus = async (agentId: string) => {
-    await BlockEmployer (agentId)
-      .then((response) => {
-        notify("Done!", "success");
-        setStatus(!status);
-      })
-      .catch((error) => {
-        notify(error.message, "error");
-      });
-  };
+  // const changeStatus = async (agentId: string) => {
+  //   await BlockEmployer (agentId)
+  //     .then((response) => {
+  //       notify("Done!", "success");
+  //       setStatus(!status);
+  //     })
+  //     .catch((error) => {
+  //       notify(error.message, "error");
+  //     });
+  // };
   const goToPreviousPage = () => {
     setCurrentPage((prevPage) => prevPage - 1);
   };
@@ -53,7 +59,6 @@ const EmployerTable: React.FC = () => {
   const goToNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
-
   return (
     <>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -119,7 +124,7 @@ const EmployerTable: React.FC = () => {
                     </td>
                     <td className="px-6 py-4">{x.industry}</td>
                     <td className="px-6 py-4">
-                      <Tooltip
+                      {/* <Tooltip
                         content={
                           x.isActive ? "Block the Agent" : "Unblock the Agent"
                         }
@@ -127,11 +132,9 @@ const EmployerTable: React.FC = () => {
                           mount: { scale: 1, y: 0 },
                           unmount: { scale: 0, y: 25 },
                         }}
-                      >
+                      > */}
                         <Button
-                          onClick={() => {
-                            changeStatus(x._id);
-                          }}
+                           onClick={() => handleDeleteButtonClick(x._id)}
                           className={
                             x.isActive
                               ? "text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-xs px-5 py-2.5 text-center mr-2 mb-2"
@@ -140,7 +143,14 @@ const EmployerTable: React.FC = () => {
                         >
                           {x.isActive ? "Block" : "Unblock"}
                         </Button>
-                      </Tooltip>
+                        {showDeleteConfirmation && (
+          <ConfirmDelete
+            isOpen={showDeleteConfirmation}
+            onClose={() => setShowDeleteConfirmation(true)}
+            onConfirm={() =>  BlockEmployer(selectedEmployerID)}
+          />
+        )}
+                      {/* </Tooltip> */}
                     </td>
                   </tr>
                 );
@@ -148,8 +158,6 @@ const EmployerTable: React.FC = () => {
           </tbody>
         </table>
       </div>
-
-    
       <div className="flex justify-center mt-10">
         <button
           type="button"

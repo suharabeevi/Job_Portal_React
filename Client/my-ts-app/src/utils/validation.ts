@@ -56,8 +56,11 @@ export const userRegisterValidationSchema = yup.object().shape({
       .oneOf([yup.ref("password")], "Password does not match"),
   });
   export const jobCreationValidationSchema = yup.object().shape({
-    title: yup.string().required("Job Title is required"),
-    description: yup.string().required("Job Description is required"),
+    title: yup.string()
+    .required("job title is requied is required")
+    .matches(/^[A-Za-z]/, "Job title must start with a letter"),
+    description: yup.string().required("Job Description is required")
+    .matches(/^[A-Za-z]/, " description must start with a letter"),
     location: yup.string().required("Location is required"),
     employmentType: yup.string().required("Employment Type is required"),
     requirements: yup

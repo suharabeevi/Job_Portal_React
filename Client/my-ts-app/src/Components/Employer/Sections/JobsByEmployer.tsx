@@ -41,7 +41,6 @@ const JobsByEmployer: React.FC<AllJobsProps> = ({ jobs }) => {
     dispatch(setEmployerJobId(jobId));
     navigate("/job/view-job");
   };
-
   return (
       <div className="border border-gray-300 rounded-md p-4 mb-4  bg-white">
         <div className="lg:flex lg:items-center lg:justify-between">
@@ -173,7 +172,6 @@ const JobsByEmployer: React.FC<AllJobsProps> = ({ jobs }) => {
             </Menu>
           </div>
         </div>
-
         {showDeleteConfirmation && (
           <ConfirmDelete
             isOpen={showDeleteConfirmation}
@@ -185,5 +183,4 @@ const JobsByEmployer: React.FC<AllJobsProps> = ({ jobs }) => {
       </div>
   );
 };
-
 export default JobsByEmployer;

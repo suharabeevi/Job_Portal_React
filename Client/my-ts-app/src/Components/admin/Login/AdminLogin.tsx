@@ -33,7 +33,7 @@ export default function AdminLoginForm() {
   const handleSubmit = async (values: FormValues) => {
     await adminLogin(values)
       .then((data) => {
-        localStorage.setItem("adminToken", data?.token);
+        localStorage.setItem("adminToken",data?.token);
         notify("Admin Login successful", "success");
         setTimeout(() => {
           navigate("/admin");
@@ -56,7 +56,6 @@ export default function AdminLoginForm() {
             Admin Login
           </h2>
         </div>
-
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm ">
           <Formik
             initialValues={initialValues}

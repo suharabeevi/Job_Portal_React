@@ -19,9 +19,32 @@ export const JobApplicationRepositoryMongoDB = (model: JobApplicationModel) => {
         const alreadyExists = await jobApplicationEntity.isApplied(jobId, userId);
         return alreadyExists;
     }
+    const jobApplicationForEmployer = async (employerId: string) => {
+        const jobApplications = await jobApplicationEntity.getAllApplicationsForEmployer(employerId);
+        return jobApplications;
+    }
+
+    const jobApplicationDetails = async (jobId: Types.ObjectId) => {
+        const applicationDetails = await jobApplicationEntity.getApplicationDetails(jobId);
+        return applicationDetails;
+    }
+
+    const changeApplicationStatus = async (jobId: Types.ObjectId, status: string) => {
+        const updatedApplication = await jobApplicationEntity.changeStatusOfApplication(jobId, status);
+        return jobApplicationDetails;
+    }
+
+    const userApplications = async (userId: Types.ObjectId) => {
+        const jobApplications = await jobApplicationEntity.getAllApplicationByUser(userId);
+        return jobApplications;
+    }
 return {
     applyForJob,
-    alreadyApplied
+    alreadyApplied,
+    jobApplicationForEmployer,
+    jobApplicationDetails,
+    changeApplicationStatus,
+    userApplications
 }
 }
 export type JobApplicationRepositoryMongoDB = typeof JobApplicationRepositoryMongoDB;

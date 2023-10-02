@@ -32,4 +32,53 @@ export class JobApplicationEntity {
         return appliedJod;
       }
     }
+    public async getAllApplicationsForEmployer(employerId: string): Promise<any> {
+      const applications = await this.model
+        .find({ employerId })
+        .populate({ path: "userId", select: "name email image", model: User })
+        .populate({ path: "jobId", select: "title", model: Job });
+  
+      return applications;
+    }
+  
+    public async getApplicationDetails(jobId: Types.ObjectId): Promise<any> {
+      const details = await this.model
+        .findOne({ _id: jobId })
+        .populate({
+          path: "userId",
+          select: "name email phone about image resume experience skills",
+          model: User,
+        })
+        .populate({ path: "jobId", select: "title location", model: Job })
+        .populate({ path: "employerId", select: "companyName", model: Employer})
+      return details;
+    }
+    public async changeStatusOfApplication(
+      applicationId: Types.ObjectId,
+      status: string
+    ): Promise<any> {
+      const updatedApplication = await this.model.findOneAndUpdate(
+        { _id: applicationId },
+        { $set: { applicationStatus: status } },
+        { new: true }
+      );
+  
+      return updatedApplication;
+    }
+    public async getAllApplicationByUser(userId: Types.ObjectId): Promise<any> {
+      const userApplications = await this.model
+        .find({ userId })
+        .populate({
+          path: "jobId",
+          select: "title location",
+          model: Job,
+        })
+        .populate({
+          path: "employerId",
+          select: "companyName",
+          model: Employer,
+        })
+      
+      return userApplications;
+    }
 }

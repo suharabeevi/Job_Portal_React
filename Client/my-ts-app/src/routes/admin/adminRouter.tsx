@@ -10,7 +10,7 @@ const AdminRouter = () => {
       <div>
         <Routes>
        <Route path="/login" element={<AdminLoginForm />} />
-       <Route path="" element={<Admin />}>
+       <Route path="/" element={<Admin />}>
         <Route index element={<Dashboard />} />
         <Route path="/users" element={<AdminUser />} />
         <Route path="/employers" element={<AdminEmployer />} />

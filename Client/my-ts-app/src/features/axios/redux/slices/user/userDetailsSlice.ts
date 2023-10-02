@@ -44,5 +44,9 @@ const userDetailsSlice = createSlice({
   }
 });
 
+
+
+
+
 export const {clearUserDetails, setError} = userDetailsSlice.actions;
 export default userDetailsSlice.reducer;

@@ -22,5 +22,4 @@ const EmployerRouter = () => {
         </div>
     )
 }
-
 export default EmployerRouter;

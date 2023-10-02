@@ -4,7 +4,10 @@ import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { deleted } from "../../../features/axios/redux/slices/employer/employerJobsSlice";
+import { blockEmployer } from "../../../../features/axios/redux/slices/employer/employerDetailsSlice";
+import { employerData } from "../../../../features/axios/api/employer/employerDetails";
+
+
 interface DeleteConfirmationDialogProps {
   isOpen: boolean;
   onClose: () => void;
@@ -23,8 +26,8 @@ function ConfirmDelete({
     try {
       onConfirm();
       setTimeout(() => {
-        dispatch(deleted())
-        toast.success("Job deleted successfully");
+        dispatch(blockEmployer())
+        toast.success("Done");
       }, 1500);
       setTimeout(() => {
         onClose();
@@ -60,7 +63,6 @@ function ConfirmDelete({
           >
             &#8203;
           </span>
-
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -83,12 +85,11 @@ function ConfirmDelete({
                     as="h3"
                     className="text-lg leading-6 font-medium text-gray-900"
                   >
-                    Delete Job
+                   Block the user
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Are you sure you want to delete the job ? All of the data
-                      will be permanently removed. This action cannot be undone.
+                      Are you sure you want to Block the employer ? 
                     </p>
                   </div>
                 </div>
@@ -101,7 +102,7 @@ function ConfirmDelete({
                   onClick={handleConfirm}
                   disabled={isLoading}
                 >
-                  {isLoading ? "Deleting..." : "Delete"}
+                  {isLoading ? "Blocking..." : "Block"}
                 </button>
                 <button
                   type="button"
@@ -118,4 +119,5 @@ function ConfirmDelete({
     </Transition.Root>
   );
 }
+
 export default ConfirmDelete;

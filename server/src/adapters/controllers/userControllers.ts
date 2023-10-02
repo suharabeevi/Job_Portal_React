@@ -7,7 +7,7 @@ import { UserModel } from "../../framework/database/mongoDb/models/userModel";
 import AppError from "../../utils/appError";
 import { HttpStatus } from "../../types/httpStatus";
 import { UserInterface } from "../../types/userInterface";
-import { findByEmail,findUserDataById,updateUser,updateResume } from "../../application/useCases/user/user";
+import { findByEmail,findUserDataById,updateUser,updateResume ,deleteResume} from "../../application/useCases/user/user";
 
 const userController = (
     userDbRepository: UserDbInterface,
@@ -24,7 +24,6 @@ const userController = (
         res.json(user);
       }
     );
-  
     // get user by toke id
     const getUserDataById = expressAsyncHandler(
       async (req: Request, res: Response) => {
@@ -80,13 +79,28 @@ const userController = (
         });
       }
     )
+    const userDeleteResume = expressAsyncHandler(
+      async(req: Request, res: Response) => {
+        const customReq = req as CustomRequest;
+        const id = customReq.payload ?? '' ;
+        if (!id) {
+          throw new AppError('Unauthorized request invalid token', HttpStatus.UNAUTHORIZED);
+        }
+        await deleteResume(id, dbRepositoryUser);
+        res.json({
+          status: 'success',
+          message: 'resume deleted successfully'
+        })
+      }
+    )
   
     return {
         getUserByEmail,
         getUserDataById,
         getUserDataByIdParam,
         updateTheUser,
-        updateTheResume
+        updateTheResume,
+        userDeleteResume
       };
     };
     
