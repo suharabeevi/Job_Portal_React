@@ -61,7 +61,8 @@ export const userRegisterValidationSchema = yup.object().shape({
     .matches(/^[A-Za-z]/, "Job title must start with a letter"),
     description: yup.string().required("Job Description is required")
     .matches(/^[A-Za-z]/, " description must start with a letter"),
-    location: yup.string().required("Location is required"),
+    location: yup.string().required("Location is required")
+    .matches(/^[A-Za-z]/, " description must start with a letter"),
     employmentType: yup.string().required("Employment Type is required"),
     requirements: yup
       .mixed()
