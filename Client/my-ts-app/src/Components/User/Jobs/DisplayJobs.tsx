@@ -138,20 +138,22 @@ function DisplayJobs(this: any) {
                   />
                 </div>
                 <div className="sm:col-span-1">
-                <select
-  className="focus:ring-2 focus:ring-brown-600 border-2 rounded-lg py-2 px-4 text-gray-500 max-h-40 overflow-y-scroll"
-  value={selectedLocation}
-  onChange={(e) => setSelectedLocation(e.target.value)}
->
-  <option value="">Select location</option>
-  {locations.map((location) => (
-    <option key={location} value={location}>
-      {location}
-    </option>
-  ))}
-</select>
-                </div>
-                <div className="sm:col-span-1">
+  <div className="relative">
+    <select
+      className="focus:ring-2 focus:ring-brown-600 border-2 rounded-lg py-2 px-4 text-gray-500 max-h-40 overflow-y-auto"
+      value={selectedLocation}
+      onChange={(e) => setSelectedLocation(e.target.value)}
+    >
+      <option value="">Select location</option>
+      {locations.map((location) => (
+        <option key={location} value={location}>
+          {location}
+        </option>
+      ))}
+    </select>
+  </div>
+</div>
+ <div className="sm:col-span-1">
                   <select
                     className="focus:ring-2 focus:ring-brown-600 border-2 rounded-lg py-2 px-4 text-gray-500"
                     value={selectedSalary}

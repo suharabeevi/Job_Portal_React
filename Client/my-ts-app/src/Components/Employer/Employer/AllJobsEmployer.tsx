@@ -21,15 +21,13 @@ import {
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 const ITEMS_PER_PAGE = 10;
-
 function AllJobsEmployer() {
   const dispatch = useDispatch();
   const deleted = useSelector((state: RootState) => state.employerJobs.change);
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-
-
+  
   const employerAllJobs = useSelector(
     (state: any) => (state.employerJobs.employerJobs.jobs)
   );

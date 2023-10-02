@@ -18,9 +18,6 @@ function EmployerRegister() {
   const employerEmail = useSelector(
     (state: RootState) => state.employerDetails.employerEmail
   );
-
-  
-
   // to remove after using formik
   // const {
   //   register,
@@ -29,7 +26,6 @@ function EmployerRegister() {
   // } = useForm<EmployerRegisterPayload>({
   //   resolver: yupResolver(employerRegisterValidationSchema as any),
   // });
-
   const formik = useFormik<EmployerRegisterPayload>({
     initialValues: {
       companyName: "",
