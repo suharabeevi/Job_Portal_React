@@ -43,7 +43,13 @@ export default function UserLogin() {
         navigate('/user/home');
       }
     },[navigate]);
-  
+    useEffect(() => {
+      // Check if the user is already logged in
+      if (isLoggedIn) {
+        // Redirect the user to the home page
+        navigate("/user/home");
+      }
+    }, [isLoggedIn, navigate]);
     const submitHandler = async (formData: LoginPayload) => {
       userLogin(formData)
         .then((response) => {
