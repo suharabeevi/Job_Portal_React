@@ -33,8 +33,10 @@ export const userRegisterValidationSchema = yup.object().shape({
       .required("Name is required")
       .matches(/^[a-zA-Z][a-zA-Z ]+[a-zA-Z]*$/, "Enter a valid name"),
     email: yup.string().required("Email is required").email("Invalid email"),
-    industry: yup.string().required("Industry is required"),
-    location: yup.string().required("Location is required"),
+    industry: yup.string().required("Industry is required")
+    .matches(/^[a-zA-Z][a-zA-Z ]+[a-zA-Z]*$/, "Enter a valid name"),
+    location: yup.string().required("Location is required")
+    .matches(/^[a-zA-Z][a-zA-Z ]+[a-zA-Z]*$/, "Enter a valid name"),
     idProof_img: yup.mixed()
   .required('Image is required') // Check if the field is required
   .test('fileType', 'Only JPEG and PNG images are allowed', (value: any) => {
@@ -60,7 +62,7 @@ export const userRegisterValidationSchema = yup.object().shape({
     .required("job title is requied is required")
     .matches(/^[A-Za-z]/, "Job title must start with a letter"),
     description: yup.string().required("Job Description is required")
-    .matches(/^[A-Za-z]/, " description must start with a letter"),
+    .matches(/^[a-zA-Z][a-zA-Z ]+[a-zA-Z]*$/, "Enter a valid name"),
     location: yup.string().required("Location is required")
     .matches(/^[A-Za-z]/, " description must start with a letter"),
     employmentType: yup.string().required("Employment Type is required"),
@@ -108,7 +110,6 @@ export const userRegisterValidationSchema = yup.object().shape({
       .integer("Openings must be an integer")
       .positive("Openings must be a positive number"),
   });
-
   export const jobUpdateValidationSchema = yup.object().shape({
     title: yup.string().required("Job Title is required"),
     description: yup.string().required("Job Description is required"),
