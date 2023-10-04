@@ -35,21 +35,7 @@ export default function UserLogin() {
         ? toast.error(msg, { position: toast.POSITION.TOP_RIGHT })
         : toast.success(msg, { position: toast.POSITION.TOP_RIGHT });
   
-    useEffect(()=>{
-      if(token) {
-        dispatch(loginSuccess());
-      }
-      if(isLoggedIn === true) {
-        navigate('/user/home');
-      }
-    },[navigate]);
-    useEffect(() => {
-      // Check if the user is already logged in
-      if (isLoggedIn) {
-        // Redirect the user to the home page
-        navigate("/user/home");
-      }
-    }, [isLoggedIn, navigate]);
+   
     const submitHandler = async (formData: LoginPayload) => {
       userLogin(formData)
         .then((response) => {
@@ -71,6 +57,22 @@ export default function UserLogin() {
     const togglePasswordVisibility = () => {
       setShowPassword(!showPassword);
     };
+
+    useEffect(()=>{
+      if(token) {
+        dispatch(loginSuccess());
+      }
+      if(isLoggedIn) {
+        navigate('/user/home');
+      }
+    },[isLoggedIn, navigate]);
+    // useEffect(() => {
+    //   // Check if the user is already logged in
+    //   if (isLoggedIn) {
+    //     // Redirect the user to the home page
+    //     navigate("/user/home");
+    //   }
+    // }, [isLoggedIn, navigate]);
     return (
       <div className="flex justify-end h-screen bg-slate-100">
         <div className="ml-32 w-[40%] flex justify-center items-center">

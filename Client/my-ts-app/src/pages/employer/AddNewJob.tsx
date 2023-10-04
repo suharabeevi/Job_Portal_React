@@ -9,5 +9,4 @@ function AddNewJob() {
     </div>
   )
 }
-
 export default AddNewJob;
