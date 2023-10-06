@@ -26,8 +26,10 @@ function EmployerRegister() {
   // } = useForm<EmployerRegisterPayload>({
   //   resolver: yupResolver(employerRegisterValidationSchema as any),
   // });
+
   const formik = useFormik<EmployerRegisterPayload>({
     initialValues: {
+      _id:"",
       companyName: "",
       industry: "",
       location: "",
@@ -41,7 +43,6 @@ function EmployerRegister() {
     },
     validationSchema: employerRegisterValidationSchema,
     onSubmit: (values) => {
-      console.log("in formik", values);
       registerEmployer({...values})
           .then((response) => {
             notify("Registration success", "success");

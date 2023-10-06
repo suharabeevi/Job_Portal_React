@@ -23,11 +23,11 @@ export const NavRoutes = [
         name: "Applications",
         path: "/employer/applications",
       },
-      // {
-      //   icon: <FaFacebookMessenger {...icon} />,
-      //   name: "Chats",
-      //   path: "/employer/messenger",
-      // },
+      {
+        icon: <FaFacebookMessenger {...icon} />,
+        name: "Chats",
+        path: "/employer/messenger",
+      },
       {
         icon: <FaUser {...icon} />,
         name: "Profile",

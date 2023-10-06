@@ -5,6 +5,7 @@ import EmployerRouter from "./routes/employer/EmployerRouter";
 import JobRouter from "./routes/jobs/JobRouter";
 import NotFound from "./Components/Error/NotFound";
 import AdminRouter from "./routes/admin/adminRouter";
+import MessengerRouter from "./routes/messenger/MessengerRouter";
 import ApplicationRouter from "./routes/applications/applicationRouter";
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/job/*" element={<JobRouter />} />
           <Route path="/application/*" element={<ApplicationRouter />} />
           <Route path="/admin/*" element={<AdminRouter/>}/>
+          <Route path="/messenger/*" element={<MessengerRouter />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </Router>

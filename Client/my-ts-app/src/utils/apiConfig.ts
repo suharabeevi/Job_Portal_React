@@ -46,6 +46,9 @@ const apiConfig = {
    ADMIN_BLOCK_EMPLOYER: `admin/block-employer/`,
    ADMIN_VERIFY_EMPLOYER: `admin/Employer-verification/`,
    ADMIN_GET_ALL_UNVERIFIED_EMPLOYERS: `admin/get-all-unverified-Employers`,
+
+   getConversations: `${configKeys.API_URL}messenger-conversation`,
+   getMessages: `${configKeys.API_URL}messenger-message`,
     
 }
 export default apiConfig;

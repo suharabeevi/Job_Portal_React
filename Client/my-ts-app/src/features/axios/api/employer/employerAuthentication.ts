@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
-import {EmployerRegisterPayload,LoginPayload,} from "../../../../types/PayloadInterface";
+import {EmployerRegisterPayload,LoginPayload,NewEmployerRegistrationPayload} from "../../../../types/PayloadInterface";
 import apiConfig from "../../../../utils/apiConfig";
 export const employerLogin = async (payload: LoginPayload): Promise<any> => {
     try {
@@ -19,7 +19,7 @@ export const employerLogin = async (payload: LoginPayload): Promise<any> => {
     }
   };
   
-  export const registerEmployer = async (payload: EmployerRegisterPayload) => {
+  export const registerEmployer = async (payload: NewEmployerRegistrationPayload) => {
     try {
       const config: AxiosRequestConfig = {
         url: `${apiConfig.employerRegister}`,

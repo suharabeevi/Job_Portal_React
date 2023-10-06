@@ -17,7 +17,7 @@ const socketConfig = (io: Server) => {
 
   io.on('connection', (socket: Socket) => {
     // when connected
-    console.log('a user connected...');
+    console.log('a user connected...',socket);
 
     socket.on('addUser', (userId) => {
       try {
@@ -30,7 +30,6 @@ const socketConfig = (io: Server) => {
         socket.emit('addError', error.message);
       }
     });
-
     // send and get message
     socket.on('sendMessage', ({ senderId, receiverId, text }) => {
       try {

@@ -24,11 +24,12 @@ const io = new Server(server, {
   });
 
 
-socketConfig(io);
+
+
 app.use(bodyParser.json());
 
 connectDB();
-
+socketConfig(io);
 expressConfig(app);
 
 serverConfig(server).startServer();
