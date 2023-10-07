@@ -96,3 +96,22 @@ export const adminLoginUseCase = async (
   
     return getAllUnverifiedEmployers
   };
+
+  export const BasicDetailsUserEmployerUseCase = async(
+    adminDbRepository: ReturnType<AdminDbInterface>
+  )=>{
+    const result = await adminDbRepository.BasicDetailsUserEmployer();
+    if(!result){
+      throw new AppError('could not fetch basic details of user agent package ', HttpStatus.NOT_FOUND)
+    }
+    return result
+  };
+  export const getEmployerStatusUseCase = async(
+    adminDbRepository:ReturnType<AdminDbInterface>
+  )=>{
+    const result = await adminDbRepository.getEmplyerStatus();
+    if(!result){
+      throw new AppError('could not fetch agents status',HttpStatus.NOT_FOUND)
+    }
+    return result
+  }

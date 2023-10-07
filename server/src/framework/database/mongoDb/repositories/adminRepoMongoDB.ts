@@ -1,6 +1,8 @@
 import Admin from "../models/adminModel";
 import { User } from "../models/userModel";
 import { Employer } from "../models/employerModel";
+import { Job } from "../models/jobModel";
+import { JobApplication } from "../models/jobApplicationModel";
 import { AdminInterface } from "../../../../types/admin";
 import { log } from "console";
 import { ObjectId,Types } from "mongoose";
@@ -61,6 +63,56 @@ export const adminRepositoryMongoDB = () => {
         const result = await Employer.find({ isVerified: false });
         return result;
       };
+
+
+      const BasicDetailsUserEmployer = async () => {
+        const UserCount = await User.countDocuments({});
+    
+        const EmployerCount = await Employer.countDocuments({});
+        const jobCount = await Job.countDocuments({});
+        const JobApplicationCount = await JobApplication.find({ 
+          applicationStatus: "Shortlisted" }).count();
+    
+        const resObj = {
+          UserCount,
+          EmployerCount,
+          jobCount,
+          JobApplicationCount,
+        };
+    
+        console.log(resObj);
+        return resObj;
+      };
+
+      const getEmployerStatus = async () => {
+        const result = await Employer.aggregate([
+          {
+            $group: {
+              _id: null,
+              activeCount: {
+                $sum: { $cond: [{ $eq: ["$isActive", true] }, 1, 0] },
+              },
+              inactiveCount: {
+                $sum: { $cond: [{ $eq: ["$isActive", false] }, 1, 0] },
+              },
+              verifiedCount: {
+                $sum: { $cond: [{ $eq: ["$isVerified", true] }, 1, 0] },
+              },
+              notVerifiedCount: {
+                $sum: { $cond: [{ $eq: ["$isVerified", false] }, 1, 0] },
+              },
+            },
+          },
+          {
+            $project: {
+              _id: 0,
+            },
+          },
+        ]);
+    
+        return result[0];
+      };
+    
     return{
         getAdminByEmail,
         getAllusers,
@@ -68,7 +120,9 @@ export const adminRepositoryMongoDB = () => {
         blockUser,
         blockEmployer,
         verifyEmployer,
-        getUnverifiedEmployers
+        getUnverifiedEmployers,
+        BasicDetailsUserEmployer,
+        getEmployerStatus
     }
 }
 export type AdminRepossitoryMongoDB = typeof adminRepositoryMongoDB;

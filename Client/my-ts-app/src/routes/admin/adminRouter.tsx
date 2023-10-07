@@ -16,6 +16,7 @@ const AdminRouter = () => {
         <Route path="/users" element={<AdminUser />} />
         <Route path="/employers" element={<AdminEmployer />} />
         <Route path="/admin-verification" element={<AdminEmployerVerification />} />
+
       </Route>
 </Routes>
       </div>

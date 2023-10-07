@@ -6,7 +6,7 @@ import { CustomRequest } from "../../types/expressRequest";
 import { AuthService } from "../../framework/services/authService";
 import { AdminDbInterface } from "../../application/repositories/adminDbRepository";
 import { AdminRepossitoryMongoDB } from "../../framework/database/mongoDb/repositories/adminRepoMongoDB";
-import { adminLoginUseCase,adminGetAllUsersUseCase,adminGetAllEmployerUseCase,adminBlockUserUseCase,adminBlockEmployerUseCase,adminVerifyEmployerUseCase,adminGetUnverifiedEmployersUseCase} from "../../application/useCases/adminAuth";
+import { adminLoginUseCase,adminGetAllUsersUseCase,adminGetAllEmployerUseCase,adminBlockUserUseCase,adminBlockEmployerUseCase,adminVerifyEmployerUseCase,adminGetUnverifiedEmployersUseCase,BasicDetailsUserEmployerUseCase,getEmployerStatusUseCase} from "../../application/useCases/adminAuth";
 
 const adminController = (
     authServiceInterface: AuthServiceInterface,
@@ -76,6 +76,23 @@ const adminController = (
             result
         })
     })
+    const BasicDetailsUserEmployer = expressAsyncHandler(async(req:CustomRequest,res:Response)=>{
+        const result = await BasicDetailsUserEmployerUseCase(dbRepositoryAdmin)
+        res.json({
+            status: 'success',
+            result
+        })
+    })
+    const getEmployerStatus = expressAsyncHandler(async(req:Request,res:Response)=>{
+        const result = await getEmployerStatusUseCase(dbRepositoryAdmin)
+        res.json({
+            status:true,
+            message:'fetch Employer status successfully',
+            result
+        })
+    })
+
+
     return{
    adminLogin,
    adminGetAllUsers,
@@ -83,7 +100,9 @@ const adminController = (
    adminBlockUser,
    adminBlockEmployer,
    verifyEmployer,
-   getUnverifiedEmployers
+   getUnverifiedEmployers,
+   BasicDetailsUserEmployer,
+   getEmployerStatus
     }
 }
 export default adminController

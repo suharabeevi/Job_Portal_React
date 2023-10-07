@@ -58,14 +58,14 @@ export default function UserLogin() {
       setShowPassword(!showPassword);
     };
 
-    useEffect(()=>{
-      if(token) {
-        dispatch(loginSuccess());
-      }
-      if(isLoggedIn) {
-        navigate('/user/home');
-      }
-    },[isLoggedIn, navigate]);
+    // useEffect(()=>{
+    //   if(token) {
+    //     dispatch(loginSuccess());
+    //   }
+    //   if(isLoggedIn) {
+    //     navigate('/user/home');
+    //   }
+    // },[isLoggedIn, navigate]);
     // useEffect(() => {
     //   // Check if the user is already logged in
     //   if (isLoggedIn) {

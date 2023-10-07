@@ -15,7 +15,6 @@ import {
   getUserMessages,
   postUserMessages,
 } from "../../features/axios/api/messenger/messages";
-
 function Messenger() {
   const dispatch = useDispatch();
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -40,7 +39,6 @@ function Messenger() {
       });
     });
   },[]);
-
   useEffect(() => {
     arrivalMessage &&
       currentChat?.members?.includes(arrivalMessage.sender) &&
@@ -53,7 +51,6 @@ function Messenger() {
       setOnlineUsers(users);
     });
   }, [user?._id]);
-
   useEffect(() => {
     dispatch(fetchUser());
   }, [dispatch]);
