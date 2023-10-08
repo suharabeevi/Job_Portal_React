@@ -39,7 +39,6 @@ const AdminDash: React.FC = () => {
               
             </div>
 
-          
         </div>
 
         {/* <PageTitle title='Revenue Transcation'/>

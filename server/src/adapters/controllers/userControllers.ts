@@ -93,6 +93,16 @@ const userController = (
         })
       }
     )
+  // const userUpdatePassword = expressAsyncHandler(
+  //   async(req:Request, res:Response) =>{
+  //   const customReq =req as CustomRequest;
+  //  const id = customReq.payload ?? '';
+  //  if(!id){
+  //   throw new AppError('Unauthorized request invalid token' HttpStatus.UNAUTHORIZED);
+  //  }
+  // await 
+  //   }
+  // )
   
     return {
         getUserByEmail,
@@ -100,7 +110,8 @@ const userController = (
         getUserDataByIdParam,
         updateTheUser,
         updateTheResume,
-        userDeleteResume
+        userDeleteResume,
+        
       };
     };
     

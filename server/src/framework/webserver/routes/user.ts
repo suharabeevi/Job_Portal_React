@@ -19,9 +19,10 @@ const userRouter = ()=> {
     );
     route.get('/user-data',authenticationMiddleware, userMiddleware,controller.getUserDataById);
     route.put('/update-user',authenticationMiddleware, userMiddleware,upload, controller.updateTheUser);
-     route.put('/update-resume',authenticationMiddleware, userMiddleware,upload, controller.updateTheResume);
-      route.delete('/delete-resume' ,authenticationMiddleware, userMiddleware, controller.userDeleteResume);
+    route.put('/update-resume',authenticationMiddleware, userMiddleware,upload, controller.updateTheResume);
+    route.delete('/delete-resume' ,authenticationMiddleware, userMiddleware, controller.userDeleteResume);
     route.get('/user-data/:userId', controller.getUserDataByIdParam);
+    route.post('/user-password-update',authenticationMiddleware,userMiddleware,controller.userUpdatePassword)
 
     return route;
 }
