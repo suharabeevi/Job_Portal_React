@@ -5,7 +5,7 @@ import { AuthServiceInterface } from "../../services/authServiceInterface";
 import { GoogleAuthServiceInterface } from "../../services/googleAuthServiceInterface";
 import AppError from "../../../utils/appError";
 import { UserEntity } from "../../../entities/UserEntity";
-
+import { EmailServiceInterface } from "../../services/emailServiceInterface";
 // creating a new user
 export const registerUser = async (
   user: CreateUserInterface,
@@ -115,4 +115,31 @@ export const updatePasswordWithEmailUseCase = async(
   
   const result = await userRepository.userPasswordUpdatewithEmail(email,obj)
   return result
+}
+export const generateOTPUseCase = async(
+  userEmail: string,
+  userDbRepository: ReturnType<UserDbInterface>,
+  sendMailService: ReturnType<EmailServiceInterface>
+)=>{
+  const isExistingEmail = await userDbRepository.getUserByEmail(userEmail);
+  if(!isExistingEmail){
+    throw new AppError(`could not find user in this email`,HttpStatus.UNAUTHORIZED)
+  }
+//call the generate otp function to the userEmail
+  sendMailService.sendOtpEmail(userEmail)
+  return isExistingEmail
+}
+
+export const verifiyOTPUseCase = async(
+  userOTP:string,
+  sendMailService: ReturnType<EmailServiceInterface>
+)=>{
+  const response = sendMailService.verifyOTP(userOTP)
+  if(response.message === 'OTP verified'){
+    return true
+  }else if( response.message === 'OTP is expired'){
+    throw new AppError('OTP is expired!',HttpStatus.NOT_ACCEPTABLE)
+  }else{
+    throw new AppError('OTP is Invalid!',HttpStatus.UNAUTHORIZED)
+  }
 }

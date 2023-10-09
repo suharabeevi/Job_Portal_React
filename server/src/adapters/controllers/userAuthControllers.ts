@@ -6,24 +6,28 @@ import { UserModel } from "../../framework/database/mongoDb/models/userModel";
 import { AuthServiceInterface } from "../../application/services/authServiceInterface";
 import { UserDbInterface } from "../../application/repositories/userDbRepository";
 import { UserRepositoryMongoDB } from "../../framework/database/mongoDb/repositories/userRepositoryMongoDB";
-import { userLogin,registerUser,signInWithGoogle,userPasswordUpdateUseCase,updatePasswordWithEmailUseCase} from "../../application/useCases/auth/userAuth";
+import { userLogin,registerUser,signInWithGoogle,userPasswordUpdateUseCase,updatePasswordWithEmailUseCase,generateOTPUseCase,verifiyOTPUseCase} from "../../application/useCases/auth/userAuth";
 import { CreateUserInterface,UserInterface } from "../../types/userInterface";
 import { GoogleAuthService } from "../../framework/services/googleAuthService";
 import { GoogleAuthServiceInterface } from "../../application/services/googleAuthServiceInterface";
-import { log } from "util";
+import { EmailServiceInterface } from "../../application/services/emailServiceInterface";
+import { SendEmailService } from "../../framework/services/emailService";
 const authController = (
     authServiceInterface: AuthServiceInterface,
     authServiceImpl: AuthService,
     userDbRepository: UserDbInterface,
     userDbRepositoryImpl: UserRepositoryMongoDB,
     userModel: UserModel,
-     googleAuthServiceInterface: GoogleAuthServiceInterface,
-     googleAuthServiceImpl: GoogleAuthService
+    emailService: EmailServiceInterface,
+  emailServiceImpl: SendEmailService,
+    //  googleAuthServiceInterface: GoogleAuthServiceInterface,
+    //  googleAuthServiceImpl: GoogleAuthService
+     
   ) => {
     const dbRepositoryUser = userDbRepository(userDbRepositoryImpl(userModel));
     const authService = authServiceInterface(authServiceImpl());
-     const googleAuthService = googleAuthServiceInterface(googleAuthServiceImpl());
-  
+    //  const googleAuthService = googleAuthServiceInterface(googleAuthServiceImpl());
+     const sendEmailService = emailService(emailServiceImpl());
     const userRegister = expressAsyncHandler(
       async (req: Request, res: Response) => {
         const user: CreateUserInterface = req?.body;
@@ -53,19 +57,19 @@ const authController = (
         token,
       });
     });
-    const signWithGoogle = expressAsyncHandler(async (req: Request, res: Response) => {
-      const {credential} : {credential: string} = req.body;
-      console.log(req.body,"credentail");
+    // const signWithGoogle = expressAsyncHandler(async (req: Request, res: Response) => {
+    //   const {credential} : {credential: string} = req.body;
+    //   console.log(req.body,"credentail");
       
-      const token = await signInWithGoogle(credential, googleAuthService, dbRepositoryUser, authService);
-      console.log(token);
+    //   const token = await signInWithGoogle(credential, googleAuthService, dbRepositoryUser, authService);
+    //   console.log(token);
       
-      res.json({
-        status: "success",
-        message: "user verified",
-        token
-      })
-    }) 
+    //   res.json({
+    //     status: "success",
+    //     message: "user verified",
+    //     token
+    //   })
+    // }) 
     const userUpdatePassword = expressAsyncHandler(
       async(req:CustomRequest,res:Response)=>{
         const customReq = req as CustomRequest;
@@ -97,12 +101,32 @@ const authController = (
         })
       }
      )
+     const generateOTPtoEmail = expressAsyncHandler(async(req:Request,res:Response)=>{
+      const userEmail = req.body?.email ?? ''
+      const result = await generateOTPUseCase(userEmail,dbRepositoryUser, sendEmailService)
+      res.json({
+        status:true,
+        message: 'OTP sent to your Email success!',
+        result
+      })
+    });
+     const verifyOTP = expressAsyncHandler(async(req:Request,res:Response)=>{
+      const userOTP = req.body?.otp ?? ''
+      const result = await verifiyOTPUseCase(userOTP.toString(), sendEmailService)
+      res.json({
+        status:true,
+        message: 'OTP verification done!',
+        result
+      })
+    })
     return {
       loginUser,
       userRegister,
-      signWithGoogle,
+      // signWithGoogle,
       userUpdatePassword,
-      updatePasswordWithEmail
+      updatePasswordWithEmail,
+      generateOTPtoEmail,
+      verifyOTP
     };
   };
   

@@ -10,7 +10,8 @@ import { googleAuthServiceInterface } from "../../../application/services/google
 import authenticationMiddleware from '../middleware/AuthenticationMiddleware';
 import roleMiddleware from "../middleware/roleMiddleware";
 const userMiddleware = roleMiddleware('user');
-
+import { emailServiceInterface } from "../../../application/services/emailServiceInterface";
+import { sendEmailService } from "../../services/emailService";
 const userAuthRouter = () => {
   const route = express.Router();
 
@@ -20,19 +21,18 @@ const userAuthRouter = () => {
     userDbRepository,
     UserRepositoryMongoDB,
     User,
-    googleAuthServiceInterface,
-    googleAuthService
+    emailServiceInterface,
+      sendEmailService
    
   );
   console.log(controller,"yyyyyyyy");
-  
-
   route.post("/register",controller.userRegister);
   route.post("/login", controller.loginUser);
-   route.post("/sign-in-with-google", controller.signWithGoogle);
+  // route.post("/sign-in-with-google", controller.signWithGoogle);
    route.post('/user-password-update',authenticationMiddleware,userMiddleware,controller.userUpdatePassword)
     route.post('/user-password-update-withEmail',controller.updatePasswordWithEmail)
-
+    route.post('/user-generate-otp',controller.generateOTPtoEmail)
+    route.post('/verify-otp',controller.verifyOTP)
   return route;
 };
 
