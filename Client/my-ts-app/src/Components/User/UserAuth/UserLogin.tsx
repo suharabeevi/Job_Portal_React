@@ -128,6 +128,14 @@ export default function UserLogin() {
         </p>
       )}
               </div>
+              <div className="text-sm">
+                    <Link
+                      to="/user/forgot-password"
+                      className="font-semibold text-brown-600 hover:text-brown-500"
+                    >
+                      Forgot password?
+                    </Link>
+                  </div>
               <button
                 type="submit"
                 className="w-24 py-2 text-sm bg-brown-600 text-white rounded hover:bg-brown-700 flex justify-center items-center mx-auto"

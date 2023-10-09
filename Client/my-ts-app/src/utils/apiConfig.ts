@@ -9,6 +9,9 @@ const apiConfig = {
     updateUser:`${configKeys.API_URL}user/update-user`,
     uploadResume: `${configKeys.API_URL}user/update-resume`,
     deleteResume: `${configKeys.API_URL}user/delete-resume`,
+    USER_REQUEST_OTP: "user-auth/user-generate-otp",
+  USER_VERIFY_OTP: "user-auth/verify-otp",
+  USER_UPDATE_PASSWORD_WITH_EMAIL: "user-auth/user-password-update-withEmail",
 
    //employer
     employerRegister: `${configKeys.API_URL}employer-auth/register`,

@@ -48,7 +48,7 @@ export default function AdminLoginForm() {
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
-        <img src="https://res.cloudinary.com/dpgbodkae/image/upload/v1695012129/found_it-logos_black_wgrai8.png" className="h-8 mr-3" alt="voyago logo" />
+        <img src="https://res.cloudinary.com/dpgbodkae/image/upload/v1695012129/found_it-logos_black_wgrai8.png" className="h-8 mr-3" alt="logo" />
                 <span className="self-center text-xl font-serif sm:text-2xl whitespace-nowrap dark:text-white">
                   Found<span className="text-sky-600">it</span>
                 </span>
