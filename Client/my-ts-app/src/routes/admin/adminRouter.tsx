@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import AdminLoginForm from "../../Components/admin/Login/AdminLogin";
 // import { Admin } from "../../pages/admin/adminDash";
+import AdminBlockedUser from "../../Components/admin/Body/pages/BlockedUsers";
 import Admin from "../../pages/admin/adminDash";
 import AdminUser from "../../Components/admin/Body/pages/AdminUser";
 import Dashboard from "../../Components/admin/Body/pages/DashBoard";
@@ -16,7 +17,7 @@ const AdminRouter = () => {
         <Route path="/users" element={<AdminUser />} />
         <Route path="/employers" element={<AdminEmployer />} />
         <Route path="/admin-verification" element={<AdminEmployerVerification />} />
-
+        <Route path="/blockedusers" element={<AdminBlockedUser/>} />
       </Route>
 </Routes>
       </div>

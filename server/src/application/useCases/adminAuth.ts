@@ -45,6 +45,15 @@ export const adminLoginUseCase = async (
     }
     return userData;
   };
+  export const adminGetAllBlockedUsersUseCase = async (
+    adminRepository: ReturnType<AdminDbInterface>
+  ) => {
+    const userData = await adminRepository.getAllBlockedUsers();
+    if (!userData) {
+      throw new AppError("No users found", HttpStatus.NOT_FOUND);
+    }
+    return userData;
+  };
 
   export const adminGetAllEmployerUseCase = async (
     adminDbRepository: ReturnType<AdminDbInterface>

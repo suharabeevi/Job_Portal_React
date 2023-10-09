@@ -6,7 +6,7 @@ import { CustomRequest } from "../../types/expressRequest";
 import { AuthService } from "../../framework/services/authService";
 import { AdminDbInterface } from "../../application/repositories/adminDbRepository";
 import { AdminRepossitoryMongoDB } from "../../framework/database/mongoDb/repositories/adminRepoMongoDB";
-import { adminLoginUseCase,adminGetAllUsersUseCase,adminGetAllEmployerUseCase,adminBlockUserUseCase,adminBlockEmployerUseCase,adminVerifyEmployerUseCase,adminGetUnverifiedEmployersUseCase,BasicDetailsUserEmployerUseCase,getEmployerStatusUseCase} from "../../application/useCases/adminAuth";
+import { adminLoginUseCase,adminGetAllUsersUseCase,adminGetAllEmployerUseCase,adminBlockUserUseCase,adminBlockEmployerUseCase,adminVerifyEmployerUseCase,adminGetUnverifiedEmployersUseCase,BasicDetailsUserEmployerUseCase,getEmployerStatusUseCase,adminGetAllBlockedUsersUseCase} from "../../application/useCases/adminAuth";
 
 const adminController = (
     authServiceInterface: AuthServiceInterface,
@@ -30,6 +30,13 @@ const adminController = (
     })
     const adminGetAllUsers = expressAsyncHandler(async (req: Request,res: Response)=>{
         const userData = await adminGetAllUsersUseCase(dbRepositoryAdmin)
+        res.json({
+            status: 'success',
+            userData
+        })
+    })
+    const adminGetAllUsersBlockedUsers = expressAsyncHandler(async (req: Request,res: Response)=>{
+        const userData = await adminGetAllBlockedUsersUseCase(dbRepositoryAdmin)
         res.json({
             status: 'success',
             userData
@@ -102,7 +109,8 @@ const adminController = (
    verifyEmployer,
    getUnverifiedEmployers,
    BasicDetailsUserEmployer,
-   getEmployerStatus
+   getEmployerStatus,
+   adminGetAllUsersBlockedUsers
     }
 }
 export default adminController

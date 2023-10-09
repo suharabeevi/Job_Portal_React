@@ -17,6 +17,11 @@ export const adminRepositoryMongoDB = () => {
         const AllUsers = await User.find();
         return AllUsers;
       };
+      const getAllBlockedUsers = async () => {
+        const blockedUsers = await User.find({ isActive: false });
+        return blockedUsers;
+      };
+      
       const getAllEmployers = async () => {
         const AllEmployers = await Employer.find();
         return AllEmployers;
@@ -122,7 +127,8 @@ export const adminRepositoryMongoDB = () => {
         verifyEmployer,
         getUnverifiedEmployers,
         BasicDetailsUserEmployer,
-        getEmployerStatus
+        getEmployerStatus,
+        getAllBlockedUsers
     }
 }
 export type AdminRepossitoryMongoDB = typeof adminRepositoryMongoDB;

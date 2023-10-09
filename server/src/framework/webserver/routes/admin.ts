@@ -20,13 +20,13 @@ const adminRouter =()=>{
     route.post("/login", controller.adminLogin);
     route.get( "/get-all-users",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminGetAllUsers);
     route.get("/get-all-employers",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminGetAllEmployers);
+    route.get( "/get-all-Blocked-users",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminGetAllUsersBlockedUsers);
     route.post("/block-user/:id",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminBlockUser);
     route.post("/block-employer/:id",authenticationMiddleware,adminRoleCheckMiddleware,controller.adminBlockEmployer);
     route.post("/Employer-verification/:id",authenticationMiddleware,adminRoleCheckMiddleware,controller.verifyEmployer);
     route.get("/get-all-unverified-Employers",authenticationMiddleware,adminRoleCheckMiddleware,controller.getUnverifiedEmployers)
     route.get('/get-basic-details-user-Employer',authenticationMiddleware,adminRoleCheckMiddleware,controller.BasicDetailsUserEmployer);
-    route.get('/get-all-Employer-status',authenticationMiddleware,adminRoleCheckMiddleware,controller.getEmployerStatus
-    )
+    route.get('/get-all-Employer-status',authenticationMiddleware,adminRoleCheckMiddleware,controller.getEmployerStatus)
     return route;
 }
 

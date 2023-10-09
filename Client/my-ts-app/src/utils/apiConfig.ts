@@ -18,6 +18,7 @@ const apiConfig = {
     employerData: `${configKeys.API_URL}employer/employer-data`,
     updateEmployer: `${configKeys.API_URL}employer/update-employer`,
     Employer_Verification_check:`${configKeys.API_URL}employer/isVerified`,
+
   
      //job
     employerJObs: `${configKeys.API_URL}job/employer-jobs`,
@@ -48,8 +49,7 @@ const apiConfig = {
    ADMIN_GET_ALL_UNVERIFIED_EMPLOYERS: `admin/get-all-unverified-Employers`,
    ADMIN_GET_BASIC_DETAILS_USER_Employer_PACKAGE:`admin/get-basic-details-user-Employer`,
    ADMIN_GET_EMPLOYER_STATUS: `admin/get-all-Employer-status`,
-
-
+   ADMIN_GET_BLOCKED_USER:`admin/get-all-Blocked-users`,
 
 
    getConversations: `${configKeys.API_URL}messenger-conversation`,
