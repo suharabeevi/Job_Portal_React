@@ -26,14 +26,18 @@ export const userDbRepository = (
     const deleteResume = async (userId: string) => {
       await repository.deleteResume(userId);
     }
-  
+    const userPasswordUpdate = async(userId:string, editedPassword:any)=> await repository.userPasswordUpdate(userId,editedPassword)
     
+    const userPasswordUpdatewithEmail = async(email:string,editedPassword:any)=> await repository.userPasswordUpdatewithEmail(email,editedPassword)
+
   return {
     getUserByEmail,
     createUser,
     getUserDataById,
     updateUser,
-    deleteResume
+    deleteResume,
+    userPasswordUpdate,
+    userPasswordUpdatewithEmail
   };
 };
 

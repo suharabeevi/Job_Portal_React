@@ -1,6 +1,8 @@
 import { CreateUserInterface, UserInterface } from "../../../../types/userInterface";
 import { UserEntity } from "../../../../entities/UserEntity";
 import {UserModel} from "../models/userModel";
+import { User } from "../models/userModel";
+import { Types } from "mongoose";
 
 export const UserRepositoryMongoDB = (model: UserModel) => {
     const userEntity = new UserEntity(model);
@@ -25,16 +27,44 @@ export const UserRepositoryMongoDB = (model: UserModel) => {
       const updatedUser = await userEntity.updateUser(userId, updates);
       return updatedUser;
     }
-    const deleteResume = async (userId: string) => {
+    const deleteResume = async (userId: string) => { 
       await userEntity.resumeDelete(userId);
     }
+    const userPasswordUpdate = async(
+      userId:string,
+      editedPassword: any
+    )=>{
+      const id = new Types.ObjectId(userId);
+      try{
+        const updatedPassword = await User.findByIdAndUpdate(id,{$set: editedPassword},{new:true})
+        return true
+      }catch(error){
+        console.log(error);
+        throw error;
+      }
+    }
+    const userPasswordUpdatewithEmail = async(
+      email: string,
+      editedPassword:any
+    )=>{
+      console.log(email)
+      try{
+        const updatedPassword = await User.findOneAndUpdate({email},{$set: editedPassword},{new:true})
+        return true
+      }catch(error){
+        console.log(error);
+        throw error;
+      }
+    }
+  
     return {
         getUserByEmail,
         createUser,
         getUserDataById,
         updateUser,
-        deleteResume
+        deleteResume,
+        userPasswordUpdate,
+        userPasswordUpdatewithEmail
       };
     };
-
     export type UserRepositoryMongoDB = typeof UserRepositoryMongoDB;

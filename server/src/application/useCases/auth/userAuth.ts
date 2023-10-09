@@ -68,3 +68,51 @@ export const signInWithGoogle = async (
     return token;
   }
 };
+export const userPasswordUpdateUseCase = async(
+  userId: string,
+  eitedPassword: any,
+  userRepository: ReturnType<UserDbInterface>,
+  authService: ReturnType<AuthServiceInterface>
+)=>{
+  const userData = await userRepository.getUserDataById(userId)
+  console.log(userData);
+  
+  const userDbPassword = userData?.password
+
+  const isPasswordCorrect = await authService.comparePassword(
+    eitedPassword,
+    userDbPassword ?? ""
+  );
+  console.log(isPasswordCorrect);
+  
+  if (!isPasswordCorrect) {
+    throw new AppError(
+      "sorry, your password was incorrect.Please double-check your password",
+      HttpStatus.UNAUTHORIZED
+    )}
+  const newPassword = await authService.encryptPassword(eitedPassword.newPassword);
+  const obj={
+    password: newPassword
+  }
+
+  const result = await userRepository.userPasswordUpdate(userId,obj);
+  console.log(result);
+  
+  return result;
+
+}
+export const updatePasswordWithEmailUseCase = async(
+  emailId:string,
+  eitedPassword:any,
+  userRepository:ReturnType<UserDbInterface>,
+  authService:ReturnType<AuthServiceInterface>
+)=>{
+  const newPassword = await authService.encryptPassword(eitedPassword.newPassword);
+  const obj={
+    password:newPassword
+  }
+  const email = emailId.toString()
+  
+  const result = await userRepository.userPasswordUpdatewithEmail(email,obj)
+  return result
+}

@@ -7,6 +7,10 @@ import { authServiceInterface } from "../../../application/services/authServiceI
 import { User } from "../../database/mongoDb/models/userModel";
 import { googleAuthService } from "../../services/googleAuthService";
 import { googleAuthServiceInterface } from "../../../application/services/googleAuthServiceInterface";
+import authenticationMiddleware from '../middleware/AuthenticationMiddleware';
+import roleMiddleware from "../middleware/roleMiddleware";
+const userMiddleware = roleMiddleware('user');
+
 const userAuthRouter = () => {
   const route = express.Router();
 
@@ -26,6 +30,8 @@ const userAuthRouter = () => {
   route.post("/register",controller.userRegister);
   route.post("/login", controller.loginUser);
    route.post("/sign-in-with-google", controller.signWithGoogle);
+   route.post('/user-password-update',authenticationMiddleware,userMiddleware,controller.userUpdatePassword)
+    route.post('/user-password-update-withEmail',controller.updatePasswordWithEmail)
 
   return route;
 };
