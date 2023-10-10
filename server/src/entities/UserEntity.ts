@@ -22,24 +22,29 @@ export class UserEntity {
       const userData: any = await this.model.findById(id);
       return userData;
     }
-    public async updateUser(
-      id: string,
-      updates: Partial<UserInterface>
-    ): Promise<UserInterface | null> {
+    public async updateUser(id: string, updates: Partial<UserInterface>): Promise<UserInterface | null> {
       const currentDetails = await this.model.findById(id);
-  
+    
       if (currentDetails) {
         if (updates.skills) {
-          currentDetails.skills = updates.skills;
+          // Ensure uniqueness of skills
+          const uniqueSkills = Array.from(new Set([...currentDetails.skills, ...updates.skills]));
+          currentDetails.skills = uniqueSkills;
+          console.log(currentDetails.skills);
+          
+          delete updates.skills; // Remove skills from updates to avoid overriding
         }
-  
+    
+        // Update other fields using Object.assign
         Object.assign(currentDetails, updates);
+    
         const updatedUser = await currentDetails.save();
         return updatedUser;
       }
-  
-      return null; 
+    
+      return null;
     }
+    
     public async resumeDelete(id: string): Promise<any> {
       await this.model.updateOne({ _id: id }, { $unset: { resume: "" } });
     }

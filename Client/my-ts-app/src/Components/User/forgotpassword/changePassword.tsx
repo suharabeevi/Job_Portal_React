@@ -32,12 +32,12 @@ const ChangePasswordComponent:React.FC = ()=>{
             userUpdatePasswordWithEmail(obj).then(()=>{
                 notify('Password updated successfull','success');
                 setTimeout(()=>{
-                    navigate('/login')
+                    navigate('/user/login')
                 },2000)
             }).catch((err:any)=>{
                 notify(err.message,'error')
                 setTimeout(()=>{
-                    navigate('/login')
+                    navigate('/user/login')
                 },2000)
             })
         };

@@ -35,7 +35,7 @@ const links = [
     }, [dispatch, isLoggedIn]);
   
     return (
-      <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+      <div className="relative isolate overflow-hidden bg-brown-900 py-24 sm:py-32">
         <img
           src="https://img.freepik.com/free-photo/we-are-hiring-collage_23-2150638216.jpg?w=1060&t=st=1692951508~exp=1692952108~hmac=e85b84a84caccd2b01fd1da8e8d8b60cdfb72c24fb2c588810875c8a7c65ba4a"
           alt=""
