@@ -7,7 +7,7 @@ import App from "./App";
 import { ThemeProvider } from "@material-tailwind/react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import constants from "./utils/constants";
- import ErrorBoundary from "./Context/ErrorBoundary";
+import ErrorBoundary from "./Context/ErrorBoundary";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
