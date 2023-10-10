@@ -31,10 +31,8 @@ export class UserEntity {
           const uniqueSkills = Array.from(new Set([...currentDetails.skills, ...updates.skills]));
           currentDetails.skills = uniqueSkills;
           console.log(currentDetails.skills);
-          
           delete updates.skills; // Remove skills from updates to avoid overriding
         }
-    
         // Update other fields using Object.assign
         Object.assign(currentDetails, updates);
     
@@ -46,7 +44,7 @@ export class UserEntity {
     }
     
     public async resumeDelete(id: string): Promise<any> {
-      await this.model.updateOne({ _id: id }, { $unset: { resume: "" } });
+    await this.model.updateOne({ _id: id }, { $unset: { resume: "" } });
     }
   
 }  
