@@ -22,10 +22,6 @@ const io = new Server(server, {
       origin: configKeys.ORIGIN_PORT
     }
   });
-
-
-
-
 app.use(bodyParser.json());
 
 connectDB();
