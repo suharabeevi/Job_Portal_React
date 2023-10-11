@@ -52,7 +52,7 @@ interface AddResumeConfirmationProps {
           <div className="flex items-center justify-between">
             <DialogHeader className="flex">
               Upload your resume{" "}
-              <DocumentIcon className="text-purple-700 h-8 w-8 ml-4" />
+              <DocumentIcon className="text-brown-700 h-8 w-8 ml-4" />
             </DialogHeader>
             <XMarkIcon className="mr-3 h-5 w-5" onClick={onClose} />
           </div>
@@ -82,7 +82,7 @@ interface AddResumeConfirmationProps {
             <Button variant="outlined" color="red" onClick={onClose}>
               close
             </Button>
-            <Button color="purple" onClick={() => handleSubmit()}>
+            <Button color="brown" onClick={() => handleSubmit()}>
               {uploaded ? <Spinner/> :'Upload' }
             </Button>
           </DialogFooter>

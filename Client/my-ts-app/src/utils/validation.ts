@@ -18,7 +18,6 @@ export const userRegisterValidationSchema = yup.object().shape({
       .string()
       .oneOf([yup.ref("password")], "Password does not match"),
   });
-
   export const userLoginValidationSchema = yup.object().shape({
     email: yup.string().required("Email is required").email("Invalid email"),
     password: yup
