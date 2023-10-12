@@ -43,7 +43,8 @@ function EmployerRegister() {
     },
     validationSchema: employerRegisterValidationSchema,
     onSubmit: (values) => {
-      registerEmployer({...values})
+      const {_id, ...payload} = values
+      registerEmployer({...payload})
           .then((response) => {
             notify("Registration success", "success");
             setTimeout(() => {

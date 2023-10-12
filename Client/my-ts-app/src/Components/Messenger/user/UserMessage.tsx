@@ -8,7 +8,6 @@ type MessageType = {
   own: boolean;
   id: string;
 };
-
 function Message({ message, own , id}: MessageType) {
   const [user, setUser] = useState<any>();
 
@@ -47,5 +46,4 @@ function Message({ message, own , id}: MessageType) {
     </div>
   );
 }
-
 export default Message;
