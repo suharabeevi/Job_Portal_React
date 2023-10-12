@@ -6,7 +6,6 @@ import { EmployerRegisterPayload } from "../../../types/PayloadInterface";
 function Conversations({ conversation, currentUser, onlineUsers }: any) {
   const [employer, setEmployer] = useState<EmployerRegisterPayload>();
   const [isOnline, setIsOnline] = useState<boolean>(false);
-
   useEffect(() => {
     const senderId = conversation?.members?.find(
       (m: Array<string>) => m !== currentUser?._id

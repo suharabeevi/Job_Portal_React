@@ -12,9 +12,7 @@ import ErrorBoundary from "./Context/ErrorBoundary";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
-
 const googleAuthClient = constants.GOOGLE_AUTH_CLIENT;
-
 root.render(
   <React.StrictMode>
     <ErrorBoundary>
