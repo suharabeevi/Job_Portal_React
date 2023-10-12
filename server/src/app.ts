@@ -19,7 +19,7 @@ app.use(cors())
 // socket connection
 const io = new Server(server, {
     cors: {
-      origin: configKeys.ORIGIN_PORT
+      origin: "*"
     }
   });
 app.use(bodyParser.json());
