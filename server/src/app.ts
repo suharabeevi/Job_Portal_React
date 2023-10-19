@@ -35,17 +35,14 @@ serverConfig(server).startServer();
 routes(app);
 app.use(errorHandlingMiddleware) 
 
-console.log(configKeys.PRODUCTION, "in app.js")
 if (configKeys.PRODUCTION === "production") {
 
   app.use(express.static(path.join(__dirname, "../../Client/my-ts-app/build")));
 
   app.get("*", function (req, res) {
-      console.log(path.join(__dirname, "../../Client/my-ts-app/build/index.html"))
     res.sendFile(path.join(__dirname, "../../Client/my-ts-app/build/index.html"));
   });
 }
-
 app.all('*', (req,res,next:NextFunction) => {
     next(new AppError('Not found', 404));
 });
