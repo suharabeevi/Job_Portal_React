@@ -13,5 +13,4 @@ const serverConfig = (server: Server) => {
         startServer
     }
 }
-
 export default serverConfig;

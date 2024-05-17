@@ -8,18 +8,15 @@ export const authService = () => {
       password = await bcrypt.hash(password, salt);
       return password;
     };
-  
     const comparePassword = (password: string, hashedPassword: string) => {
       return bcrypt.compare(password, hashedPassword);
     };
-  
     const generateToken = (payload: {payload: string, role: string}) => {
       const token = jwt.sign( payload , configKeys.JWT_KEY, {
         expiresIn: "5d",
       });
       return token;
     };
-  
     const verifyToken = (token: string) => {
       return jwt.verify(token, configKeys.JWT_KEY); 
     };

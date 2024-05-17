@@ -12,8 +12,6 @@ interface CloudinaryStorageOptions {
     public_id: (req: Request, file: Express.Multer.File) => string;
   };
 }
-
-
 // Cloudinary configuration
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,

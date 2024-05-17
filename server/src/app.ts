@@ -30,13 +30,12 @@ expressConfig(app);
 
 serverConfig(server).startServer();
 
-
 // routes
 routes(app);
 app.use(errorHandlingMiddleware) 
+console.log(configKeys.PRODUCTION);
 
 if (configKeys.PRODUCTION === "production") {
-
   app.use(express.static(path.join(__dirname, "../../Client/my-ts-app/build")));
 
   app.get("*", function (req, res) {

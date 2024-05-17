@@ -31,7 +31,7 @@ const authController = (
     const userRegister = expressAsyncHandler(
       async (req: Request, res: Response) => {
         const user: CreateUserInterface = req?.body;
-        console.log(user,"yes get user");
+        
         
         await registerUser(user, dbRepositoryUser, authService);
         res.json({

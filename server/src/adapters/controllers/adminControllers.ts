@@ -16,7 +16,6 @@ const adminController = (
 ) => {
     const dbRepositoryAdmin = adminDbRepositoryInterface(adminDbRepositoryMongoDb())
     console.log(dbRepositoryAdmin,"dbRepositoryAdmin");
-    
     const authServices = authServiceInterface(authService())
     const adminLogin = expressAsyncHandler(async (req: Request, res: Response)=>{
         console.log(req.body)

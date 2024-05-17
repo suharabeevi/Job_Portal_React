@@ -26,3 +26,4 @@ root.render(
     </ErrorBoundary>
   </React.StrictMode>
 );
+

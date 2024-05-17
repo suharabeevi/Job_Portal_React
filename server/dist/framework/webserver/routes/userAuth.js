@@ -1,0 +1,30 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const userAuthControllers_1 = __importDefault(require("../../../adapters/controllers/userAuthControllers"));
+const userDbRepository_1 = require("../../../application/repositories/userDbRepository");
+const userRepositoryMongoDB_1 = require("../../database/mongoDb/repositories/userRepositoryMongoDB");
+const authService_1 = require("../../services/authService");
+const authServiceInterface_1 = require("../../../application/services/authServiceInterface");
+const userModel_1 = require("../../database/mongoDb/models/userModel");
+const AuthenticationMiddleware_1 = __importDefault(require("../middleware/AuthenticationMiddleware"));
+const roleMiddleware_1 = __importDefault(require("../middleware/roleMiddleware"));
+const userMiddleware = (0, roleMiddleware_1.default)('user');
+const emailServiceInterface_1 = require("../../../application/services/emailServiceInterface");
+const emailService_1 = require("../../services/emailService");
+const userAuthRouter = () => {
+    const route = express_1.default.Router();
+    const controller = (0, userAuthControllers_1.default)(authServiceInterface_1.authServiceInterface, authService_1.authService, userDbRepository_1.userDbRepository, userRepositoryMongoDB_1.UserRepositoryMongoDB, userModel_1.User, emailServiceInterface_1.emailServiceInterface, emailService_1.sendEmailService);
+    console.log(controller, "yyyyyyyy");
+    route.post("/register", controller.userRegister);
+    route.post("/login", controller.loginUser);
+    route.post('/user-password-update', AuthenticationMiddleware_1.default, userMiddleware, controller.userUpdatePassword);
+    route.post('/user-password-update-withEmail', controller.updatePasswordWithEmail);
+    route.post('/user-generate-otp', controller.generateOTPtoEmail);
+    route.post('/verify-otp', controller.verifyOTP);
+    return route;
+};
+exports.default = userAuthRouter;
