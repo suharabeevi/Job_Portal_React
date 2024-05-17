@@ -8,7 +8,7 @@ const expressConfig = (app: Application) => {
   app.use(morgan("dev"));
   app.use(
     cors({
-      origin: ["http://localhost:3000","http://hirehub.site","https://hirehub.site"],
+      origin: ["http://localhost:3000"],
     })
   );
   app.use(express.json());
