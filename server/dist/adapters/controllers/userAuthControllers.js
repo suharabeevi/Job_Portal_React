@@ -20,7 +20,6 @@ const authController = (authServiceInterface, authServiceImpl, userDbRepository,
     const sendEmailService = emailService(emailServiceImpl());
     const userRegister = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const user = req === null || req === void 0 ? void 0 : req.body;
-        console.log(user, "yes get user");
         yield (0, userAuth_1.registerUser)(user, dbRepositoryUser, authService);
         res.json({
             status: "success",

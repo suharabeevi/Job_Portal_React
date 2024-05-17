@@ -10,7 +10,7 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const expressConfig = (app) => {
     app.use((0, morgan_1.default)("dev"));
     app.use((0, cors_1.default)({
-        origin: ["http://localhost:3000", "http://hirehub.site", "https://hirehub.site"],
+        origin: ["http://localhost:3000"],
     }));
     app.use(express_1.default.json());
     app.use(express_1.default.urlencoded({ extended: true }));
