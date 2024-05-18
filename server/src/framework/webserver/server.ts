@@ -2,6 +2,7 @@ import {Server} from 'http';
 import configKeys from '../../config';
 
 const PORT = configKeys.PORT || 8080;
+console.log(PORT,"Porttttt");
 
 const serverConfig = (server: Server) => {
     const startServer = () => {

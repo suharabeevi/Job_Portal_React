@@ -17,7 +17,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./dist/app.js",
-    "dev" : "nodemon ./src/app.ts",
+    "dev": "nodemon ./src/app.ts",
     "build": "tsc"
   },
   "author": "",
@@ -43,6 +43,7 @@
     "multer-storage-cloudinary": "^4.0.0",
     "nodemailer": "^6.9.4",
     "nodemon": "^3.0.1",
-    "socket.io": "^4.7.2"
+    "socket.io": "^4.7.2",
+    "ts-node": "^10.9.2"
   }
 }
