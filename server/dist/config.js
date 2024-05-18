@@ -9,7 +9,7 @@ const configKeys = {
     JWT_KEY: process.env.JWT_SECRET,
     MONGO_DB_URL: process.env.DATABASE,
     DB_NAME: process.env.DB_NAME,
-    PORT: process.env.PORT,
+    PORT: process.env.ORIGIN_PORT,
     APP_SECRET: process.env.APP_SECRET,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     NODE_MAIL_USER: process.env.NODE_MAIL_USER_EMAIL,

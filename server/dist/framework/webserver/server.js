@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const config_1 = __importDefault(require("../../config"));
 const PORT = config_1.default.PORT || 8080;
+console.log(PORT, "Porttttt");
 const serverConfig = (server) => {
     const startServer = () => {
         server.listen(PORT, () => {
